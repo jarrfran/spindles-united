@@ -175,7 +175,8 @@
         var start = function () {
           if (started) return; started = true;
           var src = vid.getAttribute('data-hls');
-          if (vid.canPlayType('application/vnd.apple.mpegurl')) { vid.src = src; vid.play().catch(function () {}); return; }
+          /* Native HLS only where Media Source isn't available (iPhone/iPad); everywhere else use hls.js */
+          if (!window.MediaSource && vid.canPlayType('application/vnd.apple.mpegurl')) { vid.src = src; vid.play().catch(function () {}); return; }
           var s = document.createElement('script');
           s.src = 'https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js';
           s.onload = function () {
