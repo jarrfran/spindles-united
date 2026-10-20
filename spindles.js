@@ -10,6 +10,8 @@
   var SCHED = {"2026-05-17": ["Mohawk City FC", 0, 1, false, "UPL Matchweek 1", "Sun, May 17 · 6pm"], "2026-05-22": ["Collar City FC", 0, 1, false, "UPL Matchweek 2", "Fri, May 22 · 7pm"], "2026-05-29": ["Patroon United", 1, 0, true, "UPL Matchweek 3", "Fri, May 29 · 7:15pm"], "2026-06-07": ["United Soccer Group", 1, 0, true, "UPL Matchweek 4", "Sun, Jun 7 · 6pm"], "2026-06-14": ["Sacandaga Lakers", 3, 2, false, "UPL Matchweek 5", "Sun, Jun 14 · 2pm"], "2026-06-19": ["Mohawk City FC", 1, 2, true, "UPL Matchweek 6", "Fri, Jun 19 · 7:15pm"], "2026-06-28": ["Collar City FC", 1, 1, true, "UPL Matchweek 7", "Sun, Jun 28 · 6pm"], "2026-07-12": ["Patroon United", 4, 1, false, "UPL Matchweek 8", "Sun, Jul 12 · 4pm"], "2026-07-17": ["United Soccer Group", 2, 2, false, "UPL Matchweek 9", "Fri, Jul 17 · 6:30pm"], "2026-07-26": ["Sacandaga Lakers", 5, 0, true, "UPL Matchweek 10", "Sun, Jul 26 · 6pm"], "2026-08-02": ["United Soccer Group", 2, 0, true, "UPL Semi-Final", "Sun, Aug 2 · 4pm"], "2026-08-09": ["Patroon United", 2, 0, true, "UPL Final", "Sun, Aug 9 · 6pm"]};
   /* team -> [short name, crest] */
   var TEAMS = {"Spindles United": ["Spindles", "cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png"], "Mohawk City FC": ["Mohawk City", "92d88561-7c3f-4f10-854b-e4e021f05d17/mohawk-low.png"], "Collar City FC": ["Collar City", "8e857a58-a781-4ec8-b1bc-fadc67a44d99/collar-low.png"], "Patroon United": ["Patroon", "3788360b-37f3-41aa-9052-88e7648bc80a/patroon-low.png"], "United Soccer Group": ["USG", "bdfd0d5b-433f-4129-aebe-5ff0a86df3ad/usg-low.png"], "Sacandaga Lakers": ["Lakers", "58224db6-2b8e-4c64-9f5d-8a231961c0d8/lakers-low.png"]};
+  /* Short hero headlines per post; the full blog title shows underneath */
+  var SHORT = {"/news/8-9-2026-match": "Champions of Upstate", "/news/8-2-2026-match": "Back in the Final", "/news/7-26-2026-match": "Five Past the Lakers", "/news/7-17-2026-match": "A Point in the Push", "/news/7-12-2026-match": "Four Past the Leaders", "/news/6-28-2026-match": "Points Shared at Home", "/news/6-19-2026-match": "First Home Defeat", "/news/6-14-2026-match": "Last-Minute Winner", "/news/6-7-2026-match": "Another 1–0 at Home", "/news/5-29-2026-match": "Nine Men, First Win", "/news/5-22-2026-match": "Battle Across the Hudson", "/news/5-17-2026-match": "A Tough UPL Debut"};
 
   var esc = function (s) { var d = document.createElement('div'); d.textContent = s == null ? '' : String(s); return d.innerHTML; };
   var ARROW = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -36,6 +38,19 @@
       '<p class="su-mw-comp"><span>' + esc(m[4]) + '</span><span class="su-res su-res-' + res.toLowerCase() + '">' + res + '</span></p>' +
       '<div class="su-mw-row">' + teamHTML(hn, 'su-mw-team') + '<span class="su-mw-score">' + hg + '<i>–</i>' + ag + '</span>' + teamHTML(an, 'su-mw-team') + '</div>' +
       '<p class="su-mw-foot">' + esc(m[5]) + ' · ' + (home ? 'vs ' : 'at ') + esc(opp) + '</p></aside>';
+  }
+  /* Short hero headline: hand-written if listed, otherwise built from the match result — mirrors short_title() in build.py */
+  function shortTitle(url, title) {
+    var path = (url || '').replace(/^https?:\/\/[^/]+/, '');
+    if (SHORT[path]) return SHORT[path];
+    var m = SCHED[slugDate(path)];
+    if (m) {
+      var o = TEAMS[m[0]][0];
+      if (m[1] > m[2]) return 'Win over ' + o;
+      if (m[1] === m[2]) return 'Draw ' + (m[3] ? 'with ' : 'at ') + o;
+      return 'Defeat ' + (m[3] ? 'to ' : 'at ') + o;
+    }
+    return title;
   }
   function fmtDate(p) {
     return new Date(p.publishOn || p.addedOn).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -113,12 +128,13 @@
           return '<article class="su-slide" role="group" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + n + '">' + photo +
             '<div class="su-slide-inner su-wrap"><div class="su-slide-copy">' +
             '<p class="su-slide-meta"><span class="su-tag">' + esc(cat) + '</span><time>' + fmtDate(p) + '</time></p>' +
-            '<h2 class="su-slide-title"><a href="' + p.fullUrl + '">' + esc(p.title) + '</a></h2>' +
+            '<h2 class="su-slide-title"><a href="' + p.fullUrl + '">' + esc(shortTitle(p.fullUrl, p.title)) + '</a></h2>' +
+            '<p class="su-slide-sub">' + esc(p.title) + '</p>' +
             '<a class="su-btn su-btn-solid" href="' + p.fullUrl + '">Read the recap ' + ARROW + '</a>' +
             '</div>' + mwHTML(slugDate(p.fullUrl)) + '</div></article>';
         }).join('');
         dotsBox.innerHTML = posts.map(function (p, i) {
-          return '<button class="su-dot" type="button" aria-label="Story ' + (i + 1) + ': ' + esc(p.title) + '"><span class="su-dot-fill"></span></button>';
+          return '<button class="su-dot" type="button" aria-label="Story ' + (i + 1) + ': ' + esc(shortTitle(p.fullUrl, p.title)) + '"><span class="su-dot-fill"></span></button>';
         }).join('');
         go(0);
       }
