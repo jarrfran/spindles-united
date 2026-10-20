@@ -50,6 +50,11 @@
   .su-home *, .su-home *::before, .su-home *::after { box-sizing: border-box; }
   .su-home img { display: block; max-width: 100%; }
   .su-home a { color: inherit; text-decoration: none; }
+  /* Links that carry their own color (beat the inherit rule above) */
+  .su-home .su-promo, .su-home .su-match-promo { color: #fff; }
+  .su-home .su-match-link { color: var(--su-red); }
+  .su-home .su-sponsor { color: var(--su-mute); }
+  .su-home .su-sponsor:hover { color: var(--su-bone); }
   .su-home p, .su-home h1, .su-home h2, .su-home h3, .su-home dl, .su-home dt, .su-home dd, .su-home ul { margin: 0; padding: 0; letter-spacing: normal; text-transform: none; }
   .su-home :focus-visible { outline: 2px solid var(--su-red); outline-offset: 3px; }
   .su-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -78,6 +83,7 @@
   .su-home .su-lede { color: var(--su-mute); max-width: 52ch; margin-top: 14px; }
 
   .su-kicker { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--su-gold); }
+  .su-hero .su-kicker { background: rgba(13,13,14,.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); padding: 8px 16px; border-radius: 999px; }
   .su-dot { width: 9px; height: 9px; border-radius: 2px; background: var(--su-red); display: inline-block; }
 
   /* ===== Buttons (pills) ===== */
@@ -110,7 +116,9 @@
   .su-hero-img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
   .su-hero::after {
     content: ""; position: absolute; inset: 0; z-index: -1;
-    background: linear-gradient(to top, var(--su-black) 2%, rgba(13,13,14,.7) 32%, rgba(13,13,14,.15) 70%, rgba(13,13,14,.35) 100%);
+    background:
+      radial-gradient(60% 45% at 50% 58%, rgba(13,13,14,.55) 0%, rgba(13,13,14,0) 100%),
+      linear-gradient(to top, var(--su-black) 2%, rgba(13,13,14,.7) 32%, rgba(13,13,14,.2) 70%, rgba(13,13,14,.4) 100%);
   }
   .su-hero-inner { width: 100%; padding-bottom: clamp(150px, 15vw, 200px); display: flex; flex-direction: column; align-items: center; }
   .su-home .su-hero-title {
@@ -162,6 +170,7 @@
   .su-rail { display: grid; grid-auto-flow: column; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding: 4px 2px 12px; }
   .su-rail::-webkit-scrollbar { display: none; }
   .su-rail > * { scroll-snap-align: start; }
+  .su-rail.su-wrap { padding-left: var(--su-gutter); padding-right: var(--su-gutter); }
   .su-rail.su-wrap, .su-hero-stories { scroll-padding-inline: var(--su-gutter); }
   .su-rail-nav { display: flex; gap: 8px; }
   .su-rail-btn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(13,13,14,.2); background: transparent; color: var(--su-black); display: grid; place-items: center; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
