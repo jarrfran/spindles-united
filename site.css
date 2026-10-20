@@ -241,7 +241,8 @@
   .su-stat-v { font-family: var(--su-display); font-weight: 700; font-size: clamp(36px, 3.4vw, 52px); line-height: 1; letter-spacing: -0.01em; }
   .su-stat-l { font-size: 14px; line-height: 1.35; color: var(--su-mute); }
   .su-stat-champ { grid-row: span 2; background: var(--su-grad); position: relative; overflow: hidden; }
-  .su-stat-champ .su-stat-v { font-size: clamp(40px, 4.2vw, 64px); }
+  .su-stat-champ .su-stat-v { font-size: clamp(34px, 2.8vw, 50px); }
+  .su-home .su-stat-v, .su-home .su-h2, .su-home .su-slide-title, .su-home .su-promo-h, .su-home .su-card-title { overflow-wrap: normal; word-break: normal; hyphens: manual; }
   .su-stat-champ .su-stat-l { color: rgba(255,255,255,.88); font-size: 15px; max-width: 26ch; }
 
   /* Two columns: standings + recent results */
