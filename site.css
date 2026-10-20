@@ -103,8 +103,32 @@
   .su-tag::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: currentColor; }
   .su-meta time { color: var(--su-mute); }
 
+  /* ===== MATCH TICKER (thin results bar under the nav) ===== */
+  .su-home { --su-ticker-h: 42px; }
+  .su-ticker { position: relative; z-index: 4; height: var(--su-ticker-h); display: flex; align-items: stretch; background: var(--su-ink); border-top: 1px solid rgba(242,238,231,.08); border-bottom: 1px solid rgba(242,238,231,.08); font-size: 13px; overflow: hidden; }
+  .su-tk-label { flex: none; display: flex; align-items: center; padding: 0 16px 0 var(--su-gutter); background: var(--su-grad); color: #fff; font-weight: 700; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 100%, 0 100%); padding-right: 26px; }
+  .su-tk-viewport { flex: 1; overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%); mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%); }
+  .su-tk-track { display: flex; width: max-content; height: 100%; animation: su-ticker 80s linear infinite; }
+  .su-ticker:hover .su-tk-track, .su-ticker:focus-within .su-tk-track { animation-play-state: paused; }
+  @keyframes su-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .su-tk-list { display: flex; align-items: center; height: 100%; }
+  .su-home .su-tk-item { display: inline-flex; align-items: center; gap: 8px; height: 100%; padding: 0 22px; color: var(--su-bone); white-space: nowrap; border-right: 1px solid rgba(242,238,231,.12); transition: background .2s; }
+  .su-home .su-tk-item:hover { background: rgba(242,238,231,.07); }
+  .su-tk-item img { width: 20px; height: 20px; object-fit: contain; }
+  .su-tk-item .su-res { font-size: 10px; padding: 2px 7px; }
+  .su-tk-comp { color: var(--su-mute); font-size: 12px; margin-right: 4px; }
+  .su-tk-team { font-weight: 700; }
+  .su-tk-score { font-family: var(--su-display); font-weight: 700; font-size: 16px; padding: 0 2px; }
+  .su-tk-date { color: var(--su-mute); font-size: 12px; margin-left: 4px; }
+  @media (prefers-reduced-motion: reduce) {
+    .su-tk-track { animation: none; }
+    .su-tk-viewport { overflow-x: auto; scrollbar-width: none; }
+    .su-tk-list[aria-hidden] { display: none; }
+  }
+  @media (max-width: 760px) { .su-home { --su-ticker-h: 38px; } .su-tk-label { display: none; } .su-tk-track { animation-duration: 60s; } }
+
   /* ===== HERO: full-screen news carousel ===== */
-  .su-hero { position: relative; height: calc(100vh - var(--su-header, 0px)); height: calc(100svh - var(--su-header, 0px)); min-height: 560px; max-height: 1100px; overflow: hidden; background: var(--su-black); isolation: isolate; }
+  .su-hero { position: relative; height: calc(100vh - var(--su-header, 0px) - var(--su-ticker-h)); height: calc(100svh - var(--su-header, 0px) - var(--su-ticker-h)); min-height: 560px; max-height: 1100px; overflow: hidden; background: var(--su-black); isolation: isolate; }
   .su-slides { position: absolute; inset: 0; }
   .su-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .9s ease, visibility 0s linear .9s; display: flex; align-items: flex-end; }
   .su-slide.is-active { opacity: 1; visibility: visible; transition: opacity .9s ease; z-index: 1; }
