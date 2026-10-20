@@ -18,6 +18,9 @@
     --su-maroon-deep: #4a1019;
     --su-rose: #f07aa0;
     --su-gold: #d4af5a;
+    /* Red gradient used by the nav bar button; all solid buttons use it */
+    --su-grad: linear-gradient(135deg, #c8263f 0%, #8e1f31 55%, #6e1b2a 100%);
+    --su-grad-hover: linear-gradient(135deg, #de3450 0%, #a3263a 55%, #7d1f30 100%);
     --su-display: "alverata", "Alverata", Georgia, "Times New Roman", serif;
     --su-body: "arboria", "Arboria", "Futura", "Century Gothic", "Helvetica Neue", Arial, sans-serif;
     --su-wrap: 1240px;
@@ -62,11 +65,11 @@
   .su-home .su-btn {
     display: inline-flex; align-items: center; gap: 10px;
     font-family: var(--su-body); font-weight: 700; font-size: 15px;
-    padding: 15px 26px; border-radius: 2px;
-    transition: background .2s, color .2s, border-color .2s;
+    padding: 15px 28px; border-radius: 999px;
+    transition: background .2s, color .2s, border-color .2s, box-shadow .2s, transform .2s;
   }
-  .su-home .su-btn-solid { background: var(--su-rose); color: var(--su-black); }
-  .su-home .su-btn-solid:hover { background: var(--su-bone); }
+  .su-home .su-btn-solid { background: var(--su-grad); color: var(--su-bone); border: 0; }
+  .su-home .su-btn-solid:hover { background: var(--su-grad-hover); box-shadow: 0 8px 24px rgba(200,38,63,.35); transform: translateY(-1px); }
   .su-home .su-btn-line { border: 1.5px solid rgba(242,238,231,.5); color: var(--su-bone); }
   .su-home .su-btn-line:hover { border-color: var(--su-bone); background: rgba(242,238,231,.08); }
   .su-home .su-link {
@@ -221,8 +224,6 @@
   .su-contact-layout { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
   .su-home .su-contact .su-h2 { color: var(--su-black); }
   .su-contact p { color: #4a4744; margin-top: 12px; max-width: 48ch; }
-  .su-home .su-contact .su-btn-solid { background: var(--su-black); color: var(--su-bone); }
-  .su-home .su-contact .su-btn-solid:hover { background: var(--su-maroon); }
   .su-home .su-contact .su-btn-line { border-color: rgba(13,13,14,.4); color: var(--su-black); }
   .su-home .su-contact .su-btn-line:hover { border-color: var(--su-black); background: rgba(13,13,14,.05); }
 
