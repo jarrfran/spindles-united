@@ -97,7 +97,8 @@
     });
     hero.querySelector('[data-hero="prev"]').addEventListener('click', function () { go(idx - 1); });
     hero.querySelector('[data-hero="next"]').addEventListener('click', function () { go(idx + 1); });
-    hero.querySelector('[data-hero="pause"]').addEventListener('click', function () { setPaused(!paused); });
+    var pauseBtn = hero.querySelector('[data-hero="pause"]');
+    if (pauseBtn) pauseBtn.addEventListener('click', function () { setPaused(!paused); });
     hero.addEventListener('mouseenter', function () { hover = true; setPaused(paused); });
     hero.addEventListener('mouseleave', function () { hover = false; setPaused(paused); });
     hero.addEventListener('focusin', function () { hover = true; setPaused(paused); });
@@ -149,8 +150,49 @@
 
       /* Let the hero fill the screen below the Squarespace header */
       var header = document.querySelector('header#header, header');
-      var setHeader = function () { root.style.setProperty('--su-header', (header ? header.offsetHeight : 0) + 'px'); };
+      /* Match the content width to the Squarespace nav bar: whatever width is set for the
+         header in Squarespace, every section lines up with the logo on the left and the
+         Store button on the right. */
+      var setHeader = function () {
+        root.style.setProperty('--su-header', (header ? header.offsetHeight : 0) + 'px');
+        var inner = header && (header.querySelector('.header-display-desktop .header-inner') || header.querySelector('.header-inner'));
+        var r = inner && inner.getBoundingClientRect();
+        if (r && r.width > 600) {
+          root.style.setProperty('--su-content', Math.round(r.width) + 'px');
+          root.style.setProperty('--su-gutter', Math.max(16, Math.round(r.left)) + 'px');
+        } else {
+          root.style.removeProperty('--su-content');
+          root.style.removeProperty('--su-gutter');
+        }
+      };
       setHeader(); window.addEventListener('resize', setHeader);
+
+      /* Champions section: background video (same stream as the old homepage hero) */
+      var vid = root.querySelector('.su-champs-video[data-hls]');
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (vid && !reduce && 'IntersectionObserver' in window) {
+        var started = false;
+        var start = function () {
+          if (started) return; started = true;
+          var src = vid.getAttribute('data-hls');
+          if (vid.canPlayType('application/vnd.apple.mpegurl')) { vid.src = src; vid.play().catch(function () {}); return; }
+          var s = document.createElement('script');
+          s.src = 'https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js';
+          s.onload = function () {
+            if (!window.Hls || !window.Hls.isSupported()) return;
+            var h = new window.Hls({ capLevelToPlayerSize: true });
+            h.loadSource(src); h.attachMedia(vid);
+            h.on(window.Hls.Events.MANIFEST_PARSED, function () { vid.play().catch(function () {}); });
+          };
+          document.head.appendChild(s);
+        };
+        new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) { start(); if (vid.paused && vid.src) vid.play().catch(function () {}); }
+            else if (!vid.paused) vid.pause();
+          });
+        }, { rootMargin: '200px' }).observe(vid);
+      }
 
       var hero = root.querySelector('#su-hero');
       var carousel = hero ? heroCarousel(hero) : null;
