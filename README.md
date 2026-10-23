@@ -41,6 +41,7 @@ Change the file in this repo and commit. Pages pick it up within about 2 minutes
 (GitHub Pages can occasionally take up to 10).
 
 ## Changelog
+- v8, home: straight section edges, taller home/away ticker at a slower pace, dark hero scores, centered crests and match metadata, muted square result badges, Arboria news titles, and 2026 photos.
 - v7, home: soft section fades and red glows, neutral scores with vertical dividers, compact full-width mobile match widget, refreshed photos, player interest CTA, clear Button 20 variants, and editorial news cards.
 - v6, home: restored original content in full-width section bands, consistent card corners, Alverata Black headings, and Button 20 styling in club red.
 - v5, home: editorial season feature, compact season numbers, expandable standings/results, lead-story news layout, and community/volunteer/store sections. Hero, ticker, and lower sections retained.

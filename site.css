@@ -454,24 +454,10 @@ body:has(.su-home) .newsletter-form-button:disabled {
   background-image: none; box-shadow: none; opacity: .65; pointer-events: none;
 }
 
-/* ===== v7: soft section transitions, score system and editorial cards ===== */
-.su-home { --su-fade: clamp(72px, 8vw, 112px); }
-.su-home .su-middle-section { position: relative; }
-.su-middle-section::before { content: ''; position: absolute; inset: -1px 0 auto; height: var(--su-fade); pointer-events: none; z-index: 0; }
-.su-middle-section > .su-middle-inner { position: relative; z-index: 1; }
-.su-middle-season::before { background: linear-gradient(180deg,#0d0d0e,rgba(13,13,14,0)); }
-.su-middle-promos::before { background: linear-gradient(180deg,#f2eee7,rgba(242,238,231,0)); }
-.su-middle-news::before { background: linear-gradient(180deg,#0d0d0e,rgba(13,13,14,0)); }
-.su-middle-season .su-middle-inner, .su-middle-promos .su-middle-inner, .su-middle-news .su-middle-inner { padding-top: calc(var(--su-fade) + 28px); }
+/* ===== v8: straight section edges, retaining red ambient glows ===== */
 .su-home .su-middle-explore { background: radial-gradient(ellipse at 12% 55%,rgba(160,21,35,.28),transparent 58%),radial-gradient(ellipse at 90% 90%,rgba(151,20,25,.12),transparent 48%),#0d0d0e; }
 .su-home .su-middle-promos { background: radial-gradient(ellipse at 88% 54%,rgba(188,26,44,.3),transparent 64%),#0d0d0e; }
-.su-home .su-players {
-  padding-top: calc(var(--su-fade) + 48px);
-  background: linear-gradient(180deg,#faf8f4,rgba(250,248,244,0) var(--su-fade)),radial-gradient(ellipse at 24% 38%,rgba(186,24,43,.48),transparent 62%),radial-gradient(ellipse at 94% 85%,rgba(132,11,27,.28),transparent 48%),#0d0d0e;
-}
-.su-champs::after { background: linear-gradient(180deg,#0d0d0e,transparent 100px),linear-gradient(to right,rgba(13,13,14,.92),rgba(13,13,14,.7) 45%,rgba(13,13,14,.35)); }
-.su-home .su-final { padding-top: calc(var(--su-fade) + 32px); background: linear-gradient(180deg,#0d0d0e,#971419 var(--su-fade),#ed2331); }
-.su-home .su-sponsors { padding-top: calc(var(--su-fade) + 32px); background: linear-gradient(180deg,#ed2331,#f7f7f7 var(--su-fade)); }
+.su-home .su-players { background: radial-gradient(ellipse at 24% 38%,rgba(186,24,43,.48),transparent 62%),radial-gradient(ellipse at 94% 85%,rgba(132,11,27,.28),transparent 48%),#0d0d0e; }
 
 /* Shared pale scorebug with a light vertical rule; outcome badges retain color. */
 .su-home .su-result-score, .su-home .su-tk-score, .su-home .su-mw-score {
@@ -542,3 +528,71 @@ body:has(.su-home) .newsletter-form-button:disabled {
 @media (prefers-reduced-motion:reduce) {
   .su-ncard-img img { transition:none; }
 }
+
+
+/* ===== v8: stacked match ticker ===== */
+.su-home { --su-ticker-h: 102px; }
+.su-home .su-ticker { background: #111213; border-bottom: 1px solid #ffffff0c; }
+.su-home .su-tk-label { max-width: 150px; font-size: 10px; letter-spacing: .12em; }
+.su-tk-list { gap: 12px; padding-right: 12px; }
+.su-home .su-tk-item {
+  display: flex; flex-direction: column; align-items: stretch; justify-content: center;
+  width: 190px; height: 84px; gap: 5px; padding: 8px 12px;
+  border-radius: 10px; background: linear-gradient(180deg,#242628,#1a1c1e);
+  border: 1px solid #383b3d; box-shadow: inset 0 1px 0 #ffffff08;
+  color: #e8e8e5; font-family: var(--su-body);
+}
+.su-home .su-tk-item:hover { background: linear-gradient(180deg,#303235,#242628); border-color: #55585b; }
+.su-tk-card-head { display: flex; justify-content: space-between; gap: 8px; font-size: 9px; line-height: 1; color: #a9abad; }
+.su-tk-card-head time { font-weight: 700; }
+.su-tk-match { display: grid; gap: 3px; }
+.su-tk-team { display: grid; grid-template-columns: minmax(0,1fr) 19px 24px; align-items: center; gap: 8px; font-size: 12px; line-height: 1; }
+.su-tk-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.su-tk-team img { width: 18px; height: 18px; object-fit: contain; }
+.su-tk-goals { display: grid; place-items: center; min-height: 20px; border-radius: 4px; background: #303336; border: 1px solid #43474a; color: #f4f3ef; font-variant-numeric: tabular-nums; }
+.su-home .su-tk-track { animation-duration: 180s; }
+
+/* Scores adapt to the surface behind them. Recent results keep the light version. */
+.su-home .su-mw-score { background: linear-gradient(180deg,#303337,#202326); color: #f2f0eb; border-color: #45494d; box-shadow: inset 0 1px 0 #ffffff0a; }
+.su-home .su-mw-score i { background: #62666a; }
+.su-home .su-mw { width: 340px; }
+.su-home .su-mw-row { grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: 10px; }
+.su-home .su-mw-team { flex-direction: row; justify-content: flex-start; gap: 7px; font-size: 12px; }
+.su-home .su-mw-team:first-child { flex-direction: row-reverse; justify-content: flex-start; }
+.su-home .su-mw-team img { width: 28px; height: 28px; flex: none; }
+.su-home .su-mw-comp { position: relative; display: block; padding: 0 28px; text-align: center; min-height: 26px; line-height: 26px; }
+.su-home .su-mw-comp .su-res { position: absolute; right: 0; top: 0; }
+.su-home .su-mw-foot { border-top: 0; padding-top: 3px; text-align: center; }
+.su-home .su-rt { justify-content: flex-end; gap: 7px; }
+.su-home .su-rt-away { justify-content: flex-start; }
+
+/* Muted square outcome badges, styled as small score tiles. */
+.su-home .su-res {
+  width: 26px; height: 26px; min-width: 26px; padding: 0; border-radius: 4px;
+  line-height: 1; border: 1px solid transparent; box-shadow: inset 0 1px 0 #ffffff35;
+  font-family: var(--su-body); font-weight: 700;
+}
+.su-home .su-res-w { background: linear-gradient(180deg,#dce5de,#c9d6cc); border-color: #b9c9bd; color: #3f5c46; }
+.su-home .su-res-d { background: linear-gradient(180deg,#e6e4df,#d8d5cf); border-color: #c9c5bc; color: #5b5953; }
+.su-home .su-res-l { background: linear-gradient(180deg,#eadcda,#dbc9c6); border-color: #ceb8b4; color: #79504c; }
+.su-home .su-mw .su-res { box-shadow: inset 0 1px 0 #ffffff08; }
+.su-home .su-mw .su-res-w { background: linear-gradient(180deg,#34423a,#29362f); color: #b2c9b9; border-color: #4b5e52; }
+.su-home .su-mw .su-res-d { background: linear-gradient(180deg,#3c3d3d,#303233); color: #c7c7c3; border-color: #555858; }
+.su-home .su-mw .su-res-l { background: linear-gradient(180deg,#4b3535,#3b2a2a); color: #d4b1ad; border-color: #684848; }
+
+/* Bold Arboria news titles with a plain text CTA. */
+.su-home .su-ncard h3 { font-family: var(--su-body); font-weight: 700; font-style: normal; }
+.su-home .su-ncard-cta { justify-content: flex-start; font-family: var(--su-body); font-weight: 700; }
+.su-xcard[href="/roster"] img { object-position: 50% 35%; }
+.su-promo-big[href="/2026-player-interest"] img { object-position: 50% 40%; }
+@media (max-width:760px) {
+  .su-home { --su-ticker-h: 96px; }
+  .su-home .su-tk-item { height: 80px; width: 178px; }
+  .su-home .su-tk-track { animation-duration: 180s; }
+  .su-home .su-mw { width: 100%; max-width: none; }
+  .su-home .su-mw-team { font-size: 11px; }
+  .su-home .su-mw-team img { width: 24px; height: 24px; }
+  .su-home .su-mw .su-res { width: 22px; height: 22px; min-width: 22px; padding: 0; font-size: 10px; }
+  .su-home .su-mw-comp { min-height: 22px; line-height: 22px; }
+}
+@media (prefers-reduced-motion:reduce) { .su-home .su-tk-track { animation: none; } }

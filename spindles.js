@@ -241,7 +241,7 @@
               var img = p.assetUrl ? '<img loading="lazy" src="' + p.assetUrl + '?format=750w" alt="">' : '';
               return '<a class="su-ncard" href="' + p.fullUrl + '"><div class="su-ncard-img">' + img + '</div>' +
                 '<div class="su-ncard-body"><h3>' + esc(p.title) + '</h3>' +
-                '<p class="su-meta"><span class="su-tag">' + esc(cat) + '</span><time>' + fmtDate(p) + '</time></p><span class="su-ncard-cta">Read story <span aria-hidden="true">↗</span></span></div></a>';
+                '<p class="su-meta"><span class="su-tag">' + esc(cat) + '</span><time>' + fmtDate(p) + '</time></p><span class="su-ncard-cta">Read story</span></div></a>';
             }).join('');
           }
         })
