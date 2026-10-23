@@ -656,3 +656,111 @@ body:has(.su-home) .newsletter-form-button:disabled {
   .su-home { --su-ticker-h: 96px; }
   .su-news-promos { gap: 20px; }
 }
+
+/* ===== Reusable club pages and sitewide footer ===== */
+.su-site {
+  display:block;
+  --su-black:#0d0d0e;--su-ink:#111;--su-bone:#f2eee7;--su-paper:#faf8f4;
+  --su-red:#ed2331;--su-red-deep:#971419;--su-radius:18px;--su-radius-sm:12px;
+  --su-grad:linear-gradient(180deg,#ed2331,#971419);
+  --su-display:"alverata","Alverata",Georgia,serif;
+  --su-body:"arboria","Arboria","Futura","Century Gothic",Arial,sans-serif;
+  --su-content:1240px;--su-gutter:clamp(16px,4vw,48px);
+  width:100vw;position:relative;left:50%;margin-left:-50vw;overflow-x:clip;
+  background:var(--su-paper);color:var(--su-ink);font:17px/1.55 var(--su-body);-webkit-font-smoothing:antialiased;
+}
+.su-site *, .su-site *::before,.su-site *::after{box-sizing:border-box}
+.su-site a{color:inherit;text-decoration:none}.su-site img{display:block;max-width:100%}
+.su-site h1,.su-site h2,.su-site h3,.su-site p,.su-site ul,.su-site ol{margin:0;padding:0;letter-spacing:normal;text-transform:none}
+.su-site h1,.su-site h2,.su-site h3{font-family:var(--su-display);font-weight:900;line-height:1.08;color:inherit}
+.su-site h1{font-size:clamp(42px,5.8vw,80px);letter-spacing:-.025em}
+.su-site h2{font-size:clamp(28px,3vw,42px)}.su-site h3{font-size:24px}
+.su-site a:hover{text-decoration:none}.su-site a:focus-visible,.su-site button:focus-visible,.su-site input:focus-visible,.su-site select:focus-visible{outline:3px solid #ed2331;outline-offset:4px}
+.su-club-wrap{max-width:calc(var(--su-content) + 2 * var(--su-gutter));padding:0 var(--su-gutter);margin:0 auto}
+.su-club-hero{background:radial-gradient(ellipse at 80% 20%,#721c2b55,transparent 60%),#111214;color:var(--su-bone);padding:clamp(48px,7vw,96px) 0}
+.su-club-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:36px}
+.su-site .su-club-eyebrow{font:700 11px/1.4 var(--su-body);letter-spacing:.14em;text-transform:uppercase;color:#a7202b;margin-bottom:16px}
+.su-club-hero .su-club-eyebrow,.su-match-center-hero .su-club-eyebrow{color:#eb9b9f}
+.su-club-heading>div>p:last-child{color:#bcb9b4;max-width:55ch;margin-top:20px}
+.su-season-picker{display:flex;flex-direction:column;gap:9px;min-width:190px;font-size:12px;color:#bcb9b4}
+.su-site select,.su-site input{font:500 15px/1.4 var(--su-body);border-radius:12px;padding:12px 16px;border:1px solid #d5cfc6;background:#fffdfa;color:#171717;min-height:48px}
+.su-season-picker select{background:#25272a;color:#f2eee7;border-color:#48494a;width:100%;cursor:pointer}
+.su-club-main{padding:clamp(36px,5vw,64px) 0 clamp(56px,7vw,96px)}
+.su-club-season-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:52px}
+.su-club-season-facts>div{background:#eee9e0;border:1px solid #e1dbd1;border-radius:var(--su-radius);padding:22px 26px;display:flex;flex-direction:column;gap:8px}
+.su-club-season-facts small{font-size:11px;color:#6a655e}.su-club-season-facts b{font-family:var(--su-display);font-size:26px;font-weight:900;line-height:1.2}
+.su-club-list-heading{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:28px}
+.su-club-list-heading>p{font-size:12px;color:#6a655e}.su-site .su-match-month{font-family:var(--su-body);font-size:13px;line-height:1.4;font-weight:700;color:#6a655e;margin:32px 0 14px}
+.su-fixture{display:grid;grid-template-columns:100px minmax(0,1fr) 170px;align-items:center;gap:24px;padding:24px 28px;background:#fffdfa;border:1px solid #e4ded5;border-radius:var(--su-radius);margin-bottom:12px;transition:box-shadow .2s,border-color .2s}
+.su-fixture:hover{border-color:#c8b9af;box-shadow:0 8px 24px #16100a08}
+.su-fixture-date{display:flex;flex-direction:column;gap:4px}.su-fixture-date>b{font-size:18px}.su-fixture-date small{font-size:12px;color:#77716a}
+.su-fixture-center{display:flex;flex-direction:column;gap:13px;min-width:0}.su-fixture-comp{font-size:10px;color:#78716a;text-align:center;letter-spacing:.04em}
+.su-club-match-teams{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px}
+.su-club-team{display:flex;align-items:center;justify-content:flex-start;gap:10px;font-size:15px;font-weight:700;min-width:0}.su-club-team-home{justify-content:flex-end;text-align:right}
+.su-club-team img,.su-team-placeholder{width:32px;height:32px;object-fit:contain;flex:none}.su-team-placeholder{display:grid;place-items:center;border-radius:50%;background:#dfd9d1;color:#666}
+.su-club-score{display:inline-grid;grid-template-columns:1fr 1px 1fr;align-items:center;gap:10px;border-radius:8px;border:1px solid #ded8ce;background:linear-gradient(180deg,#faf8f3,#eae5db);padding:6px 12px;color:#242220;font-weight:700;font-size:22px;font-variant-numeric:tabular-nums}
+.su-club-score i{width:1px;height:1em;background:#c5beb1}.su-club-score>span{min-width:12px;text-align:center}
+.su-fixture-action{display:flex;align-items:center;justify-content:flex-end;gap:14px;font-size:12px}.su-fixture-action>span:last-child>b{color:#a21c29;font-size:18px;margin-left:4px}
+.su-site .su-res{display:grid;place-items:center;width:26px;height:26px;min-width:26px;border-radius:4px;padding:0;line-height:1;font:700 11px var(--su-body);border:1px solid #c9c5bc;background:linear-gradient(180deg,#e6e4df,#d8d5cf);color:#5b5953;box-shadow:inset 0 1px 0 #ffffff35}
+.su-site .su-res-w{background:linear-gradient(180deg,#dce5de,#c9d6cc);border-color:#b9c9bd;color:#3f5c46}.su-site .su-res-l{background:linear-gradient(180deg,#eadcda,#dbc9c6);border-color:#ceb8b4;color:#79504c}
+.su-site .su-club-source{font-size:12px;line-height:1.7;color:#77716a;margin-top:40px;max-width:80ch}.su-club-source a{text-decoration:underline;text-underline-offset:3px}
+.su-site .su-club-btn{display:inline-flex;justify-content:center;align-items:center;border-radius:1rem;padding:.5rem 1rem;font:500 1rem/1.5 var(--su-body);color:#fff;background:linear-gradient(180deg,#ffffff26,transparent),var(--su-grad);border:1px solid #b61c25;box-shadow:inset 0 1px 0 #ffffff26,0 1px 1px #2e365013;white-space:nowrap;min-height:42px}
+.su-site .su-club-btn:hover{background:linear-gradient(180deg,#ff3a47,#a8181e)}
+.su-site .su-club-text-link{display:inline-block;color:#a21c29;font-size:14px;font-weight:700;border-bottom:1px solid #a21c2950;padding-bottom:6px}
+.su-club-loading,.su-club-error{padding:80px var(--su-gutter);min-height:300px}.su-club-error a{text-decoration:underline}
+
+/* Match centers are addressed through /schedule?season=YEAR&match=DATE. */
+.su-match-center-hero{background:#161719;position:relative;isolation:isolate;overflow:hidden;color:#f2eee7;text-align:center;padding:32px 0 52px}
+.su-match-center-hero::before{content:'';position:absolute;inset:0;z-index:-2;background-image:var(--su-match-photo);background-size:cover;background-position:center 40%;opacity:.4}
+.su-match-center-hero::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#0d0d0e77,#0d0d0eed)}
+.su-site .su-back-link{display:block;width:max-content;max-width:100%;text-align:left;font-size:13px;color:#ddd;margin-bottom:36px}
+.su-site .su-match-center-hero h2{font-size:clamp(26px,3.3vw,44px);margin-bottom:14px}.su-match-date{font-size:13px;color:#cfcbc5}
+.su-center-score{max-width:760px;margin:28px auto 16px}.su-center-score .su-club-score{font-size:clamp(34px,4vw,54px);padding:10px 20px;gap:16px;background:linear-gradient(180deg,#303337,#202326);border-color:#45494d;color:#f2f0eb}
+.su-center-score .su-club-team{font-size:clamp(14px,2vw,20px)}.su-center-score .su-club-team img{width:52px;height:52px}.su-center-score .su-club-score i{background:#62666a}
+.su-site .su-match-status{font-size:12px;color:#c6c2bc}.su-match-sections{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
+.su-match-sections a{border:1px solid #d4cdc2;border-radius:16px;padding:9px 17px;background:linear-gradient(180deg,#ffffff33,transparent);font-size:14px;font-weight:500}.su-match-sections a:hover{background:#eae4da}
+.su-match-columns{display:grid;grid-template-columns:300px minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
+.su-match-events{padding:26px;background:#ede8df;border-radius:var(--su-radius)}.su-match-events h2{font-size:27px}.su-site .su-event-list{list-style:none;margin-top:26px}
+.su-event-list li{display:flex;gap:14px;padding:18px 0;border-top:1px solid #d8d1c6}.su-event-minute{display:grid;place-items:center;flex:none;align-self:flex-start;min-width:40px;padding:5px 8px;border:1px solid #d3cbbf;background:#faf8f3;border-radius:8px;font-size:12px;font-weight:700}
+.su-event-list li b{font-size:12px}.su-event-list li p{font-size:13px;color:#666059;line-height:1.5;margin-top:3px}
+.su-site .su-data-note{font-size:11px;color:#736c64;line-height:1.7;margin-top:20px}.su-match-report{max-width:76ch}.su-match-report h2{margin-bottom:28px}.su-match-report h3{font-family:var(--su-body);font-weight:700;font-size:22px;margin:30px 0 18px}
+.su-match-report p{margin:0 0 20px;font-size:16px;line-height:1.8;color:#49453f}.su-site .su-empty-note{font-size:15px;line-height:1.7;color:#77716a;margin:24px 0}
+.su-match-photos{margin-top:64px;scroll-margin-top:100px}.su-match-events,.su-match-report{scroll-margin-top:100px}
+.su-match-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.su-match-gallery a{border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:#e2ddd4}.su-match-gallery img{width:100%;height:100%;object-fit:cover;transition:transform .3s}.su-match-gallery a:hover img{transform:scale(1.035)}
+.su-more-photos{margin-top:24px}.su-more-photos summary{font-size:14px;font-weight:700;padding:14px 0;cursor:pointer}.su-more-photos .su-match-gallery{margin-top:14px}
+
+/* Current and archived rosters use the same photographic card system. */
+.su-roster-toolbar{display:flex;align-items:flex-end;gap:20px;margin-bottom:26px;flex-wrap:wrap}.su-roster-toolbar label{display:flex;flex-direction:column;gap:8px;font-size:12px;color:#746c63}.su-roster-toolbar label:first-child{flex:1;min-width:220px}.su-roster-toolbar input{width:100%}.su-roster-toolbar .su-club-btn{min-height:48px}
+.su-site .su-roster-count{font-size:12px;color:#7a7268;margin-bottom:32px}.su-roster-group+.su-roster-group{margin-top:56px}.su-roster-group h2{margin-bottom:28px}
+.su-roster-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}.su-roster-card{border-radius:var(--su-radius);overflow:hidden;background:#fffdfa;border:1px solid #e6dfd5}
+.su-roster-photo{position:relative;aspect-ratio:3/4;background:radial-gradient(ellipse at 30% 10%,#97141966,transparent),#252525;overflow:hidden}.su-roster-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .5s}.su-roster-card:hover img{transform:scale(1.03)}
+.su-roster-number{position:absolute;right:14px;top:10px;font:900 60px/1 var(--su-display);color:#fff;text-shadow:0 2px 20px #0007}
+.su-roster-card-copy{padding:20px}.su-site .su-roster-card h3{font-size:25px;line-height:1.08}.su-site .su-roster-card p{font-size:12px;line-height:1.6;color:#756d64;margin-top:12px}
+
+/* Sponsor band and dark footer form one block. Native footer provides the landmark. */
+[data-su="footer"]:empty{min-height:160px}
+.su-footer .su-sponsors{padding:64px 0;background:#f7f7f7;color:#111}
+.su-footer .su-sponsor-rows{display:flex;flex-direction:column;gap:20px;margin-bottom:36px}
+.su-footer .su-sponsor-card{display:flex;align-items:center;justify-content:space-around;gap:30px;padding:40px 48px;background:#fff;border:1px solid #ececec;border-radius:18px;box-shadow:0 10px 30px #0d0d0e0d}
+.su-footer .su-sponsor{flex:1 1 0;display:grid;place-items:center;height:96px;min-width:0}.su-footer .su-sponsor img{max-height:76px;max-width:min(100%,152px);object-fit:contain;width:auto}
+.su-footer .su-btn{display:inline-flex;align-items:center;justify-content:center;font:500 1rem/1.5 var(--su-body);padding:.5rem 1rem;border-radius:1rem;border:1px solid #b61c25;color:#fff;background:linear-gradient(180deg,#ffffff26,transparent),var(--su-grad);box-shadow:inset 0 1px 0 #ffffff26,0 1px 1px #2e365013}
+.su-footer-dark{background:#202020;color:#bdbdbd;padding:60px 0 36px}.su-footer-columns{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.su-site .su-footer-col h3{font:700 17px/1.4 var(--su-body);color:#e0e0e0;padding-bottom:20px;border-bottom:1px solid #111;margin-bottom:22px}
+.su-footer-col ul{list-style:none}.su-footer-col li+li{margin-top:11px}.su-footer-col a{font-size:15px;line-height:1.6}.su-footer-col a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.su-footer-social{display:flex;gap:14px;margin:48px 0 30px}.su-footer-social a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#151515;color:#c7c7c7}.su-footer-social a:hover{color:#fff;background:#303030}.su-footer-social svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linejoin:round}
+.su-footer-bottom{display:flex;align-items:center;gap:28px;border-top:1px solid #111;padding-top:30px}.su-footer-bottom>a{flex:none;padding-right:28px;border-right:1px solid #999}.su-footer-bottom img{width:68px;height:68px;object-fit:contain}.su-footer-bottom p,.su-footer-bottom a{font-size:12px;line-height:1.8}.su-footer-bottom>div>a{display:inline-block;margin-bottom:6px;color:#ddd}.su-footer-bottom>div>a:hover{text-decoration:underline}
+body:has([data-su="footer"] .su-footer) .su-home>.su-sponsors{display:none}
+
+@media(max-width:1050px){
+ .su-fixture{grid-template-columns:76px minmax(0,1fr) 48px;gap:16px;padding:22px}.su-fixture-action>span:last-child{display:none}.su-club-team{font-size:13px;gap:8px}.su-roster-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.su-match-columns{grid-template-columns:240px minmax(0,1fr);gap:32px}.su-footer .su-sponsor-card{display:grid;grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:760px){
+ .su-club-heading{flex-direction:column;align-items:stretch;gap:28px}.su-season-picker{min-width:0;max-width:240px}.su-club-heading>div>p:last-child{font-size:15px}
+ .su-club-season-facts{gap:8px;margin-bottom:36px}.su-club-season-facts>div{padding:14px 12px;gap:7px}.su-club-season-facts small{font-size:10px}.su-club-season-facts b{font-size:18px;overflow-wrap:anywhere}
+ .su-club-list-heading{flex-direction:column;gap:12px}.su-fixture{grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:18px 14px}.su-fixture-date{grid-column:1;flex-direction:row;align-items:center;gap:14px}.su-fixture-date>b{font-size:14px}.su-fixture-center{grid-column:1/-1;grid-row:2;gap:12px}.su-fixture-action{grid-column:2;grid-row:1}.su-club-match-teams{gap:8px}.su-club-team{font-size:12px;gap:6px}.su-club-team img,.su-team-placeholder{width:24px;height:24px}.su-club-score{font-size:19px;padding:5px 9px;gap:7px}
+ .su-match-center-hero .su-club-team{flex-direction:column;text-align:center;gap:10px;justify-content:center;font-size:13px}.su-match-center-hero .su-club-team-home{flex-direction:column-reverse}.su-center-score .su-club-team img{width:40px;height:40px}.su-center-score .su-club-score{font-size:34px;padding:8px 12px;gap:12px}
+ .su-match-columns{grid-template-columns:1fr;gap:44px}.su-match-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.su-match-report p{font-size:15px}.su-match-sections{gap:8px}.su-match-sections a{font-size:12px;padding:8px 12px}
+ .su-roster-toolbar{gap:16px}.su-roster-toolbar label:first-child{min-width:100%;flex:1}.su-roster-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.su-roster-card-copy{padding:16px 12px}.su-site .su-roster-card h3{font-size:21px}.su-site .su-roster-card p{font-size:10px;margin-top:9px}.su-roster-number{font-size:44px;right:10px}
+ .su-footer .su-sponsor-card{grid-template-columns:repeat(2,minmax(0,1fr));padding:22px 18px;gap:20px}.su-footer .su-sponsor{height:76px}.su-footer .su-sponsor img{max-height:70px}.su-footer-columns{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 24px}.su-footer-col a{font-size:13px}.su-footer .su-footer-col h3{font-size:15px}.su-footer-bottom{align-items:flex-start;gap:18px}.su-footer-bottom>a{padding-right:18px}.su-footer-bottom img{width:48px;height:48px}.su-footer-bottom p,.su-footer-bottom a{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.su-site *{scroll-behavior:auto!important}.su-roster-photo img,.su-match-gallery img,.su-fixture{transition:none}}

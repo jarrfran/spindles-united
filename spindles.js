@@ -344,6 +344,20 @@
     }
   };
 
+  /* Load archive behavior only on schedule and roster pages. */
+  var clubModule;
+  function initClubPage(name, el) {
+    if (!clubModule) clubModule = new Promise(function(resolve,reject) {
+      if (window.SUClubPages) { resolve(window.SUClubPages); return; }
+      var script=document.createElement('script');script.src=BASE+'club-pages.js?v='+V;
+      script.onload=function(){window.SUClubPages?resolve(window.SUClubPages):reject();};script.onerror=reject;document.head.appendChild(script);
+    });
+    clubModule.then(function(api){api[name](el);}).catch(function(){el.innerHTML='<p>Unable to load this page. Please refresh to try again.</p>';});
+  }
+  INIT.schedule=function(el){initClubPage('schedule',el);};
+  INIT.roster=function(el){initClubPage('roster',el);};
+  INIT.footer=function(el){var year=el.querySelector('.su-footer-year');if(year)year.textContent=new Date().getFullYear();};
+
   /* ---------- Loader ---------- */
   function load(el) {
     var name = el.getAttribute('data-su');

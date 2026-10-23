@@ -1,0 +1,61 @@
+/* Spindles schedule, match centers and roster archives. All content is sourced in data/club.json. */
+(function () {
+  var BASE = new URL('.', document.currentScript.src).href;
+  var dataReady;
+  function getData() {
+    if (!dataReady) dataReady = fetch(BASE + 'data/club.json?v=' + Math.floor(Date.now()/120000)).then(function(r){if(!r.ok)throw new Error('Could not load club data');return r.json();});
+    return dataReady;
+  }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+  function date(s, long) { return new Date(s+'T12:00:00').toLocaleDateString('en-US',long?{weekday:'long',month:'long',day:'numeric',year:'numeric'}:{month:'short',day:'numeric'}); }
+  function logo(src,name) {return src?'<img src="'+esc(src)+'?format=100w" alt="" width="32" height="32">':'<span class="su-team-placeholder" aria-hidden="true">'+esc(name.charAt(0))+'</span>';}
+  function score(m) {return '<span class="su-club-score"><span>'+esc(m.homeScore==null?'–':m.homeScore)+'</span><i aria-hidden="true"></i><span>'+esc(m.awayScore==null?'–':m.awayScore)+'</span></span>';}
+  function teams(m) {return '<span class="su-club-match-teams"><span class="su-club-team su-club-team-home"><span>'+esc(m.home)+'</span>'+logo(m.homeCrest,m.home)+'</span>'+score(m)+'<span class="su-club-team">'+logo(m.awayCrest,m.away)+'<span>'+esc(m.away)+'</span></span></span>';}
+  function query(season,match) {return '?season='+season+(match?'&match='+encodeURIComponent(match):'');}
+  function header(type,year,years,current,match) {
+    var title=type==='schedule'?'Matches & results.':'Meet the Spins.';
+    return '<div class="su-club-hero"><div class="su-club-wrap su-club-heading"><div><p class="su-club-eyebrow">Spindles United FC / '+(year===current?'Current season':'Season archive')+'</p><h1 tabindex="-1">'+title+'</h1><p>'+ (type==='schedule'?'Every match. Every season. Follow the Spins.':'The players behind the crest. Our club, past and present.')+'</p></div><label class="su-season-picker">Season<select data-season aria-label="Choose '+type+' season">'+years.map(function(y){return '<option value="'+y+'"'+(String(y)===String(year)?' selected':'')+'>'+y+(+y===current?' · Current':'')+'</option>';}).join('')+'</select></label></div></div>';
+  }
+  function scheduleList(d,year) {
+    var season=d.schedules[year],matches=season.matches.slice().sort(function(a,b){return b.date.localeCompare(a.date);}),month='';
+    return '<div class="su-club-main"><div class="su-club-wrap"><div class="su-club-season-facts"><div><small>Season</small><b>'+year+'</b></div><div><small>Regular season</small><b>'+esc(season.summary.replace('Regular Season Record ',''))+'</b></div><div><small>Postseason</small><b>'+esc(season.finish.replace('Post Season Finish: ',''))+'</b></div></div><div class="su-club-list-heading"><h2>'+year+' fixtures & results</h2><p>Newest matches first · All times Eastern</p></div>'+matches.map(function(m){var md=m.date.slice(0,7),heading='';if(md!==month){month=md;heading='<h3 class="su-match-month">'+new Date(m.date+'T12:00:00').toLocaleDateString('en-US',{month:'long',year:'numeric'})+'</h3>';}
+      return heading+'<a class="su-fixture" data-match="'+esc(m.id)+'" href="'+query(year,m.id)+'"><span class="su-fixture-date"><b>'+esc(date(m.date))+'</b><small>'+esc(m.kickoff||'')+'</small></span><span class="su-fixture-center"><span class="su-fixture-comp">'+esc(m.competition)+(m.note?' · '+esc(m.note):'')+'</span>'+teams(m)+'</span><span class="su-fixture-action"><span class="su-res su-res-'+(m.result==='W'?'w':m.result==='L'?'l':'d')+'">'+esc(m.result)+'</span><span>Match center <b aria-hidden="true">→</b></span></span></a>';
+    }).join('')+'<p class="su-club-source">Archive source: <a href="'+esc(season.source)+'" target="_blank" rel="noopener">'+year+' published club schedule</a>. Scores and match details are preserved from the club archive.</p></div></div>';
+  }
+  function center(m,year) {
+    var events=m.events||[],report=m.report||[],photos=m.photos||[];
+    return '<div class="su-match-center"><div class="su-match-center-hero"'+(m.cover?' style="--su-match-photo:url(&quot;'+esc(m.cover)+'?format=1500w&quot;)"':'')+'><div class="su-club-wrap"><a class="su-back-link" data-back href="'+query(year)+'">← Back to '+year+' schedule</a><p class="su-club-eyebrow">'+esc(m.competition)+'</p><h2>'+esc(m.home)+' vs '+esc(m.away)+'</h2><p class="su-match-date">'+esc(date(m.date,true))+(m.kickoff?' · '+esc(m.kickoff):'')+'</p><div class="su-center-score">'+teams(m)+'</div><p class="su-match-status">'+(m.homeScore==null?'No contest':'Full time')+(m.note?' · '+esc(m.note):'')+'</p></div></div><div class="su-club-main"><div class="su-club-wrap"><nav class="su-match-sections" aria-label="Match center sections"><a href="#su-match-events">Events</a><a href="#su-match-report">Match recap</a><a href="#su-match-photos">Photos</a>'+(m.video?'<a href="'+esc(m.video)+'" target="_blank" rel="noopener">Watch match ↗</a>':'')+'</nav><div class="su-match-columns"><section class="su-match-events" id="su-match-events" aria-labelledby="su-events-title"><p class="su-club-eyebrow">As reported by the club</p><h2 id="su-events-title">Match events</h2>'+(events.length?'<ol class="su-event-list">'+events.map(function(e){return '<li><span class="su-event-minute">'+esc(e.minute)+'′</span><div><b>Goal</b><p>'+esc(e.detail)+'</p></div></li>';}).join('')+'</ol><p class="su-data-note">Published scoring events are shown. Unreported opponent events, cards and substitutions have not been added.</p>':'<p class="su-empty-note">A minute-by-minute event log was not published for this match.</p>')+'</section><section class="su-match-report" id="su-match-report" aria-labelledby="su-report-title"><p class="su-club-eyebrow">The story of the match</p><h2 id="su-report-title">Match recap</h2>'+(report.length?report.map(function(p){return '<'+p.tag+'>'+esc(p.text)+'</'+p.tag+'>';}).join(''):'<p class="su-empty-note">A match recap is not available in the published archive for this fixture. The final score is recorded above.</p>')+(m.recapUrl?'<a class="su-club-text-link" href="'+esc(m.recapUrl)+'">Read the original club report →</a>':'')+'</section></div><section class="su-match-photos" id="su-match-photos" aria-labelledby="su-photos-title"><div class="su-club-list-heading"><h2 id="su-photos-title">Match photos</h2><p>'+photos.length+' published '+(photos.length===1?'photo':'photos')+'</p></div>'+(photos.length?'<div class="su-match-gallery">'+photos.slice(0,8).map(function(u,i){return photo(u,i,m);}).join('')+'</div>'+(photos.length>8?'<details class="su-more-photos"><summary>View all '+photos.length+' photos</summary><div class="su-match-gallery">'+photos.slice(8).map(function(u,i){return photo(u,i+8,m);}).join('')+'</div></details>':''):'<p class="su-empty-note">No match gallery has been published for this fixture.</p>')+'</section></div></div></div>';
+  }
+  function photo(u,i,m) {return '<a href="'+esc(u)+'" target="_blank" rel="noopener" aria-label="Open match photo '+(i+1)+'"><img src="'+esc(u)+'?format=750w" loading="lazy" alt="'+esc(m.home+' vs '+m.away+', match photo '+(i+1))+'"></a>';}
+  function rosterGrid(d,year,search,group) {
+    var list=d.rosters[year].players.filter(function(p){return (!group||p.group===group)&&(!search||(p.name+' '+p.bio+' '+(p.number||'')).toLowerCase().includes(search.toLowerCase()));});
+    var groups=[];list.forEach(function(p){if(groups.indexOf(p.group)<0)groups.push(p.group);});
+    return '<p class="su-roster-count" role="status">'+list.length+' '+(list.length===1?'person':'people')+' in the '+year+' archive</p>'+(list.length?groups.map(function(g){return '<section class="su-roster-group"><h2>'+esc(g)+'</h2><div class="su-roster-grid">'+list.filter(function(p){return p.group===g;}).map(function(p){return '<article class="su-roster-card"><div class="su-roster-photo"><img src="'+esc(p.photo)+'?format=750w" loading="lazy" alt="'+esc(p.name)+'">'+(p.number?'<span class="su-roster-number" aria-label="Squad number '+esc(p.number)+'">'+esc(p.number)+'</span>':'')+'</div><div class="su-roster-card-copy"><h3>'+esc(p.name)+'</h3>'+(p.bio?'<p>'+esc(p.bio)+'</p>':'')+'</div></article>';}).join('')+'</div></section>';}).join(''):'<p class="su-empty-note">No players match your search. Try another name or clear the filters.</p>');
+  }
+  function roster(d,year,search,group) {
+    var groups=[];d.rosters[year].players.forEach(function(p){if(groups.indexOf(p.group)<0)groups.push(p.group);});
+    return '<div class="su-club-main"><div class="su-club-wrap"><div class="su-roster-toolbar"><label>Find a player<input type="search" data-search placeholder="Search by name, number or hometown" value="'+esc(search)+'"></label>'+(groups.length>1?'<label>Group<select data-group><option value="">All groups</option>'+groups.map(function(g){return '<option'+(group===g?' selected':'')+'>'+esc(g)+'</option>';}).join('')+'</select></label>':'')+'<a class="su-club-btn" href="/2026-player-interest">Player interest</a></div><div data-roster-results>'+rosterGrid(d,year,search,group)+'</div><p class="su-club-source">Names, photos and published details are from the <a href="'+esc(d.rosters[year].source)+'" target="_blank" rel="noopener">'+year+' club roster</a>. Historical names and roles are preserved as published.</p></div></div>';
+  }
+  function align(root) {
+    var h=document.querySelector('header .header-display-desktop .header-inner,header .header-inner');
+    if(h){var b=h.getBoundingClientRect();if(b.width>600){root.style.setProperty('--su-content',Math.round(b.width)+'px');root.style.setProperty('--su-gutter',Math.max(16,Math.round(b.left))+'px');}}
+  }
+  function boot(el,type) {
+    var root=el.querySelector('.su-site');if(!root)return;
+    align(root);window.addEventListener('resize',function(){if(root.isConnected)align(root);});
+    getData().then(function(d){
+      var seasons=Object.keys(type==='schedule'?d.schedules:d.rosters).sort().reverse(),search='',group='';
+      function state(){var q=new URLSearchParams(location.search),year=q.get('season');return {year:seasons.indexOf(year)>=0?year:String(d.currentSeason),match:q.get('match')};}
+      function render(){var st=state(),year=st.year,match=type==='schedule'&&st.match?d.schedules[year].matches.find(function(m){return m.id===st.match;}):null;
+        root.innerHTML=header(type,+year,seasons,d.currentSeason,match)+(type==='schedule'?(match?center(match,year):scheduleList(d,year)):roster(d,year,search,group));
+        if(type==='schedule'&&st.match&&!match){var notice=document.createElement('p');notice.className='su-empty-note';notice.textContent='That match is not in the selected season. Choose a fixture below.';root.querySelector('.su-club-main .su-club-wrap').prepend(notice);}
+      }
+      function go(q){history.pushState({},'',location.pathname+q);render();root.scrollIntoView({block:'start',behavior:'auto'});var h=root.querySelector('h1');if(h)h.focus({preventScroll:true});}
+      root.addEventListener('click',function(e){var a=e.target.closest('a[data-match],a[data-back]');if(!a||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)return;e.preventDefault();go(a.getAttribute('href'));});
+      root.addEventListener('change',function(e){if(e.target.matches('[data-season]')){search='';group='';go(query(e.target.value));root.querySelector('[data-season]').focus();}else if(e.target.matches('[data-group]')){group=e.target.value;root.querySelector('[data-roster-results]').innerHTML=rosterGrid(d,state().year,search,group);}});
+      root.addEventListener('input',function(e){if(e.target.matches('[data-search]')){search=e.target.value;root.querySelector('[data-roster-results]').innerHTML=rosterGrid(d,state().year,search,group);}});
+      window.addEventListener('popstate',function(){if(root.isConnected)render();});render();
+    }).catch(function(){root.innerHTML='<div class="su-club-wrap su-club-error"><h1>Unable to load the '+type+'.</h1><p>Please refresh the page or visit the <a href="/'+(type==='schedule'?'2025-schedule':'2025-roster')+'">original season archive</a>.</p></div>';});
+  }
+  window.SUClubPages={schedule:function(el){boot(el,'schedule');},roster:function(el){boot(el,'roster');}};
+})();

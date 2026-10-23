@@ -26,8 +26,8 @@ are made here and never pasted into Squarespace again.
 | Page | Code Block | Status |
 |---|---|---|
 | Home | `<div data-su="home"></div>` | live |
-| Schedule | `<div data-su="schedule"></div>` | not built |
-| Roster | `<div data-su="roster"></div>` | not built |
+| Schedule | `<div data-su="schedule"></div>` | built, ready to install |
+| Roster | `<div data-su="roster"></div>` | built, ready to install |
 | Sponsors | `<div data-su="sponsors"></div>` | not built |
 | Stats | `<div data-su="stats"></div>` | not built |
 | Inside Spindles | `<div data-su="inside-spindles"></div>` | not built |
@@ -35,13 +35,24 @@ are made here and never pasted into Squarespace again.
 | Volunteer | `<div data-su="volunteer"></div>` | not built |
 | Contact | `<div data-su="contact"></div>` | not built |
 
-Header, footer, cart, forms and the News blog stay native Squarespace.
+Add `<div data-su="footer"></div>` to a Code Block in the global Squarespace footer. The sponsor band and dark navigation footer are one reusable block. When it is installed, the duplicate homepage sponsor band hides automatically. Header, cart, forms and the News blog stay native Squarespace.
+
+## Schedule, roster and footer
+
+- `club-pages.js` renders schedule archives, match centers, roster archives and search.
+- `data/club.json` holds the current season (`currentSeason`, currently 2026), published fixture results, reports, photos, scoring events and roster entries. Update this file when adding seasons or matches.
+- Schedule defaults to the current season; archives cover 2023–2026. Each fixture has a shareable center, for example `/schedule?season=2026&match=2026-08-09`. No additional Squarespace pages are needed for individual matches.
+- Roster defaults to the current season; archives cover 2022–2026, with search and position filters where published.
+- Only published data is included. Missing reports, events or photos show an unavailable notice.
+- Previews: `preview-schedule.html`, `preview-roster.html`, `preview-footer.html`.
+- Install the schedule and roster blocks at `/schedule` and `/roster`, in full-width sections with zero section padding. Keep the existing global header loader. Install the footer block in the global footer, not on individual pages.
 
 ## Updating
 Change the file in this repo and commit. Pages pick it up within about 2 minutes
 (GitHub Pages can occasionally take up to 10).
 
 ## Changelog
+- v11: reusable sponsor/footer block, schedule and roster season archives, searchable player cards, and individual match centers with published recaps, scoring timelines and galleries.
 - v10, home: combined promo/news section, bottom-up interest photo gradient, unlabeled results strip, losing-side dimming including shootout winners, and clickable duplicate ticker cards.
 - v9, home: swipeable auto-resuming all-season results strip (matches.json), edge fades, hover-independent hero, staggered season tile videos alternating website-2026.mp4 and hh.mov, removed champions banner, light promo band, official YouTube thumbnail and larger sponsor logos.
 - v8, home: straight section edges, taller home/away ticker at a slower pace, dark hero scores, centered crests and match metadata, muted square result badges, Arboria news titles, and 2026 photos.
