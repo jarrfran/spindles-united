@@ -2,7 +2,9 @@
    Finds every <div data-su="name"></div> on the Squarespace page, loads
    pages/name.html from GitHub Pages into it, then runs that page's behavior. */
 (function () {
-  var BASE = 'https://jarrfran.github.io/spindles-united/';
+  var BASE = document.currentScript && document.currentScript.src
+    ? new URL('.', document.currentScript.src).href
+    : 'https://jarrfran.github.io/spindles-united/';
   var V = Math.floor(Date.now() / 12e4); // changes every 2 minutes, so edits show up fast
   var IMG = 'https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/';
 
