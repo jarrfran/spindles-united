@@ -200,14 +200,15 @@
       var html = matches.map(function (m) {
         var d = new Date(m.date + 'T12:00:00');
         var label = m.note || m.competition.replace(/UPL |CDSL /g, '').replace('Matchweek ', 'MW ');
+        var winner = m.winner || (m.homeScore != null && m.awayScore != null && m.homeScore !== m.awayScore ? (m.homeScore > m.awayScore ? 'home' : 'away') : null);
         function row(side) {
-          return '<span class="su-tk-team" data-side="' + side + '"><span class="su-tk-name">' + esc(m[side]) + '</span><img src="' + esc(m[side + 'Crest']) + '?format=100w" alt=""><b class="su-tk-goals">' + esc(m[side + 'Score'] == null ? '–' : m[side + 'Score']) + '</b></span>';
+          return '<span class="su-tk-team' + (winner && winner !== side ? ' is-loser' : '') + '" data-side="' + side + '"><span class="su-tk-name">' + esc(m[side]) + '</span><img src="' + esc(m[side + 'Crest']) + '?format=100w" alt=""><b class="su-tk-goals">' + esc(m[side + 'Score'] == null ? '–' : m[side + 'Score']) + '</b></span>';
         }
         var spoken = m.homeScore == null ? 'No contest' : m.home + ' ' + m.homeScore + ', ' + m.away + ' ' + m.awayScore;
         return '<a class="su-tk-item" href="' + esc(m.url) + '" aria-label="' + esc(spoken + '. ' + (m.note || '')) + '"><span class="su-tk-card-head"><time datetime="' + esc(m.date) + '">' + d.toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'}) + '</time><span>' + esc(label) + '</span></span><span class="su-tk-match">' + row('home') + row('away') + '</span></a>';
       }).join('');
       if (down || performance.now() < holdUntil) return; // do not jump during an active swipe
-      track.innerHTML = '<div class="su-tk-list">' + html + '</div><div class="su-tk-list" aria-hidden="true" inert>' + html + '</div>';
+      track.innerHTML = '<div class="su-tk-list">' + html + '</div><div class="su-tk-list" aria-hidden="true">' + html.replace(/<a /g, '<a tabindex="-1" ') + '</div>';
       viewport.scrollLeft = 0;
     }).catch(function () { /* retain verified static results */ });
   }

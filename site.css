@@ -644,3 +644,15 @@ body:has(.su-home) .newsletter-form-button:disabled {
   .su-home .su-sponsor { height: 76px; }
   .su-sponsor img { max-height: 70px; }
 }
+
+/* ===== v10: promos and stories share the news section ===== */
+.su-news-promos { margin-bottom: clamp(40px,5vw,64px); gap: 20px; }
+.su-home .su-news-promos .su-promo-big::after { background: linear-gradient(to top,rgba(13,13,14,.94) 0%,rgba(13,13,14,.5) 42%,rgba(13,13,14,.03) 82%); }
+.su-home { --su-ticker-h: 102px; }
+.su-home .su-tk-viewport { padding-top: 9px; padding-bottom: 8px; }
+.su-tk-team.is-loser .su-tk-name, .su-tk-team.is-loser img { opacity: .45; }
+.su-tk-team.is-loser img { filter: saturate(.6); }
+@media(max-width:760px) {
+  .su-home { --su-ticker-h: 96px; }
+  .su-news-promos { gap: 20px; }
+}
