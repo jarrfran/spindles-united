@@ -38,7 +38,7 @@
     var hg = home ? us : them, ag = home ? them : us;
     return '<aside class="su-mw" aria-label="' + esc(m[4]) + ': ' + esc(TEAMS[hn][0]) + ' ' + hg + ', ' + esc(TEAMS[an][0]) + ' ' + ag + '">' +
       '<p class="su-mw-comp"><span>' + esc(m[4]) + '</span><span class="su-res su-res-' + res.toLowerCase() + '">' + res + '</span></p>' +
-      '<div class="su-mw-row">' + teamHTML(hn, 'su-mw-team') + '<span class="su-mw-score">' + hg + '<i>–</i>' + ag + '</span>' + teamHTML(an, 'su-mw-team') + '</div>' +
+      '<div class="su-mw-row">' + teamHTML(hn, 'su-mw-team') + '<span class="su-mw-score">' + '<span>' + hg + '</span><i aria-hidden="true"></i><span>' + ag + '</span></span>' + teamHTML(an, 'su-mw-team') + '</div>' +
       '<p class="su-mw-foot">' + esc(m[5]) + ' · ' + (home ? 'vs ' : 'at ') + esc(opp) + '</p></aside>';
   }
   /* Short hero headline: hand-written if listed, otherwise built from the match result — mirrors short_title() in build.py */
@@ -241,7 +241,7 @@
               var img = p.assetUrl ? '<img loading="lazy" src="' + p.assetUrl + '?format=750w" alt="">' : '';
               return '<a class="su-ncard" href="' + p.fullUrl + '"><div class="su-ncard-img">' + img + '</div>' +
                 '<div class="su-ncard-body"><h3>' + esc(p.title) + '</h3>' +
-                '<p class="su-meta"><span class="su-tag">' + esc(cat) + '</span><time>' + fmtDate(p) + '</time></p></div></a>';
+                '<p class="su-meta"><span class="su-tag">' + esc(cat) + '</span><time>' + fmtDate(p) + '</time></p><span class="su-ncard-cta">Read story <span aria-hidden="true">↗</span></span></div></a>';
             }).join('');
           }
         })

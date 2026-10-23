@@ -453,3 +453,92 @@ body:has(.su-home) .newsletter-form-button:active:focus {
 body:has(.su-home) .newsletter-form-button:disabled {
   background-image: none; box-shadow: none; opacity: .65; pointer-events: none;
 }
+
+/* ===== v7: soft section transitions, score system and editorial cards ===== */
+.su-home { --su-fade: clamp(72px, 8vw, 112px); }
+.su-home .su-middle-section { position: relative; }
+.su-middle-section::before { content: ''; position: absolute; inset: -1px 0 auto; height: var(--su-fade); pointer-events: none; z-index: 0; }
+.su-middle-section > .su-middle-inner { position: relative; z-index: 1; }
+.su-middle-season::before { background: linear-gradient(180deg,#0d0d0e,rgba(13,13,14,0)); }
+.su-middle-promos::before { background: linear-gradient(180deg,#f2eee7,rgba(242,238,231,0)); }
+.su-middle-news::before { background: linear-gradient(180deg,#0d0d0e,rgba(13,13,14,0)); }
+.su-middle-season .su-middle-inner, .su-middle-promos .su-middle-inner, .su-middle-news .su-middle-inner { padding-top: calc(var(--su-fade) + 28px); }
+.su-home .su-middle-explore { background: radial-gradient(ellipse at 12% 55%,rgba(160,21,35,.28),transparent 58%),radial-gradient(ellipse at 90% 90%,rgba(151,20,25,.12),transparent 48%),#0d0d0e; }
+.su-home .su-middle-promos { background: radial-gradient(ellipse at 88% 54%,rgba(188,26,44,.3),transparent 64%),#0d0d0e; }
+.su-home .su-players {
+  padding-top: calc(var(--su-fade) + 48px);
+  background: linear-gradient(180deg,#faf8f4,rgba(250,248,244,0) var(--su-fade)),radial-gradient(ellipse at 24% 38%,rgba(186,24,43,.48),transparent 62%),radial-gradient(ellipse at 94% 85%,rgba(132,11,27,.28),transparent 48%),#0d0d0e;
+}
+.su-champs::after { background: linear-gradient(180deg,#0d0d0e,transparent 100px),linear-gradient(to right,rgba(13,13,14,.92),rgba(13,13,14,.7) 45%,rgba(13,13,14,.35)); }
+.su-home .su-final { padding-top: calc(var(--su-fade) + 32px); background: linear-gradient(180deg,#0d0d0e,#971419 var(--su-fade),#ed2331); }
+.su-home .su-sponsors { padding-top: calc(var(--su-fade) + 32px); background: linear-gradient(180deg,#ed2331,#f7f7f7 var(--su-fade)); }
+
+/* Shared pale scorebug with a light vertical rule; outcome badges retain color. */
+.su-home .su-result-score, .su-home .su-tk-score, .su-home .su-mw-score {
+  display: inline-grid; grid-template-columns: 1fr 1px 1fr; align-items: center; justify-items: center;
+  gap: 9px; padding: 6px 11px; border-radius: 8px; border: 1px solid #ded8ce;
+  background: linear-gradient(180deg,#faf8f3,#eae5db); color: #242220;
+  font-family: var(--su-body); font-size: 16px; font-weight: 700; line-height: 1.2;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+  box-shadow: 0 1px 0 rgba(255,255,255,.6) inset;
+}
+.su-home .su-result-score i, .su-home .su-tk-score i, .su-home .su-mw-score i {
+  display: block; width: 1px; height: 1.05em; background: #c5beb1; opacity: .8; font-size: inherit;
+}
+.su-home .su-tk-score { font-size: 12px; gap: 6px; padding: 3px 7px; min-width: 43px; border-radius: 6px; }
+.su-home .su-mw-score { font-size: 25px; gap: 10px; padding: 7px 12px; }
+.su-home .su-tk-item { border-radius: 12px; }
+.su-home .su-ticker { overflow: visible; box-shadow: 0 7px 16px rgba(0,0,0,.28); }
+.su-tk-viewport { overflow: hidden; }
+
+/* Clear buttons mirror the red button's shape, sizing and subtle inset sheen. */
+.su-home .su-btn-line {
+  appearance: button; border-radius: 1rem; padding: .5rem 1rem;
+  font-size: 1rem; font-weight: 500; line-height: 1.5;
+  border-width: 1px; background-color: rgba(255,255,255,.025);
+  background-image: linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,0));
+  box-shadow: rgba(255,255,255,.15) 0 1px 0 inset,rgba(46,54,80,.075) 0 1px 1px;
+  transition: color .15s,background-color .15s,border-color .15s,box-shadow .15s;
+}
+.su-home .su-btn-line:hover { background-color: rgba(255,255,255,.1); background-image: linear-gradient(180deg,rgba(255,255,255,.11),transparent); }
+.su-home .su-btn-dark { background-color: transparent; border-color: rgba(13,13,14,.24); }
+.su-home .su-btn-dark:hover { background-color: rgba(13,13,14,.045); }
+.su-home .su-btn-line:focus-visible { box-shadow: 0 0 0 .2rem rgba(237,35,49,.35),inset 0 1px 0 rgba(255,255,255,.15); }
+.su-home .su-btn-line:active { background-image: none; box-shadow: inset 0 3px 5px rgba(46,54,80,.125); }
+.su-home .su-tag::before { display: none; }
+
+/* Photo crops selected for each card rather than inheriting the hero crop. */
+.su-xcard[href="/roster"] img { object-position: 50% 35%; }
+.su-xcard[href="/schedule"] img { object-position: 50% 42%; }
+.su-promo-big[href="/2026-player-interest"] img { object-position: 58% 40%; }
+
+/* Proposed news direction: large photo, upright headline, quiet metadata, text CTA. */
+.su-home .su-ncard { background: #fffdfa; border: 1px solid #e6dfd5; box-shadow: 0 4px 16px rgba(26,20,16,.035); border-radius: var(--su-radius); }
+.su-ncard-img { aspect-ratio: 4 / 3; }
+.su-ncard-img img { transition: transform .5s ease; }
+.su-ncard:hover .su-ncard-img img { transform: scale(1.035); }
+.su-home .su-ncard:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(26,20,16,.08); }
+.su-ncard-body { padding: 22px; gap: 18px; }
+.su-home .su-ncard h3 { font-style: normal; font-weight: 900; font-size: clamp(20px,1.8vw,25px); line-height: 1.15; }
+.su-ncard .su-meta { order: -1; margin-top: 0; padding-top: 0; font-size: 11px; gap: 8px; flex-wrap: wrap; }
+.su-ncard .su-tag { font-size: 10px; letter-spacing: .08em; color: #a21c29; }
+.su-ncard-cta { display: flex; justify-content: space-between; align-items: center; padding-top: 15px; margin-top: auto; border-top: 1px solid #e6dfd5; font-size: 12px; font-weight: 700; }
+.su-ncard-cta > span { color: #a21c29; font-size: 20px; line-height: 1; }
+@media (max-width:760px) {
+  /* One compact score strip, as wide as the hero's content area. */
+  .su-home .su-slide-inner { align-items: stretch; gap: 16px; padding-bottom: 84px; }
+  .su-home .su-mw { width: 100%; max-width: none; padding: 8px 12px; border-radius: var(--su-radius-sm); }
+  .su-home .su-mw-comp { font-size: 9px; line-height: 1.1; }
+  .su-home .su-mw-row { margin: 6px 0; gap: 10px; }
+  .su-home .su-mw-team { flex-direction: row; justify-content: center; gap: 6px; font-size: 11px; }
+  .su-home .su-mw-team img { width: 24px; height: 24px; }
+  .su-home .su-mw-score { font-size: 20px; padding: 4px 9px; }
+  .su-home .su-mw-foot { font-size: 9px; line-height: 1.3; padding-top: 5px; }
+  .su-home .su-mw .su-res { min-width: 20px; padding: 2px 6px; font-size: 9px; }
+  .su-home .su-result-score { padding: 5px 8px; gap: 7px; }
+  .su-news-grid { gap: 20px; }
+  .su-ncard-img { aspect-ratio: 16 / 10; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .su-ncard-img img { transition:none; }
+}
