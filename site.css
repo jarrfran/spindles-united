@@ -596,3 +596,51 @@ body:has(.su-home) .newsletter-form-button:disabled {
   .su-home .su-mw-comp { min-height: 22px; line-height: 22px; }
 }
 @media (prefers-reduced-motion:reduce) { .su-home .su-tk-track { animation: none; } }
+
+/* ===== v9: touch-friendly, full-width results strip ===== */
+.su-home { --su-ticker-h: 126px; }
+.su-home .su-ticker { display: block; }
+.su-home .su-tk-label {
+  display: block; position: absolute; top: 9px; left: 50%; transform: translateX(-50%);
+  max-width: none; height: auto; padding: 0; border: 0; color: #c2c3c3;
+  font-size: 10px; line-height: 1; letter-spacing: .14em; z-index: 1;
+}
+.su-home .su-tk-viewport {
+  width: 100%; height: 100%; padding-top: 26px; padding-bottom: 8px;
+  overflow-x: auto; overflow-y: hidden; scrollbar-width: none; cursor: grab;
+  touch-action: pan-x pan-y; user-select: none; -webkit-user-select: none;
+  -webkit-mask-image: linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);
+  mask-image: linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);
+}
+.su-tk-viewport::-webkit-scrollbar { display: none; }
+.su-home .su-tk-viewport:active { cursor: grabbing; }
+.su-home .su-tk-track { height: 100%; animation: none !important; transform: none; }
+.su-home .su-tk-list { height: 100%; padding-left: 0; }
+.su-home .su-tk-item { flex: none; }
+@media(max-width:760px) {
+  .su-home { --su-ticker-h: 120px; }
+  .su-home .su-tk-viewport { padding-top: 25px; }
+}
+
+/* Existing footage, independently offset and covered with a readable dark gradient. */
+.su-home .su-stat { position: relative; isolation: isolate; overflow: hidden; }
+.su-stat-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; pointer-events: none; }
+.su-stat::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.78) 70%,rgba(0,0,0,.9)); }
+.su-stat-champ::after { background: linear-gradient(180deg,rgba(100,9,15,.35),rgba(15,0,2,.82)); }
+.su-home .su-stat-l { color: #e0dcd6; }
+.su-home .su-stat-champ { background: #971419; }
+
+/* Rank tiles use the same square dimensions and muted finish as result badges. */
+.su-home .su-pos { width: 26px; height: 26px; border-radius: 4px; background: linear-gradient(180deg,#e6e4df,#d8d5cf); border: 1px solid #c9c5bc; color: #5b5953; box-shadow: inset 0 1px 0 #ffffff35; }
+.su-home .su-pos.su-q { background: linear-gradient(180deg,#dce5de,#c9d6cc); border-color: #b9c9bd; color: #3f5c46; }
+.su-home .su-table-note .su-pos { width: 14px; height: 14px; }
+
+/* Light backing behind the two photo promotions. */
+.su-home .su-middle-promos { background: var(--su-bone); }
+.su-sponsor-card { gap: 30px; padding-left: 48px; padding-right: 48px; }
+.su-sponsor img { max-height: 76px; max-width: min(100%,152px); }
+@media(max-width:760px) {
+  .su-sponsor-card { padding-left: 18px; padding-right: 18px; gap: 20px; }
+  .su-home .su-sponsor { height: 76px; }
+  .su-sponsor img { max-height: 70px; }
+}

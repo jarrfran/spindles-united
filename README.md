@@ -9,6 +9,7 @@ are made here and never pasted into Squarespace again.
 |---|---|
 | `site.css` | All styles: brand tokens (Alverata headings, Arboria body) and every page’s layout |
 | `spindles.js` | Loader: fills each `<div data-su="…">` with its page and runs page behavior |
+| `matches.json` | Verified results across seasons; sorted newest-first by the swipeable ticker |
 | `pages/*.html` | One file per page section (markup only) |
 | `index.html` | Preview page on GitHub Pages |
 | `.nojekyll` | Tells GitHub Pages to serve files as-is |
@@ -41,6 +42,7 @@ Change the file in this repo and commit. Pages pick it up within about 2 minutes
 (GitHub Pages can occasionally take up to 10).
 
 ## Changelog
+- v9, home: swipeable auto-resuming all-season results strip (matches.json), edge fades, hover-independent hero, staggered season tile videos alternating website-2026.mp4 and hh.mov, removed champions banner, light promo band, official YouTube thumbnail and larger sponsor logos.
 - v8, home: straight section edges, taller home/away ticker at a slower pace, dark hero scores, centered crests and match metadata, muted square result badges, Arboria news titles, and 2026 photos.
 - v7, home: soft section fades and red glows, neutral scores with vertical dividers, compact full-width mobile match widget, refreshed photos, player interest CTA, clear Button 20 variants, and editorial news cards.
 - v6, home: restored original content in full-width section bands, consistent card corners, Alverata Black headings, and Button 20 styling in club red.

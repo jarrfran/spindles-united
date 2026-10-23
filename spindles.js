@@ -101,8 +101,6 @@
     hero.querySelector('[data-hero="next"]').addEventListener('click', function () { go(idx + 1); });
     var pauseBtn = hero.querySelector('[data-hero="pause"]');
     if (pauseBtn) pauseBtn.addEventListener('click', function () { setPaused(!paused); });
-    hero.addEventListener('mouseenter', function () { hover = true; setPaused(paused); });
-    hero.addEventListener('mouseleave', function () { hover = false; setPaused(paused); });
     hero.addEventListener('focusin', function () { hover = true; setPaused(paused); });
     hero.addEventListener('focusout', function (ev) { if (!hero.contains(ev.relatedTarget)) { hover = false; setPaused(paused); } });
     hero.addEventListener('keydown', function (ev) {
@@ -144,6 +142,127 @@
     };
   }
 
+  /* Native horizontal scrolling plus gentle automatic movement. */
+  function initTicker(root) {
+    var viewport = root.querySelector('.su-tk-viewport');
+    if (!viewport) return;
+    var track = viewport.querySelector('.su-tk-track');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var holdUntil = 0, down = false, drag = false, startX = 0, startScroll = 0, previous = 0, autoCarry = 0;
+    function hold() { holdUntil = performance.now() + 1400; }
+    function cycleWidth() { var list = track.querySelector('.su-tk-list'); return list ? list.offsetWidth : 0; }
+    function normalize() {
+      var width = cycleWidth();
+      if (width && viewport.scrollLeft >= width) viewport.scrollLeft -= width;
+    }
+    viewport.addEventListener('pointerdown', function (e) {
+      down = true; drag = false; startX = e.clientX; startScroll = viewport.scrollLeft; hold();
+    });
+    window.addEventListener('pointermove', function (e) {
+      if (!down || e.pointerType !== 'mouse') return;
+      if (Math.abs(e.clientX - startX) > 5) drag = true;
+      if (drag) { e.preventDefault(); viewport.scrollLeft = startScroll + startX - e.clientX; hold(); }
+    });
+    function release() { if (down) { down = false; hold(); } }
+    window.addEventListener('pointerup', release);
+    window.addEventListener('pointercancel', release);
+    viewport.addEventListener('wheel', hold, { passive: true });
+    viewport.addEventListener('scroll', function () {
+      if (down || performance.now() < holdUntil) hold();
+      normalize();
+    }, { passive: true });
+    viewport.addEventListener('click', function (e) { if (drag) { e.preventDefault(); drag = false; } }, true);
+    viewport.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    viewport.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault(); hold();
+        if (e.key === 'ArrowLeft' && viewport.scrollLeft < 202) viewport.scrollLeft += cycleWidth();
+        viewport.scrollLeft += e.key === 'ArrowRight' ? 202 : -202;
+      }
+    });
+    function frame(now) {
+      if (!root.isConnected) return;
+      var dt = previous ? Math.min((now - previous) / 1000, .05) : 0; previous = now;
+      if (!reduce && !document.hidden && !down && now > holdUntil) {
+        autoCarry += dt * 18;
+        var pixels = Math.floor(autoCarry);
+        if (pixels) { viewport.scrollLeft += pixels; autoCarry -= pixels; }
+        normalize();
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+
+    /* A year-neutral data file keeps results newest-first across seasons. */
+    fetch(BASE + 'matches.json?v=' + V).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (matches) {
+      if (!Array.isArray(matches) || !matches.length) return;
+      matches.sort(function (a, b) { return b.date.localeCompare(a.date); });
+      var html = matches.map(function (m) {
+        var d = new Date(m.date + 'T12:00:00');
+        var label = m.note || m.competition.replace(/UPL |CDSL /g, '').replace('Matchweek ', 'MW ');
+        function row(side) {
+          return '<span class="su-tk-team" data-side="' + side + '"><span class="su-tk-name">' + esc(m[side]) + '</span><img src="' + esc(m[side + 'Crest']) + '?format=100w" alt=""><b class="su-tk-goals">' + esc(m[side + 'Score'] == null ? '–' : m[side + 'Score']) + '</b></span>';
+        }
+        var spoken = m.homeScore == null ? 'No contest' : m.home + ' ' + m.homeScore + ', ' + m.away + ' ' + m.awayScore;
+        return '<a class="su-tk-item" href="' + esc(m.url) + '" aria-label="' + esc(spoken + '. ' + (m.note || '')) + '"><span class="su-tk-card-head"><time datetime="' + esc(m.date) + '">' + d.toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'}) + '</time><span>' + esc(label) + '</span></span><span class="su-tk-match">' + row('home') + row('away') + '</span></a>';
+      }).join('');
+      if (down || performance.now() < holdUntil) return; // do not jump during an active swipe
+      track.innerHTML = '<div class="su-tk-list">' + html + '</div><div class="su-tk-list" aria-hidden="true" inert>' + html + '</div>';
+      viewport.scrollLeft = 0;
+    }).catch(function () { /* retain verified static results */ });
+  }
+
+  var hlsReady;
+  function getHls() {
+    if (window.Hls) return Promise.resolve(window.Hls);
+    if (!hlsReady) hlsReady = new Promise(function (resolve, reject) {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js';
+      script.onload = function () { window.Hls ? resolve(window.Hls) : reject(); };
+      script.onerror = reject; document.head.appendChild(script);
+    });
+    return hlsReady;
+  }
+  function initStatVideos(root) {
+    var videos = root.querySelectorAll('.su-stat-video');
+    if (!videos.length || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+    var epoch = performance.now() / 1000;
+    function play(video) {
+      if (!video._suVisible || document.hidden) return;
+      var offset = +video.getAttribute('data-offset');
+      if (Number.isFinite(video.duration) && video.duration > 1) {
+        try { video.currentTime = (performance.now() / 1000 - epoch + offset) % video.duration; } catch (e) {}
+      }
+      video.play().catch(function () {});
+    }
+    function start(video) {
+      if (video.dataset.started) { if (video.readyState >= 1) play(video); return; }
+      video.dataset.started = '1';
+      video.preload = 'auto';
+      video.addEventListener('loadedmetadata', function () { play(video); });
+      var source = video.getAttribute('data-hls');
+      if (!window.MediaSource && video.canPlayType('application/vnd.apple.mpegurl')) { video.src = source; video.load(); return; }
+      getHls().then(function (Hls) {
+        if (!root.isConnected || !Hls.isSupported()) return;
+        var hls = new Hls({startPosition:+video.getAttribute('data-offset'),capLevelToPlayerSize:true,maxBufferLength:8,maxMaxBufferLength:16,startLevel:0});
+        video._suHls = hls; hls.loadSource(source); hls.attachMedia(video);
+      }).catch(function () { /* retain the video's poster */ });
+    }
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          var v = entry.target; v._suVisible = entry.isIntersecting;
+          if (entry.isIntersecting) { if (v._suHls) v._suHls.startLoad(); start(v); }
+          else { v.pause(); if (v._suHls) v._suHls.stopLoad(); }
+        });
+      }, {threshold:.08});
+      videos.forEach(function (v) { observer.observe(v); });
+    } else videos.forEach(function (v) { v._suVisible = true; start(v); });
+    document.addEventListener('visibilitychange', function () {
+      videos.forEach(function (v) { if (document.hidden) v.pause(); else if (v._suVisible) play(v); });
+    });
+  }
+
   /* ---------- Per-page behavior ---------- */
   var INIT = {
     home: function (el) {
@@ -169,33 +288,8 @@
       };
       setHeader(); window.addEventListener('resize', setHeader);
 
-      /* Champions section: background video (same stream as the old homepage hero) */
-      var vid = root.querySelector('.su-champs-video[data-hls]');
-      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (vid && !reduce && 'IntersectionObserver' in window) {
-        var started = false;
-        var start = function () {
-          if (started) return; started = true;
-          var src = vid.getAttribute('data-hls');
-          /* Native HLS only where Media Source isn't available (iPhone/iPad); everywhere else use hls.js */
-          if (!window.MediaSource && vid.canPlayType('application/vnd.apple.mpegurl')) { vid.src = src; vid.play().catch(function () {}); return; }
-          var s = document.createElement('script');
-          s.src = 'https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js';
-          s.onload = function () {
-            if (!window.Hls || !window.Hls.isSupported()) return;
-            var h = new window.Hls({ capLevelToPlayerSize: true });
-            h.loadSource(src); h.attachMedia(vid);
-            h.on(window.Hls.Events.MANIFEST_PARSED, function () { vid.play().catch(function () {}); });
-          };
-          document.head.appendChild(s);
-        };
-        new IntersectionObserver(function (entries, obs) {
-          entries.forEach(function (en) {
-            if (en.isIntersecting) { start(); if (vid.paused && vid.src) vid.play().catch(function () {}); }
-            else if (!vid.paused) vid.pause();
-          });
-        }, { rootMargin: '200px' }).observe(vid);
-      }
+      initTicker(root);
+      initStatVideos(root);
 
       var hero = root.querySelector('#su-hero');
       var carousel = hero ? heroCarousel(hero) : null;
