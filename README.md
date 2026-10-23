@@ -41,6 +41,7 @@ Change the file in this repo and commit. Pages pick it up within about 2 minutes
 (GitHub Pages can occasionally take up to 10).
 
 ## Changelog
+- v6, home: restored original content in full-width section bands, consistent card corners, Alverata Black headings, and Button 20 styling in club red.
 - v5, home: editorial season feature, compact season numbers, expandable standings/results, lead-story news layout, and community/volunteer/store sections. Hero, ticker, and lower sections retained.
 - v2: moved to GitHub Pages hosting (site.css + spindles.js + pages/home.html).
 - v1.1, home: club fonts (Alverata headings, Arboria body).
