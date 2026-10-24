@@ -358,6 +358,13 @@
   INIT.roster=function(el){initClubPage('roster',el);};
   INIT.footer=function(el){var year=el.querySelector('.su-footer-year');if(year)year.textContent=new Date().getFullYear();};
 
+  INIT.contact=function(el){
+    if(window.SUContact){window.SUContact(el);return;}
+    var script=document.createElement('script');script.src=BASE+'contact.js?v='+V;
+    script.onload=function(){if(window.SUContact)window.SUContact(el);};
+    document.head.appendChild(script);
+  };
+
   /* ---------- Loader ---------- */
   function load(el) {
     var name = el.getAttribute('data-su');

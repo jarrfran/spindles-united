@@ -33,7 +33,7 @@ are made here and never pasted into Squarespace again.
 | Inside Spindles | `<div data-su="inside-spindles"></div>` | not built |
 | Seasons | `<div data-su="seasons"></div>` | not built |
 | Volunteer | `<div data-su="volunteer"></div>` | not built |
-| Contact | `<div data-su="contact"></div>` | not built |
+| Contact | `<div data-su="contact"></div>` | built, place above a native Squarespace Form Block |
 
 Add `<div data-su="footer"></div>` to a Code Block in the global Squarespace footer. The sponsor band and dark navigation footer are one reusable block. When it is installed, the duplicate homepage sponsor band hides automatically. Header, cart, forms and the News blog stay native Squarespace.
 
@@ -51,7 +51,12 @@ Add `<div data-su="footer"></div>` to a Code Block in the global Squarespace foo
 Change the file in this repo and commit. Pages pick it up within about 2 minutes
 (GitHub Pages can occasionally take up to 10).
 
+## Contact page
+
+Place `<div data-su="contact"></div>` in a full-width Code Block, then place a native Squarespace Form Block below it (in the same section or the next section). Keep the existing header loader. `contact.js` finds the first following form within the page and applies scoped styles without moving/recreating it, intercepting submissions, or changing its settings. Supports forms rendered after the page loads. Footer forms and newsletters are excluded. Keep the Form Block full width in the editor; remove old contact headings if replacing the current page.
+
 ## Changelog
+- v12: contact page with automatic styling of the following native Squarespace form.
 - v11: reusable sponsor/footer block, schedule and roster season archives, searchable player cards, and individual match centers with published recaps, scoring timelines and galleries.
 - v10, home: combined promo/news section, bottom-up interest photo gradient, unlabeled results strip, losing-side dimming including shootout winners, and clickable duplicate ticker cards.
 - v9, home: swipeable auto-resuming all-season results strip (matches.json), edge fades, hover-independent hero, staggered season tile videos alternating website-2026.mp4 and hh.mov, removed champions banner, light promo band, official YouTube thumbnail and larger sponsor logos.
