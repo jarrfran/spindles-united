@@ -45,8 +45,8 @@
       root.querySelectorAll('[data-contact-reason]').forEach(function(a){a.href='#'+current.id;});
       host=current.closest('.fe-block');if(host)host.classList.add('su-contact-form-host');
       film=document.createElement('aside');film.className='su-contact-film';film.setAttribute('aria-label','Scenes from Spindles United');
-      film.innerHTML='<video muted playsinline preload="metadata" aria-hidden="true"></video><button type="button" class="su-contact-film-toggle" aria-label="Play club videos">Play video</button>';
-      current.appendChild(film);stopFilm=startFilm(film,getHls);
+      film.innerHTML='<img src="https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/ecd034a2-dd1d-4566-a4b4-b760fc636ffd/8-9-2026-match-114.jpg?format=1500w" alt="Spindles United on matchday" loading="lazy">';
+      current.appendChild(film);
       var s=next.closest('.page-section,section[data-section-id]');
       if(s&&!s.contains(el)){section=s;section.classList.add('su-contact-form-section');}
       preselect();
