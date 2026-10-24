@@ -961,3 +961,5 @@ body:has([data-su="footer"] .su-footer) .su-home>.su-sponsors{display:none}
 .su-club-main{margin-top:-58px}.su-record-book-main{margin-top:-44px;padding-top:0}.su-contact-intro{margin-top:-38px;padding-top:0}
 @media(max-width:680px){.su-club-main{margin-top:-44px}.su-record-book-main{margin-top:-34px;padding-top:0}.su-contact-intro{margin-top:-30px;padding-top:0}}
 .su-roster-page,.su-schedule-page,.su-record-page,.su-contact-page{background:#fff}
+/* Retire the native banner above the upgraded legacy stats block. */
+body:has([data-su="stats"]) main [data-section-id="6a8d19ae65b29e0bb75cb3cd"]{display:none!important}
