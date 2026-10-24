@@ -8,7 +8,7 @@
     "awayScore": 0,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/3788360b-37f3-41aa-9052-88e7648bc80a/patroon-low.png",
-    "url": "/news/8-9-2026-match",
+    "url": "/schedule?season=2026#match-2026-08-09",
     "winner": "home"
   },
   {
@@ -20,7 +20,7 @@
     "awayScore": 0,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/bdfd0d5b-433f-4129-aebe-5ff0a86df3ad/usg-low.png",
-    "url": "/news/8-2-2026-match",
+    "url": "/schedule?season=2026#match-2026-08-02",
     "winner": "home"
   },
   {
@@ -32,7 +32,7 @@
     "awayScore": 0,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/58224db6-2b8e-4c64-9f5d-8a231961c0d8/lakers-low.png",
-    "url": "/news/7-26-2026-match",
+    "url": "/schedule?season=2026#match-2026-07-26",
     "winner": "home"
   },
   {
@@ -44,7 +44,7 @@
     "awayScore": 2,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/bdfd0d5b-433f-4129-aebe-5ff0a86df3ad/usg-low.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
-    "url": "/news/7-17-2026-match",
+    "url": "/schedule?season=2026#match-2026-07-17",
     "winner": null
   },
   {
@@ -56,7 +56,7 @@
     "awayScore": 4,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/3788360b-37f3-41aa-9052-88e7648bc80a/patroon-low.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
-    "url": "/news/7-12-2026-match",
+    "url": "/schedule?season=2026#match-2026-07-12",
     "winner": "away"
   },
   {
@@ -68,7 +68,7 @@
     "awayScore": 1,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8e857a58-a781-4ec8-b1bc-fadc67a44d99/collar-low.png",
-    "url": "/news/6-28-2026-match",
+    "url": "/schedule?season=2026#match-2026-06-28",
     "winner": null
   },
   {
@@ -80,7 +80,7 @@
     "awayScore": 2,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/92d88561-7c3f-4f10-854b-e4e021f05d17/mohawk-low.png",
-    "url": "/news/6-19-2026-match",
+    "url": "/schedule?season=2026#match-2026-06-19",
     "winner": "away"
   },
   {
@@ -92,7 +92,7 @@
     "awayScore": 3,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/58224db6-2b8e-4c64-9f5d-8a231961c0d8/lakers-low.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
-    "url": "/news/6-14-2026-match",
+    "url": "/schedule?season=2026#match-2026-06-14",
     "winner": "away"
   },
   {
@@ -104,7 +104,7 @@
     "awayScore": 0,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/bdfd0d5b-433f-4129-aebe-5ff0a86df3ad/usg-low.png",
-    "url": "/news/6-7-2026-match",
+    "url": "/schedule?season=2026#match-2026-06-07",
     "winner": "home"
   },
   {
@@ -116,7 +116,7 @@
     "awayScore": 0,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/3788360b-37f3-41aa-9052-88e7648bc80a/patroon-low.png",
-    "url": "/news/5-29-2026-match",
+    "url": "/schedule?season=2026#match-2026-05-29",
     "winner": "home"
   },
   {
@@ -128,7 +128,7 @@
     "awayScore": 0,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8e857a58-a781-4ec8-b1bc-fadc67a44d99/collar-low.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
-    "url": "/news/5-22-2026-match",
+    "url": "/schedule?season=2026#match-2026-05-22",
     "winner": "home"
   },
   {
@@ -140,7 +140,7 @@
     "awayScore": 0,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/92d88561-7c3f-4f10-854b-e4e021f05d17/mohawk-low.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
-    "url": "/news/5-17-2026-match",
+    "url": "/schedule?season=2026#match-2026-05-17",
     "winner": "home"
   },
   {
@@ -152,7 +152,7 @@
     "awayScore": 2,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/aea21b97-8339-4f36-a361-701f2cf6876e/motherland-bros.png",
-    "url": "/news/8-5-2025-match",
+    "url": "/schedule?season=2025#match-2025-08-05",
     "note": "Pens 3-1",
     "winner": "home"
   },
@@ -165,7 +165,7 @@
     "awayScore": 2,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/5ff176f6-0c92-41aa-bffc-ab18ce47ba1e/fcsb-logo.png",
-    "url": "/news/7-29-2025-match",
+    "url": "/schedule?season=2025#match-2025-07-29",
     "note": "After extra time",
     "winner": "home"
   },
@@ -178,7 +178,7 @@
     "awayScore": 0,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/2169f49e-3ca5-46b9-9c8b-f7d0a4fbcf6c/ligon-logo.png",
-    "url": "/2025-schedule",
+    "url": "/schedule?season=2025#match-2025-07-20",
     "note": "",
     "winner": "home"
   },
@@ -191,7 +191,7 @@
     "awayScore": 2,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/aea21b97-8339-4f36-a361-701f2cf6876e/motherland-bros.png",
-    "url": "/2025-schedule",
+    "url": "/schedule?season=2025#match-2025-07-17",
     "note": "",
     "winner": "away"
   },
@@ -204,7 +204,7 @@
     "awayScore": 1,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/b55c1350-1061-449c-9ae4-3523b822fbe3/Beestera-primary-mark.png",
-    "url": "/news/7-13-2025-grassroots",
+    "url": "/schedule?season=2025#match-2025-07-13",
     "note": "Pens 6-5",
     "winner": "home"
   },
@@ -217,7 +217,7 @@
     "awayScore": 0,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/f548735a-90ba-4978-8149-d731ca8a81c4/Vassi.png",
-    "url": "/2025-schedule",
+    "url": "/schedule?season=2025#match-2025-07-08",
     "note": "",
     "winner": "home"
   },
@@ -230,7 +230,7 @@
     "awayScore": 0,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/a658f8ab-0d83-40f6-9e98-5a4f6c7eb800/highlanders_edited.png",
-    "url": "/news/7-1-2025-match",
+    "url": "/schedule?season=2025#match-2025-07-01",
     "note": "",
     "winner": "home"
   },
@@ -243,7 +243,7 @@
     "awayScore": 1,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/d7112cbc-08aa-4d1e-a629-296b89005417/1200px-Death_Wish_Coffee_Logo.svg_.png",
-    "url": "/news/6-26-2025-match",
+    "url": "/schedule?season=2025#match-2025-06-26",
     "note": "",
     "winner": "home"
   },
@@ -256,7 +256,7 @@
     "awayScore": 2,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/2401fa6c-9a9a-4281-b27b-286842aa09e2/collar-city.png",
-    "url": "/news/6-19-2025-match",
+    "url": "/schedule?season=2025#match-2025-06-19",
     "note": "",
     "winner": null
   },
@@ -269,7 +269,7 @@
     "awayScore": null,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/5ff176f6-0c92-41aa-bffc-ab18ce47ba1e/fcsb-logo.png",
-    "url": "/2025-schedule",
+    "url": "/schedule?season=2025#match-2025-06-10",
     "note": "No contest",
     "winner": null
   },
@@ -282,7 +282,7 @@
     "awayScore": 3,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/2169f49e-3ca5-46b9-9c8b-f7d0a4fbcf6c/ligon-logo.png",
-    "url": "/2025-schedule",
+    "url": "/schedule?season=2025#match-2025-06-05",
     "note": "",
     "winner": null
   },
@@ -295,7 +295,7 @@
     "awayScore": 3,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/aea21b97-8339-4f36-a361-701f2cf6876e/motherland-bros.png",
-    "url": "/news/5-29-2025-match",
+    "url": "/schedule?season=2025#match-2025-05-29",
     "note": "",
     "winner": "away"
   },
@@ -308,7 +308,7 @@
     "awayScore": 2,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/f548735a-90ba-4978-8149-d731ca8a81c4/Vassi.png",
-    "url": "/news/5-20-2025-match",
+    "url": "/schedule?season=2025#match-2025-05-20",
     "note": "",
     "winner": "home"
   },
@@ -321,7 +321,7 @@
     "awayScore": 1,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/a658f8ab-0d83-40f6-9e98-5a4f6c7eb800/highlanders_edited.png",
-    "url": "/news/5-18-2025-match",
+    "url": "/schedule?season=2025#match-2025-05-18",
     "note": "",
     "winner": "away"
   },
@@ -334,7 +334,7 @@
     "awayScore": 2,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/5ff176f6-0c92-41aa-bffc-ab18ce47ba1e/fcsb-logo.png",
-    "url": "/news/5-13-2025-match",
+    "url": "/schedule?season=2025#match-2025-05-13",
     "note": "",
     "winner": "home"
   },
@@ -347,7 +347,7 @@
     "awayScore": 1,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/d7112cbc-08aa-4d1e-a629-296b89005417/1200px-Death_Wish_Coffee_Logo.svg_.png",
-    "url": "/news/5-8-2025-match",
+    "url": "/schedule?season=2025#match-2025-05-08",
     "note": "",
     "winner": "home"
   },
@@ -360,7 +360,7 @@
     "awayScore": 1,
     "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
     "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/2401fa6c-9a9a-4281-b27b-286842aa09e2/collar-city.png",
-    "url": "/news/5-1-2025-match",
+    "url": "/schedule?season=2025#match-2025-05-01",
     "note": "",
     "winner": "home"
   }

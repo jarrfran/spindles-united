@@ -16,7 +16,7 @@
   var SHORT = {"/news/8-9-2026-match": "Champions of Upstate", "/news/8-2-2026-match": "Back in the Final", "/news/7-26-2026-match": "Five Past the Lakers", "/news/7-17-2026-match": "A Point in the Push", "/news/7-12-2026-match": "Four Past the Leaders", "/news/6-28-2026-match": "Points Shared at Home", "/news/6-19-2026-match": "First Home Defeat", "/news/6-14-2026-match": "Last-Minute Winner", "/news/6-7-2026-match": "Another 1–0 at Home", "/news/5-29-2026-match": "Nine Men, First Win", "/news/5-22-2026-match": "Battle Across the Hudson", "/news/5-17-2026-match": "A Tough UPL Debut"};
 
   var esc = function (s) { var d = document.createElement('div'); d.textContent = s == null ? '' : String(s); return d.innerHTML; };
-  var ARROW = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var ARROW = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m8 3 9 9-9 9-4-4 5-5-5-5z"/></svg>';
 
   function slugDate(url) {
     var m = /\/news\/(\d+)-(\d+)-(\d{4})-match/.exec(url || '');

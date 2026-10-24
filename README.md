@@ -39,13 +39,19 @@ Add `<div data-su="footer"></div>` to a Code Block in the global Squarespace foo
 
 ## Schedule, roster and footer
 
-- `club-pages.js` renders schedule archives, match centers, roster archives and search.
+- `club-pages.js` renders expandable schedule archives, two-sided match-event timelines, roster archives and search.
 - `data/club.json` holds the current season (`currentSeason`, currently 2026), published fixture results, reports, photos, scoring events and roster entries. Update this file when adding seasons or matches.
-- Schedule defaults to the current season; archives cover 2023–2026. Each fixture has a shareable center, for example `/schedule?season=2026&match=2026-08-09`. No additional Squarespace pages are needed for individual matches.
+- Schedule defaults to the current season; archives cover 2023–2026. Each fixture expands in place on the schedule, for example `/schedule?season=2026#match-2026-08-09`. Old `?match=` links open the matching accordion; there are no individual match views. The initial card includes the weekday, kickoff and venue. Expanded content contains events, recap/stream links where available, and a photo gallery.
 - Roster defaults to the current season; archives cover 2022–2026, with search and position filters where published.
 - Only published data is included. Missing reports, events or photos show an unavailable notice.
 - Previews: `preview-schedule.html`, `preview-roster.html`, `preview-footer.html`.
 - Install the schedule and roster blocks at `/schedule` and `/roster`, in full-width sections with zero section padding. Keep the existing global header loader. Install the footer block in the global footer, not on individual pages.
+
+## Match-event data
+
+2026 timelines use the supplied UPL match-report PDF: goals for both teams, cautions and sendings-off. Each event includes a type, side, minute, player and optional shirt number; goals include the running home/away score. Source differences from club recaps follow the league report. The PDF and its referee/submission contact details are not published.
+
+2025 and older timelines display only published Spindles scorers. They do not imply complete opponent or disciplinary coverage or show invented running scorelines. Older CDSL venues follow the club archives’ Nott Road Park venue; Grassroots Cup venue exceptions are recorded per fixture.
 
 ## Updating
 Change the file in this repo and commit. Pages pick it up within about 2 minutes
@@ -61,9 +67,10 @@ The existing global loader now applies header CTA styles through `site.css` on e
 
 ## Color direction
 
-Use white and neutral grays for contrast surfaces, borders, muted text, score boxes and shadows. Do not introduce cream, beige, brown, taupe or gold UI tones. Preserve the club red gradient and semantic result colors.
+Use white and neutral grays for contrast surfaces, borders, muted text, score boxes and shadows. Do not introduce cream, beige, brown, taupe or gold UI tones. Preserve the club red gradient, semantic result colors and football yellow/red card indicators.
 
 ## Changelog
+- v20: replaced individual match views with schedule accordions, added weekdays/venues and two-sided 2026 league-report event timelines, kept older archives to Spindles scorers, repaired old concatenated goal lists and replaced thin action arrows with filled chevrons and square plus/minus controls.
 - v19: replaced warm cream/beige/brown UI surfaces, text, borders, shadows and translucent overlays with neutral grays and white across all pages.
 - v16: increased mobile homepage hero height by 96px and added an optional shared header-button stylesheet.
 - v14: removed the contact intro/direct-contact row; placed the form left and video right, retaining the landscape mobile video.
