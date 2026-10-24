@@ -8,6 +8,16 @@
   var V = Math.floor(Date.now() / 12e4); // changes every 2 minutes, so edits show up fast
   var IMG = 'https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/';
 
+  var archiveReady, archiveBase;
+  function getClubArchive(force) {
+    if (!archiveReady) archiveReady = Promise.all([
+      fetch(BASE+'data/club.json?v='+V).then(function(r){if(!r.ok)throw new Error('Archive unavailable');return r.json();}),
+      new Promise(function(resolve){var script=document.createElement('script');script.src=BASE+'sheet-archive.js?v='+V;script.onload=function(){resolve(window.SUSheetArchive);};script.onerror=function(){resolve(null);};document.head.appendChild(script);})
+    ]).then(function(values){archiveBase=values[0];return values[1];});
+    return archiveReady.then(function(api){return api?api.load(archiveBase,force):archiveBase;});
+  }
+  window.SUGetClubArchive=getClubArchive;
+
   /* 2026 schedule (from /schedule): date -> [opponent, spindles goals, opponent goals, home?, competition, kickoff] */
   var SCHED = {"2026-05-17": ["Mohawk City FC", 0, 1, false, "UPL Matchweek 1", "Sun, May 17 · 6pm"], "2026-05-22": ["Collar City FC", 0, 1, false, "UPL Matchweek 2", "Fri, May 22 · 7pm"], "2026-05-29": ["Patroon United", 1, 0, true, "UPL Matchweek 3", "Fri, May 29 · 7:15pm"], "2026-06-07": ["United Soccer Group", 1, 0, true, "UPL Matchweek 4", "Sun, Jun 7 · 6pm"], "2026-06-14": ["Sacandaga Lakers", 3, 2, false, "UPL Matchweek 5", "Sun, Jun 14 · 2pm"], "2026-06-19": ["Mohawk City FC", 1, 2, true, "UPL Matchweek 6", "Fri, Jun 19 · 7:15pm"], "2026-06-28": ["Collar City FC", 1, 1, true, "UPL Matchweek 7", "Sun, Jun 28 · 6pm"], "2026-07-12": ["Patroon United", 4, 1, false, "UPL Matchweek 8", "Sun, Jul 12 · 4pm"], "2026-07-17": ["United Soccer Group", 2, 2, false, "UPL Matchweek 9", "Fri, Jul 17 · 6:30pm"], "2026-07-26": ["Sacandaga Lakers", 5, 0, true, "UPL Matchweek 10", "Sun, Jul 26 · 6pm"], "2026-08-02": ["United Soccer Group", 2, 0, true, "UPL Semi-Final", "Sun, Aug 2 · 4pm"], "2026-08-09": ["Patroon United", 2, 0, true, "UPL Final", "Sun, Aug 9 · 6pm"]};
   /* team -> [short name, crest] */
@@ -194,7 +204,8 @@
     requestAnimationFrame(frame);
 
     /* A year-neutral data file keeps results newest-first across seasons. */
-    fetch(BASE + 'matches.json?v=' + V).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (matches) {
+    getClubArchive().then(function (data) {
+      var matches=Object.keys(data.schedules).flatMap(function(y){return data.schedules[y].matches.map(function(m){return Object.assign({},m,{url:m.scheduleUrl});});});
       if (!Array.isArray(matches) || !matches.length) return;
       matches.sort(function (a, b) { return b.date.localeCompare(a.date); });
       var html = matches.map(function (m) {

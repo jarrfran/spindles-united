@@ -49,9 +49,13 @@ Add `<div data-su="footer"></div>` to a Code Block in the global Squarespace foo
 
 ## Match-event data
 
-2026 timelines use the supplied UPL match-report PDF: goals for both teams, cautions and sendings-off. Each event includes a type, side, minute, player and optional shirt number; goals include the running home/away score. Source differences from club recaps follow the league report. The PDF and its referee/submission contact details are not published.
+The schedule reads the public [club archive spreadsheet](https://docs.google.com/spreadsheets/d/1DAeHMhkPNmIEMFssGc29kkfBgPj4POKOChNVtUO-tJg/edit) through `sheet-archive.js` when opened and checks every five minutes while visible. It reads **Match Log**, **Goal & Assist Log**, and **Discipline Log**, with headers on row 4. Add rows below the headers; keep the tab and header names intact. No website code changes are needed for new fixtures, scores, goals, assists or cards. The home results carousel also reads the live archive on load.
 
-2025 and older timelines display only published Spindles scorers. They do not imply complete opponent or disciplinary coverage or show invented running scorelines. Older CDSL venues follow the club archives’ Nott Road Park venue; Grassroots Cup venue exceptions are recorded per fixture.
+Match events join on season, date and opponent. Keep the same opponent spelling across the three logs. Missing minutes remain unknown (—), and forfeit wins have no invented scorers. The sheet supplies Spindles events for every season. The supplied 2026 league PDF supplies opponent goals and cards; those remain a saved source because the spreadsheet only tracks Spindles players. Neither freeform Notes columns nor referee/submission contact details are published.
+
+Existing kickoff times, venues, recaps, streams and galleries remain attached to their fixtures. Optional columns on Match Log named `Kickoff`, `Venue`, `Recap URL`, `Stream URL`, `Pens For`, and `Pens Against` override those saved values when populated. New fixtures without those details say that the time/venue is unrecorded. Current season follows the latest season in Match Log. The 2025 June 10 no-contest stays visible as an archive fixture but is excluded from recorded match totals.
+
+`data/club.json` is a checked fallback snapshot, used if Google is unavailable. A last successful response also remains available for the current visit. Live reads use Google's public Visualization endpoint, so the sheet must remain publicly readable. Roster data is independent of the match logs and remains in `data/club.json`.
 
 ## Updating
 Change the file in this repo and commit. Pages pick it up within about 2 minutes
@@ -70,6 +74,7 @@ The existing global loader now applies header CTA styles through `site.css` on e
 Use white and neutral grays for contrast surfaces, borders, muted text, score boxes and shadows. Do not introduce cream, beige, brown, taupe or gold UI tones. Preserve the club red gradient, semantic result colors and football yellow/red card indicators.
 
 ## Changelog
+- v21: connected schedule and home results to the live club spreadsheet; reconciled 64 recorded matches, 129 goals and 70 cards, added the 2022 archive, assists and older discipline, and retained opponent report events plus an offline fallback.
 - v20: replaced individual match views with schedule accordions, added weekdays/venues and two-sided 2026 league-report event timelines, kept older archives to Spindles scorers, repaired old concatenated goal lists and replaced thin action arrows with filled chevrons and square plus/minus controls.
 - v19: replaced warm cream/beige/brown UI surfaces, text, borders, shadows and translucent overlays with neutral grays and white across all pages.
 - v16: increased mobile homepage hero height by 96px and added an optional shared header-button stylesheet.
