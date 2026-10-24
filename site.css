@@ -889,3 +889,45 @@ body:has([data-su="footer"] .su-footer) .su-home>.su-sponsors{display:none}
 /* Filled, substantial click indicators replace hairline arrows. */
 .su-home .su-result-go{width:28px;height:28px;border-radius:8px;border:1px solid #d2d2d2;background:linear-gradient(180deg,#fff,#ededed);color:#333}
 .su-home .su-result-go svg{width:15px;height:15px}.su-home .su-card-link svg{width:18px;height:18px}.su-home .su-hero-btn,.su-home .su-rail-btn{border-radius:12px}.su-contact-reason>b{line-height:1;transform:translateY(-50%)}.su-contact-reason>b svg{width:22px;height:22px}
+
+/* Page refinements: a continuous photo/red hero fade, compact facts and calm controls. */
+.su-club-hero{position:relative;isolation:isolate;overflow:hidden;background:#101012;padding-bottom:210px;background-image:radial-gradient(ellipse at 68% 24%,#df203a99,transparent 62%),radial-gradient(ellipse at 16% 72%,#b7133266,transparent 62%)}
+.su-club-hero-photo{position:absolute;inset:0 0 0 auto;width:66%;height:100%;object-fit:cover;object-position:50% 32%;z-index:-2;opacity:.75;mask-image:linear-gradient(90deg,transparent,#000 35%);-webkit-mask-image:linear-gradient(90deg,transparent,#000 35%)}
+.su-club-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#101012e6,transparent 88%),radial-gradient(ellipse at 70% 35%,#e31c384d,transparent 68%)}
+.su-club-hero:after{content:"";position:absolute;inset:auto 0 0;height:220px;pointer-events:none;background:linear-gradient(180deg,#ffffff00 0%,#ffffff03 8%,#ffffff0b 16%,#ffffff1c 25%,#ffffff38 35%,#ffffff61 46%,#ffffff91 58%,#ffffffc2 71%,#ffffffe5 84%,#fffffffa 94%,#fff 100%)}
+.su-club-heading{position:relative;z-index:1}.su-club-main{background:#fff;padding-top:20px}
+.su-club-hero .su-club-eyebrow{color:#ffbac2}.su-club-heading>div>p:last-child{color:#e0e0e0}
+.su-site select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23777777' d='m5 8 7 7 7-7-2-2-5 5-5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:18px;padding:12px 44px 12px 16px;cursor:pointer;line-height:1.4;box-sizing:border-box;box-shadow:0 2px 5px #0000000a;transition:border-color .2s,box-shadow .2s}
+.su-site select:hover{border-color:#929292}.su-site select:focus-visible{outline:2px solid #ed2331;outline-offset:3px}
+.su-season-picker{width:196px;flex:none}.su-season-picker select{background-color:#222225e6;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='m5 8 7 7 7-7-2-2-5 5-5-5z'/%3E%3C/svg%3E");font-weight:700;border-color:#ffffff40;min-height:48px;color:#fff}.su-season-picker option{background:#222225;color:#fff}
+.su-club-season-facts b,.su-home .su-stat-v,.su-match-fact b{font-family:var(--su-body);font-weight:700;font-style:normal;white-space:nowrap;overflow-wrap:normal;letter-spacing:-.025em}
+.su-match-dropdown>.su-fixture{position:relative;grid-template-columns:128px minmax(0,1fr);min-height:150px;padding-right:80px}
+.su-match-dropdown .su-fixture-action{position:absolute;top:20px;bottom:16px;right:20px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:20px}
+.su-fixture-toggle-label{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.su-match-dropdown .su-disclosure-icon{display:grid;place-items:center;width:32px;height:32px;transition:transform .3s}
+.su-match-dropdown .su-disclosure-icon:before,.su-match-dropdown .su-disclosure-icon:after{display:none}
+.su-disclosure-icon svg{width:20px;height:20px;transition:transform .3s}.su-match-dropdown[open] .su-disclosure-icon svg{transform:rotate(180deg)}.su-match-dropdown.su-is-closing .su-disclosure-icon svg{transform:none}
+.su-fixture-detail{padding:24px;background:#f7f7f7}.su-match-links{justify-content:flex-start;margin-bottom:24px;gap:12px}
+.su-site .su-recap-btn{background:linear-gradient(180deg,#fff,#f5f5f5);color:#242424;border-color:#ccc;box-shadow:inset 0 1px 0 #fff,0 1px 2px #0000000d}.su-site .su-recap-btn:hover{background:#ededed;border-color:#b8b8b8}
+.su-site .su-stream-btn{color:#fff;background:linear-gradient(180deg,#ffffff26,transparent),var(--su-grad);border-color:#b61c25}.su-site .su-stream-btn:hover{background:linear-gradient(180deg,#ff3a47,#a8181e);color:#fff}
+.su-roster-toolbar,.su-roster-toolbar label{min-width:0;max-width:100%}.su-roster-toolbar input{min-width:0;max-width:100%;box-sizing:border-box}.su-roster-toolbar label:first-child{min-width:min(220px,100%)}
+.su-site .su-roster-card h3{font-family:var(--su-display);font-weight:700;font-style:italic;line-height:1.15}
+.su-footer .su-sponsors{padding-bottom:30px}.su-footer .su-sponsor-rows{margin-bottom:0}
+.su-footer-crests{display:flex;align-items:center;gap:22px;flex:none;padding-right:28px;border-right:1px solid #777}.su-footer-bottom .su-footer-crests a{padding:0;border:0}.su-footer-crests img{width:64px;height:68px}.su-footer-crests a:last-child img{width:48px;height:68px}
+.sqs-block:has([data-su="footer"]),.sqs-block-content:has([data-su="footer"]),.fe-block:has([data-su="footer"]),[data-su="footer"]{opacity:1!important;transform:none!important;transition:none!important;animation:none!important}
+@media(max-width:680px){
+ .su-club-hero{padding-top:46px;padding-bottom:190px}.su-club-hero-photo{width:100%;opacity:.6;object-position:57% 30%;mask-image:linear-gradient(90deg,transparent,#000 50%);-webkit-mask-image:linear-gradient(90deg,transparent,#000 50%)}.su-club-hero:after{height:190px}.su-club-heading{gap:24px}.su-season-picker{width:182px;max-width:100%}
+ .su-club-season-facts{grid-template-columns:1fr 1fr 1.3fr;gap:8px}.su-club-season-facts>div{padding:14px 10px;min-width:0}.su-club-season-facts b{font-size:clamp(14px,3.7vw,18px)}
+ .su-match-dropdown>.su-fixture{display:grid;grid-template-columns:minmax(0,1fr);padding:18px 16px 24px;min-height:180px;gap:20px}
+ .su-match-dropdown .su-fixture-date{grid-column:1;grid-row:1;display:grid;grid-template-columns:auto 1fr;gap:2px 5px;align-items:baseline;padding-right:40px}
+ .su-match-dropdown .su-fixture-date .su-fixture-weekday,.su-match-dropdown .su-fixture-date>b{font:700 14px/1.5 var(--su-body);color:#333}.su-fixture-weekday:after{content:","}.su-match-dropdown .su-fixture-date small{grid-column:1/-1;font:500 12px/1.5 var(--su-body);color:#777}
+ .su-match-dropdown .su-fixture-center{grid-column:1;grid-row:2;gap:12px}.su-match-dropdown .su-fixture-place{padding:0 32px}
+ .su-match-dropdown .su-fixture-action{top:18px;right:16px;bottom:12px}.su-fixture-detail{padding:20px 12px}.su-match-links{gap:10px;margin-bottom:20px}.su-match-links .su-club-btn{font-size:14px;min-height:42px}
+ .su-roster-toolbar label:first-child{flex:1 1 100%;min-width:0;width:100%}.su-roster-toolbar label{min-width:0}.su-roster-toolbar input{width:100%}
+ .su-footer-crests{gap:14px;padding-right:16px}.su-footer-crests img{width:42px;height:52px}.su-footer-crests a:last-child img{width:36px;height:52px}
+}
+@media(prefers-reduced-motion:reduce){.su-disclosure-icon svg{transition:none}}
+.su-match-dropdown .su-fixture-action{grid-area:auto}
+.su-footer-bottom .su-footer-crests a{display:block;margin:0}
+.su-contact-intro{background:#fff}
+@media(max-width:680px){.su-match-links:has(>a:nth-child(2)){display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.su-match-links .su-club-btn{min-width:0;padding:8px 10px;font-size:13px;gap:6px}}

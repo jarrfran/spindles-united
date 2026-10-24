@@ -74,6 +74,7 @@ The existing global loader now applies header CTA styles through `site.css` on e
 Use white and neutral grays for contrast surfaces, borders, muted text, score boxes and shadows. Do not introduce cream, beige, brown, taupe or gold UI tones. Preserve the club red gradient, semantic result colors and football yellow/red card indicators.
 
 ## Changelog
+- v22: smoother match disclosure animation, compact mobile dates, recap/stream styling, simplified match events, photo headers with soft fades, improved controls and roster typography, and immediate sponsor/footer rendering with the UPL crest.
 - v21: connected schedule and home results to the live club spreadsheet; reconciled 64 recorded matches, 129 goals and 70 cards, added the 2022 archive, assists and older discipline, and retained opponent report events plus an offline fallback.
 - v20: replaced individual match views with schedule accordions, added weekdays/venues and two-sided 2026 league-report event timelines, kept older archives to Spindles scorers, repaired old concatenated goal lists and replaced thin action arrows with filled chevrons and square plus/minus controls.
 - v19: replaced warm cream/beige/brown UI surfaces, text, borders, shadows and translucent overlays with neutral grays and white across all pages.
