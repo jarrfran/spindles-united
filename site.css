@@ -812,3 +812,49 @@ body:has([data-su="footer"] .su-footer) .su-home>.su-sponsors{display:none}
 /* Contact: compact reasons band, form left and video right. */
 .su-contact-intro .su-contact-reasons{margin-top:0}
 @media(max-width:760px){.su-contact-with-film>.su-contact-film{order:-1}}
+
+/* Global header CTA: shared by every Squarespace page. */
+/* Optional Squarespace header CTA styling. Load after the existing header injection. */
+#header .header-actions-action--cta a,
+.header-menu-cta a {
+  appearance: button;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: .5rem 1rem !important;
+  border: 1px solid #b61c25 !important;
+  border-radius: 1rem !important;
+  background-color: #971419 !important;
+  background-image: linear-gradient(180deg, #ffffff26, #ffffff00), linear-gradient(180deg, #ed2331, #971419) !important;
+  color: #fff !important;
+  box-shadow: inset 0 1px 0 #ffffff26, 0 1px 1px #2e365013 !important;
+  font: 500 1rem/1.5 arboria, "Arboria", Arial, sans-serif !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  text-decoration: none !important;
+  opacity: 1 !important;
+  cursor: pointer;
+  transition: background-color .15s, border-color .15s, box-shadow .15s !important;
+  transform: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+#header .header-actions-action--cta a:hover,
+.header-menu-cta a:hover {
+  background-image: linear-gradient(180deg, #ffffff26, #ffffff00), linear-gradient(180deg, #ff3a47, #a8181e) !important;
+  border-color: #a8181e !important;
+}
+#header .header-actions-action--cta a:focus-visible,
+.header-menu-cta a:focus-visible {
+  outline: 2px solid #ed2331 !important;
+  outline-offset: 4px;
+  box-shadow: inset 0 1px 0 #ffffff26, 0 1px 1px #2e365013, 0 0 0 .2rem #ed233180 !important;
+}
+#header .header-actions-action--cta a:active,
+.header-menu-cta a:active {
+  background-color: #841016 !important;
+  background-image: none !important;
+  border-color: #730c12 !important;
+  box-shadow: inset 0 3px 5px #2e365020 !important;
+}
