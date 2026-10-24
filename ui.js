@@ -3,6 +3,13 @@
 'use strict';
 if(window.SUControls)return;window.SUControls=true;
 var reduce=window.matchMedia('(prefers-reduced-motion: reduce)'),motions=new WeakMap(),serial=0,active=null;
+var stopViewHold=null;
+window.SUKeepView=function(y){
+ if(stopViewHold)stopViewHold();var until=performance.now()+500,frame=0,stopped=false,events=['wheel','touchstart','pointerdown','keydown'];
+ function stop(){if(stopped)return;stopped=true;cancelAnimationFrame(frame);events.forEach(function(type){window.removeEventListener(type,stop,true);});if(stopViewHold===stop)stopViewHold=null;}
+ function hold(){if(stopped)return;window.scrollTo(0,y);if(performance.now()<until)frame=requestAnimationFrame(hold);else stop();}
+ stopViewHold=stop;events.forEach(function(type){window.addEventListener(type,stop,{capture:true,passive:true});});hold();
+};
 function move(card,want){
  var old=motions.get(card),start=card.getBoundingClientRect().height,summary=card.querySelector(':scope > summary');
  if(old)old.animation.cancel();
@@ -26,6 +33,7 @@ function close(){if(!active)return;active.classList.remove('is-open');active.que
 function enhance(select){
  if(select.dataset.suSelect||select.multiple||select.size>1)return;
  select.dataset.suSelect='true';
+ var menuScrollY=scrollY;
  var wrap=document.createElement('span');wrap.className='su-select';select.before(wrap);wrap.appendChild(select);select.classList.add('su-select-source');select.tabIndex=-1;select.setAttribute('aria-hidden','true');
  var button=document.createElement('button');button.type='button';button.className='su-select-trigger';button.setAttribute('role','combobox');button.setAttribute('aria-haspopup','listbox');button.setAttribute('aria-expanded','false');button.setAttribute('aria-label',select.getAttribute('aria-label')||'Choose an option');button.disabled=select.disabled;
  var list=document.createElement('span');list.className='su-select-menu';list.id='su-options-'+(++serial);list.setAttribute('role','listbox');list.setAttribute('aria-label',button.getAttribute('aria-label'));button.setAttribute('aria-controls',list.id);
@@ -36,8 +44,8 @@ function enhance(select){
   list.innerHTML='';Array.from(select.options).forEach(function(option,index){var item=document.createElement('span');item.className='su-select-option';item.id=list.id+'-'+index;item.setAttribute('role','option');item.setAttribute('aria-selected',String(option.selected));item.textContent=option.text;item.dataset.index=index;item.setAttribute('aria-disabled',String(option.disabled));list.appendChild(item);});
  }
  function highlight(index){var items=list.children;index=Math.max(0,Math.min(items.length-1,index));Array.from(items).forEach(function(el,i){el.classList.toggle('is-highlighted',i===index);});button.dataset.highlight=index;button.setAttribute('aria-activedescendant',items[index].id);var top=items[index].offsetTop,bottom=top+items[index].offsetHeight;if(top<list.scrollTop)list.scrollTop=top;else if(bottom>list.scrollTop+list.clientHeight)list.scrollTop=bottom-list.clientHeight;}
- function open(){if(active!==wrap)close();active=wrap;wrap.classList.add('is-open');button.setAttribute('aria-expanded','true');highlight(select.selectedIndex);}
- function choose(index){if(select.options[index].disabled)return;select.selectedIndex=index;sync();close();button.focus({preventScroll:true});select.dispatchEvent(new Event('change',{bubbles:true}));}
+ function open(){menuScrollY=scrollY;if(active!==wrap)close();active=wrap;wrap.classList.add('is-open');button.setAttribute('aria-expanded','true');highlight(select.selectedIndex);}
+ function choose(index){if(select.options[index].disabled)return;select.selectedIndex=index;sync();close();button.focus({preventScroll:true});select.dispatchEvent(new Event('change',{bubbles:true}));if(window.SUKeepView)window.SUKeepView(menuScrollY);}
  button.addEventListener('click',function(){active===wrap?close():open();});
  button.addEventListener('keydown',function(e){
   if(['ArrowDown','ArrowUp','Home','End','Enter',' ','Escape'].includes(e.key))e.preventDefault();

@@ -83,7 +83,7 @@
         root.innerHTML=header(type,+year,seasons,d.currentSeason,match)+(type==='schedule'?scheduleList(d,year,match?match.id:null):roster(d,year,search,group));
         if(type==='schedule'&&st.match&&!match){var notice=document.createElement('p');notice.className='su-empty-note';notice.textContent='That match is not in the selected season. Choose a fixture below.';root.querySelector('.su-club-main .su-club-wrap').prepend(notice);}
       }
-      function go(q){var y=scrollY;history.pushState({},'',location.pathname+q);render();scrollTo(0,y);requestAnimationFrame(function(){scrollTo(0,y);});}
+      function go(q){var y=scrollY;history.pushState({},'',location.pathname+q);render();if(window.SUKeepView)window.SUKeepView(y);else scrollTo(0,y);}
       root.addEventListener('toggle',function(e){if(type!=='schedule'||!e.target.matches('.su-match-dropdown'))return;var target=e.target;if(target.open){history.replaceState({},'',location.pathname+query(state().year)+'#'+target.id);}else if(location.hash==='#'+target.id){history.replaceState({},'',location.pathname+query(state().year));}},true);
       root.addEventListener('change',function(e){if(e.target.matches('[data-season]')){search='';group='';go(query(e.target.value));root.querySelector('[data-season]').focus({preventScroll:true});}else if(e.target.matches('[data-group]')){group=e.target.value;root.querySelector('[data-roster-results]').innerHTML=rosterGrid(d,state().year,search,group);}});
       root.addEventListener('input',function(e){if(e.target.matches('[data-search]')){search=e.target.value;root.querySelector('[data-roster-results]').innerHTML=rosterGrid(d,state().year,search,group);}});
