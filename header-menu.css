@@ -7,5 +7,10 @@
  header .header-nav-folder-item a{display:block!important;padding:11px 14px!important;border-radius:9px;color:#f1f2f4!important;font-family:arboria,sans-serif;font-size:14px;font-weight:600;line-height:1.4;white-space:nowrap;text-decoration:none!important;background:none!important}
  header .header-nav-folder-item a:hover,header .header-nav-folder-item a:focus-visible{background:#ffffff12!important;color:#fff!important;outline:0;box-shadow:inset 3px 0 #d72b3c}
 }
-@media(max-width:799px){header .header-menu-nav-folder-content{background:#171719}header .header-menu-nav-folder-content .header-menu-nav-item a{font-family:arboria,sans-serif}}
+@media(max-width:799px){header .header-menu-nav-folder-content{background:#111!important}header .header-menu-nav-folder-content .header-menu-nav-item a{font-family:arboria,sans-serif}}
 @media(prefers-reduced-motion:reduce){header .header-nav-folder-content{transition:none}}
+
+/* One continuous mobile menu surface, including nested folders and the CTA. */
+@media(max-width:799px){
+ #header .header-menu,#header .header-menu-bg,#header .header-menu-nav,#header .header-menu-nav-folder,#header .header-menu-nav-folder-content,#header .header-menu-actions,#header .header-menu-cta{background-color:#111!important;background-image:none!important}
+}
