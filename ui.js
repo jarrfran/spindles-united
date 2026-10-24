@@ -48,6 +48,8 @@ function enhance(select){
    if(active!==wrap)open();else highlight(e.key==='Home'?0:e.key==='End'?select.options.length-1:Number(button.dataset.highlight)+(e.key==='ArrowDown'?1:-1));
   }else if(e.key.length===1){var i=Array.from(select.options).findIndex(function(o){return o.text.toLowerCase().startsWith(e.key.toLowerCase());});if(i>=0){if(active!==wrap)open();highlight(i);}}
  });
+ // Keep focus on the combobox until an option click has been handled.
+ list.addEventListener('pointerdown',function(e){e.preventDefault();});
  list.addEventListener('click',function(e){var item=e.target.closest('[data-index]');if(item){e.preventDefault();choose(Number(item.dataset.index));}});
  wrap.addEventListener('focusout',function(e){if(!wrap.contains(e.relatedTarget))close();});
  select.addEventListener('change',sync);select.addEventListener('focus',function(){button.focus();});sync();if(document.activeElement===select)button.focus();
