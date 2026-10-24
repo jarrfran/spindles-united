@@ -5,7 +5,7 @@
   var BASE = document.currentScript && document.currentScript.src
     ? new URL('.', document.currentScript.src).href
     : 'https://jarrfran.github.io/spindles-united/';
-  var V = Math.floor(Date.now() / 12e4) + '-30'; // changes every 2 minutes, so edits show up fast
+  var V = Math.floor(Date.now() / 12e4) + '-31'; // changes every 2 minutes, so edits show up fast
   var uiScript=document.createElement('script');uiScript.src=BASE+'ui.js?v='+V;document.head.appendChild(uiScript);
   var newsScript=document.createElement('script');newsScript.src=BASE+'news.js?v='+V;document.head.appendChild(newsScript);
   var navStyle=document.createElement('link');navStyle.rel='stylesheet';navStyle.id='su-navigation-style';navStyle.href=BASE+'header-menu.css?v='+V;if(!document.getElementById(navStyle.id))document.head.appendChild(navStyle);
