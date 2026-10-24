@@ -57,6 +57,16 @@ Existing kickoff times, venues, recaps, streams and galleries remain attached to
 
 `data/club.json` is a checked fallback snapshot, used if Google is unavailable. A last successful response also remains available for the current visit. Live reads use Google's public Visualization endpoint, so the sheet must remain publicly readable. Roster data is independent of the match logs and remains in `data/club.json`.
 
+## Club Record Book and Player Profiles
+
+The shared record book lives at `/stats`. Its standalone block is `<div data-su="stats"></div>`. The global loader also upgrades the existing legacy `#suf` widget on that URL, so the live page can use the new design before replacing its old Code Block.
+
+Every player has one shareable profile at `/roster?player=player-slug`, used by roster cards, the homepage player rail and record-book tables. `record-book.js` owns identity aliases, the data model and the shared renderer. Profiles use the latest available headshot from roster archives and `data/player-media.json`; changing the statistics season does not change the headshot. Career and season totals come from Match Log, Appearance Log, Goal & Assist Log, Discipline Log, and Goalkeeper Log. Players supplies biography fields; Season Stats supplies historical shirt numbers only. No new Squarespace page is needed per player.
+
+The record book checks the source every five minutes while visible, retains working filters, and uses `data/record-book.json` if Google is unavailable. Goal, assist, appearance, discipline, award and goalkeeper entries link to the same match accordions at `/schedule?season=YYYY#match-YYYY-MM-DD`. Freeform report notes are excluded. Missing minutes and goalkeeper values stay unknown; unsupported fields such as minutes played, saves, shots and tackles are not invented.
+
+Appearance totals follow the log's Start and Bench entries. Duplicate entries for the same player, date and opponent count once, preferring Start when both roles occur. The source currently duplicates Jad Essoulaimani on July 11, 2024, so the corrected count is 30 career appearances rather than the source summary's 31; his profile explains this. Player goal totals exclude the one opponent own goal credited to Spindles; team score totals retain it and official forfeits. Shootout goals do not count toward player goals.
+
 ## Updating
 Change the file in this repo and commit. Pages pick it up within about 2 minutes
 (GitHub Pages can occasionally take up to 10).
@@ -74,6 +84,7 @@ The existing global loader now applies header CTA styles through `site.css` on e
 Use white and neutral grays for contrast surfaces, borders, muted text, score boxes and shadows. Do not introduce cream, beige, brown, taupe or gold UI tones. Preserve the club red gradient, semantic result colors and football yellow/red card indicators.
 
 ## Changelog
+- v23: shared live player profiles and club record book, canonical player/match links, latest headshots, career/season/goalkeeper statistics, source reconciliation, cleaner rounded chevrons, lifted header content and roomier home standings/results.
 - v22: smoother match disclosure animation, compact mobile dates, recap/stream styling, simplified match events, photo headers with soft fades, improved controls and roster typography, and immediate sponsor/footer rendering with the UPL crest.
 - v21: connected schedule and home results to the live club spreadsheet; reconciled 64 recorded matches, 129 goals and 70 cards, added the 2022 archive, assists and older discipline, and retained opponent report events plus an offline fallback.
 - v20: replaced individual match views with schedule accordions, added weekdays/venues and two-sided 2026 league-report event timelines, kept older archives to Spindles scorers, repaired old concatenated goal lists and replaced thin action arrows with filled chevrons and square plus/minus controls.

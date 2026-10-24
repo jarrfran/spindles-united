@@ -90,10 +90,10 @@
     script.src='https://docs.google.com/spreadsheets/d/'+ID+'/gviz/tq?'+new URLSearchParams({sheet:sheet,range:range,headers:'1',tqx:'out:json;responseHandler:'+name+';reqId:'+Date.now(),tq:'select * where A is not null'}).toString();
     script.onerror=function(){clear();reject(new Error('Could not read club archive'));};timer=setTimeout(function(){clear();root[name]=function(){};setTimeout(function(){delete root[name];},60000);reject(new Error('Club archive timed out'));},15000);document.head.appendChild(script);
   });}
-  var cached=null,loaded=0,pending=null;
+  var cached=null,loaded=0,pending=null,lastTables=null;
   function load(base,force){
     if(pending)return pending;if(!force&&cached&&Date.now()-loaded<300000)return Promise.resolve(cached);
-    pending=Promise.all([query('Match Log','A4:Z',['Season','Date','Opponent','GF','GA']),query('Goal & Assist Log','A4:G',['Season','Date','Min','Scorer','Assist','Opponent']),query('Discipline Log','A4:I',['Season','Date','Min','Player','Card','Opponent'])]).then(function(values){cached=merge(base,{matches:values[0],goals:values[1],cards:values[2]});loaded=Date.now();return cached;}).catch(function(){var fallback=clone(cached||base);fallback.sheetSync=fallback.sheetSync||{};fallback.sheetSync.status='snapshot';return fallback;}).finally(function(){pending=null;});return pending;
+    pending=Promise.all([query('Match Log','A4:Z',['Season','Date','Opponent','GF','GA']),query('Goal & Assist Log','A4:G',['Season','Date','Min','Scorer','Assist','Opponent']),query('Discipline Log','A4:I',['Season','Date','Min','Player','Card','Opponent'])]).then(function(values){lastTables={matches:values[0],goals:values[1],cards:values[2]};cached=merge(base,lastTables);loaded=Date.now();return cached;}).catch(function(){var fallback=clone(cached||base);fallback.sheetSync=fallback.sheetSync||{};fallback.sheetSync.status='snapshot';return fallback;}).finally(function(){pending=null;});return pending;
   }
-  var api={merge:merge,load:load,records:records};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.SUSheetArchive=api;
+  var api={merge:merge,load:load,records:records,query:query,getTables:function(){return lastTables;}};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.SUSheetArchive=api;
 })(typeof window!=='undefined'?window:globalThis);

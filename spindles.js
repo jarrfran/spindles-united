@@ -5,7 +5,7 @@
   var BASE = document.currentScript && document.currentScript.src
     ? new URL('.', document.currentScript.src).href
     : 'https://jarrfran.github.io/spindles-united/';
-  var V = Math.floor(Date.now() / 12e4); // changes every 2 minutes, so edits show up fast
+  var V = Math.floor(Date.now() / 12e4) + '-23'; // changes every 2 minutes, so edits show up fast
   var IMG = 'https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/';
 
   var archiveReady, archiveBase;
@@ -26,7 +26,7 @@
   var SHORT = {"/news/8-9-2026-match": "Champions of Upstate", "/news/8-2-2026-match": "Back in the Final", "/news/7-26-2026-match": "Five Past the Lakers", "/news/7-17-2026-match": "A Point in the Push", "/news/7-12-2026-match": "Four Past the Leaders", "/news/6-28-2026-match": "Points Shared at Home", "/news/6-19-2026-match": "First Home Defeat", "/news/6-14-2026-match": "Last-Minute Winner", "/news/6-7-2026-match": "Another 1–0 at Home", "/news/5-29-2026-match": "Nine Men, First Win", "/news/5-22-2026-match": "Battle Across the Hudson", "/news/5-17-2026-match": "A Tough UPL Debut"};
 
   var esc = function (s) { var d = document.createElement('div'); d.textContent = s == null ? '' : String(s); return d.innerHTML; };
-  var ARROW = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m8 3 9 9-9 9-4-4 5-5-5-5z"/></svg>';
+  var ARROW = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
   function slugDate(url) {
     var m = /\/news\/(\d+)-(\d+)-(\d{4})-match/.exec(url || '');
@@ -367,6 +367,16 @@
   }
   INIT.schedule=function(el){initClubPage('schedule',el);};
   INIT.roster=function(el){initClubPage('roster',el);};
+  var recordModule;
+  window.SUGetRecordBook=function(){
+    if(!recordModule)recordModule=new Promise(function(resolve,reject){
+      if(window.SURecordBook){resolve(window.SURecordBook);return;}
+      var script=document.createElement('script');script.src=BASE+'record-book.js?v='+V;
+      script.onload=function(){window.SURecordBook?resolve(window.SURecordBook):reject();};script.onerror=reject;document.head.appendChild(script);
+    });return recordModule;
+  };
+  INIT.stats=function(el){window.SUGetRecordBook().then(function(api){api.stats(el);});};
+
   INIT.footer=function(el){var year=el.querySelector('.su-footer-year');if(year)year.textContent=new Date().getFullYear();};
 
   INIT.contact=function(el){
@@ -389,7 +399,13 @@
       })
       .catch(function (e) { console.warn('Spindles: could not load page "' + name + '"', e); });
   }
-  function scan() { document.querySelectorAll('[data-su]').forEach(load); }
+  function scan() {
+    if(location.pathname.replace(/\/$/,'')==='/stats'&&!document.querySelector('[data-su="stats"]')){
+      var legacy=document.getElementById('suf');
+      if(legacy){legacy.hidden=true;legacy.style.setProperty('display','none','important');var fresh=document.createElement('div');fresh.setAttribute('data-su','stats');legacy.before(fresh);}
+    }
+    document.querySelectorAll('[data-su]').forEach(load);
+  }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', scan);
   else scan();
