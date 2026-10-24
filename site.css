@@ -858,3 +858,12 @@ body:has([data-su="footer"] .su-footer) .su-home>.su-sponsors{display:none}
   border-color: #730c12 !important;
   box-shadow: inset 0 3px 5px #2e365020 !important;
 }
+
+/* Compact desktop CTA keeps the navigation at its original height. */
+#header .header-display-desktop .header-actions-action--cta a {
+  min-height: 34px !important;
+  height: 34px !important;
+  padding: 6px 16px !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+}
