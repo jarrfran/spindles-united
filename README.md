@@ -59,7 +59,12 @@ Place `<div data-su="contact"></div>` in a full-width Code Block, then place a n
 
 The existing global loader now applies header CTA styles through `site.css` on every page. No extra snippet is needed. The standalone `header-button.css` remains available, but its separate link is redundant when the global loader is installed. The button URL and label stay in Squarespace settings.
 
+## Color direction
+
+Use white and neutral grays for contrast surfaces, borders, muted text, score boxes and shadows. Do not introduce cream, beige, brown, taupe or gold UI tones. Preserve the club red gradient and semantic result colors.
+
 ## Changelog
+- v19: replaced warm cream/beige/brown UI surfaces, text, borders, shadows and translucent overlays with neutral grays and white across all pages.
 - v16: increased mobile homepage hero height by 96px and added an optional shared header-button stylesheet.
 - v14: removed the contact intro/direct-contact row; placed the form left and video right, retaining the landscape mobile video.
 - v13: contact reason cards scroll to and select the matching native form choice; tall video playlist beside the form, landscape on mobile; larger labels and options.
