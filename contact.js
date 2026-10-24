@@ -41,7 +41,7 @@
       host=current.closest('.fe-block');if(host)host.classList.add('su-contact-form-host');
       film=document.createElement('aside');film.className='su-contact-film';film.setAttribute('aria-label','Scenes from Spindles United');
       film.innerHTML='<video muted playsinline preload="metadata" aria-hidden="true"></video><div class="su-contact-film-copy"><span>Spindles United FC</span><strong>More than<br>a matchday.</strong></div><button type="button" class="su-contact-film-toggle" aria-label="Play club videos">Play video</button>';
-      current.prepend(film);stopFilm=startFilm(film,getHls);
+      current.appendChild(film);stopFilm=startFilm(film,getHls);
       var s=next.closest('.page-section,section[data-section-id]');
       if(s&&!s.contains(el)){section=s;section.classList.add('su-contact-form-section');}
     }
