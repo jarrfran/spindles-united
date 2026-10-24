@@ -13,6 +13,11 @@
   function score(m) {return '<span class="su-club-score"><span>'+esc(m.homeScore==null?'–':m.homeScore)+'</span><i aria-hidden="true"></i><span>'+esc(m.awayScore==null?'–':m.awayScore)+'</span></span>';}
   function teams(m) {return '<span class="su-club-match-teams"><span class="su-club-team su-club-team-home"><span>'+esc(m.home)+'</span>'+logo(m.homeCrest,m.home)+'</span>'+score(m)+'<span class="su-club-team">'+logo(m.awayCrest,m.away)+'<span>'+esc(m.away)+'</span></span></span>';}
   function query(season,match) {return '?season='+season+(match?'&match='+encodeURIComponent(match):'');}
+  function venueLink(name){
+    if(!name||/not recorded|TBD/i.test(name))return esc(name||'Venue not recorded');
+    var cities={'Nott Road Park':'6073 Nott Road, Guilderland, NY','Lansing Park':'9 Bevan Street, Cohoes, NY','Alumni Field, Cohoes High School':'Cohoes, NY','Union College':'Schenectady, NY','Lansingburgh High School':'Troy, NY','Waterford-Halfmoon Union Free School District':'125 Middletown Road, Waterford, NY','Dockstader Recreational Park':'Galway, NY','Colonie Central High School':'Albany, NY',"Afrim's Sports Park":'969 Watervliet Shaker Road, Colonie, NY'};
+    return '<a href="https://maps.apple.com/?q='+encodeURIComponent(name+' '+(cities[name]||'New York'))+'" target="_blank" rel="noopener" aria-label="Open '+esc(name)+' in Apple Maps">'+esc(name)+'</a>';
+  }
   function header(type,year,years,current,match) {
     var photo=type==='schedule'?"https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8376cdba-f8e4-4d6b-a404-284fadb73df1/7-26-2026-match-039.jpg?format=1500w":"https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/4945f3a0-90ea-48cc-9be9-53e66190e86b/8-9-2026-match-158.jpg?format=1500w";
     var title=type==='schedule'?'Matches & Results.':'Meet the Spins.';
@@ -42,7 +47,7 @@
     return '<div class="su-club-main"><div class="su-club-wrap"><div class="su-club-season-facts"><div><small>Season</small><b>'+year+'</b></div><div><small>Regular Season</small><b>'+esc(season.summary.replace('Regular Season Record ',''))+'</b></div><div><small>Postseason</small><b>'+esc(season.finish.replace('Post Season Finish: ',''))+'</b></div></div><div class="su-club-list-heading"><h2>'+year+' Fixtures & Results</h2><p>Select a match for details · All times Eastern</p></div>'+matches.map(function(m){
       var md=m.date.slice(0,7),heading='',weekday=new Date(m.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'long'});
       if(md!==month){month=md;heading='<h3 class="su-match-month">'+new Date(m.date+'T12:00:00').toLocaleDateString('en-US',{month:'long',year:'numeric'})+'</h3>';}
-      return heading+'<details class="su-match-dropdown" id="match-'+esc(m.id)+'"'+(m.id===openMatch?' open':'')+'><summary class="su-fixture"><span class="su-fixture-date"><span class="su-fixture-weekday">'+esc(weekday)+'</span><b>'+esc(date(m.date))+'</b><small>'+esc(m.kickoff||'Time not recorded')+'</small></span><span class="su-fixture-center"><span class="su-fixture-comp">'+esc(m.competition)+(m.note?' · '+esc(m.note):'')+'</span>'+teams(m)+'<span class="su-fixture-place">'+esc(m.venue||'Venue not recorded')+'</span></span><span class="su-fixture-action"><span class="su-res su-res-'+(m.result==='W'?'w':m.result==='L'?'l':'d')+'">'+esc(m.result)+'</span><span class="su-fixture-toggle-label">Match details</span><i class="su-disclosure-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></span></summary>'+matchDetails(m,year)+'</details>';
+      return heading+'<details class="su-match-dropdown" id="match-'+esc(m.id)+'"'+(m.id===openMatch?' open':'')+'><summary class="su-fixture"><span class="su-fixture-date"><span class="su-fixture-weekday">'+esc(weekday)+'</span><b>'+esc(date(m.date))+'</b><small>'+esc(m.kickoff||'Time not recorded')+'</small></span><span class="su-fixture-center"><span class="su-fixture-comp">'+esc(m.competition)+(m.note?' · '+esc(m.note):'')+'</span>'+teams(m)+'<span class="su-fixture-place">'+venueLink(m.venue)+'</span></span><span class="su-fixture-action"><span class="su-res su-res-'+(m.result==='W'?'w':m.result==='L'?'l':'d')+'">'+esc(m.result)+'</span><span class="su-fixture-toggle-label">Match details</span><i class="su-disclosure-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></span></summary>'+matchDetails(m,year)+'</details>';
     }).join('')+'<p class="su-club-source">'+esc(d.scheduleNotes&&d.scheduleNotes[year]||d.scheduleNotes.archives)+'</p>'+(d.sheetSync?'<p class="su-club-source" data-archive-status>'+esc(d.sheetSync.status==='live'?'Club archive connected · Checks for updates every 5 minutes.':'Showing the saved club archive. Live updates will retry automatically.')+'</p>':'')+'</div></div>';
   }
   function photo(u,i,m) {return '<a href="'+esc(u)+'" target="_blank" rel="noopener" aria-label="Open match photo '+(i+1)+'"><img src="'+esc(u)+'?format=750w" loading="lazy" alt="'+esc(m.home+' vs '+m.away+', match photo '+(i+1))+'"></a>';}
@@ -74,18 +79,6 @@
         if(type==='schedule'&&st.match&&!match){var notice=document.createElement('p');notice.className='su-empty-note';notice.textContent='That match is not in the selected season. Choose a fixture below.';root.querySelector('.su-club-main .su-club-wrap').prepend(notice);}
       }
       function go(q){history.pushState({},'',location.pathname+q);render();root.scrollIntoView({block:'start',behavior:'auto'});var h=root.querySelector('h1');if(h)h.focus({preventScroll:true});}
-      var motions=new WeakMap();
-      root.addEventListener('click',function(e){
-        var summary=e.target.closest('.su-match-dropdown > summary');if(!summary||!root.contains(summary))return;
-        e.preventDefault();var card=summary.parentElement,previous=motions.get(card),start=card.getBoundingClientRect().height,want=previous?!previous.want:!card.open;
-        if(previous)previous.animation.cancel();
-        if(!card.animate||window.matchMedia('(prefers-reduced-motion: reduce)').matches){card.open=want;motions.delete(card);return;}
-        card.open=true;var end=want?summary.offsetHeight+card.querySelector('.su-fixture-detail').offsetHeight+2:summary.offsetHeight+2;
-        card.classList.toggle('su-is-closing',!want);
-        var animation=card.animate([{height:start+'px'},{height:end+'px'}],{duration:380,easing:'cubic-bezier(.22,1,.36,1)'});
-        motions.set(card,{animation:animation,want:want});
-        animation.onfinish=function(){card.open=want;card.classList.remove('su-is-closing');motions.delete(card);animation.cancel();};
-      });
       root.addEventListener('toggle',function(e){if(type!=='schedule'||!e.target.matches('.su-match-dropdown'))return;var target=e.target;if(target.open){history.replaceState({},'',location.pathname+query(state().year)+'#'+target.id);}else if(location.hash==='#'+target.id){history.replaceState({},'',location.pathname+query(state().year));}},true);
       root.addEventListener('change',function(e){if(e.target.matches('[data-season]')){search='';group='';go(query(e.target.value));root.querySelector('[data-season]').focus();}else if(e.target.matches('[data-group]')){group=e.target.value;root.querySelector('[data-roster-results]').innerHTML=rosterGrid(d,state().year,search,group);}});
       root.addEventListener('input',function(e){if(e.target.matches('[data-search]')){search=e.target.value;root.querySelector('[data-roster-results]').innerHTML=rosterGrid(d,state().year,search,group);}});

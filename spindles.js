@@ -5,7 +5,8 @@
   var BASE = document.currentScript && document.currentScript.src
     ? new URL('.', document.currentScript.src).href
     : 'https://jarrfran.github.io/spindles-united/';
-  var V = Math.floor(Date.now() / 12e4) + '-23'; // changes every 2 minutes, so edits show up fast
+  var V = Math.floor(Date.now() / 12e4) + '-24'; // changes every 2 minutes, so edits show up fast
+  var uiScript=document.createElement('script');uiScript.src=BASE+'ui.js?v='+V;document.head.appendChild(uiScript);
   var IMG = 'https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/';
 
   var archiveReady, archiveBase;
@@ -305,6 +306,25 @@
 
       var hero = root.querySelector('#su-hero');
       var carousel = hero ? heroCarousel(hero) : null;
+      if(hero)getClubArchive().then(function(archive){
+        function updateHero(){
+          hero.querySelectorAll('.su-slide').forEach(function(slide){
+            var recap=slide.querySelector('.su-slide-copy > a.su-btn'),widget=slide.querySelector('.su-mw');
+            if(!recap)return;
+            recap.classList.remove('su-btn-solid');recap.classList.add('su-btn-line');
+            var dt=slugDate(recap.getAttribute('href')),match;
+            Object.keys(archive.schedules).some(function(y){match=archive.schedules[y].matches.find(function(m){return m.date===dt;});return !!match;});
+            if(!match)return;
+            if(widget&&widget.tagName!=='A'){
+              var link=document.createElement('a');link.className=widget.className;link.href=match.scheduleUrl||'/schedule?season='+dt.slice(0,4)+'#match-'+match.id;link.innerHTML=widget.innerHTML;link.setAttribute('aria-label','View match details: '+match.home+' vs '+match.away);if(widget.hasAttribute('tabindex'))link.tabIndex=widget.tabIndex;widget.replaceWith(link);
+            }
+            if(match.video&&!slide.querySelector('.su-hero-watch')){
+              var watch=document.createElement('a');watch.className='su-btn su-btn-solid su-hero-watch';watch.href=match.video;watch.textContent='Watch';watch.target='_blank';watch.rel='noopener';if(slide.getAttribute('aria-hidden')==='true')watch.tabIndex=-1;recap.after(watch);
+            }
+          });
+        }
+        updateHero();new MutationObserver(updateHero).observe(hero.querySelector('#su-slides'),{childList:true});
+      });
 
       /* --- Click-to-load YouTube (keeps the page fast) --- */
       root.querySelectorAll('.su-video[data-video]').forEach(function (btn) {
