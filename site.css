@@ -1095,3 +1095,4 @@ body:has([data-su="stats"]) main [data-section-id="6a8d19ae65b29e0bb75cb3cd"]{di
 .su-sponsor-intro{position:relative;background:#fff;border:1px solid #e0e2e6;border-radius:20px;padding:32px}
 @media(max-width:680px){.su-sponsor-intro{padding:26px}}
 @media(min-width:681px){.su-article-page .su-match-dropdown>.su-fixture{grid-template-columns:100px minmax(0,1fr) 100px}}
+.su-article-feature .sqs-block{padding:0!important}.su-article-feature .intrinsic,.su-article-feature .image-block-outer-wrapper{border-radius:20px;overflow:hidden}.su-article-feature img{max-width:100%}.su-article-match .su-recap-btn{display:none!important}
