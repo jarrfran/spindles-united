@@ -55,7 +55,12 @@ Change the file in this repo and commit. Pages pick it up within about 2 minutes
 
 Place `<div data-su="contact"></div>` in a full-width Code Block, then place a native Squarespace Form Block below it (in the same section or the next section). Keep the existing header loader. `contact.js` finds the first following form within the page and applies scoped styles without moving/recreating it, intercepting submissions, or changing its settings. Supports forms rendered after the page loads. Footer forms and newsletters are excluded. Keep the Form Block full width in the editor; remove old contact headings if replacing the current page.
 
+## Optional header button
+
+Add `<link rel="stylesheet" href="https://jarrfran.github.io/spindles-united/header-button.css?v=1">` below the existing Header Code Injection to style desktop and mobile menu CTA buttons with the club red gradient. The button URL and label stay in Squarespace settings.
+
 ## Changelog
+- v16: increased mobile homepage hero height by 96px and added an optional shared header-button stylesheet.
 - v14: removed the contact intro/direct-contact row; placed the form left and video right, retaining the landscape mobile video.
 - v13: contact reason cards scroll to and select the matching native form choice; tall video playlist beside the form, landscape on mobile; larger labels and options.
 - v12: contact page with automatic styling of the following native Squarespace form.

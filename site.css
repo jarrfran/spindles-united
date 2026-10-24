@@ -361,7 +361,7 @@
     .su-sponsor-card { display: grid; grid-template-columns: repeat(3, 1fr); padding: 28px; }
   }
   @media (max-width: 760px) {
-    .su-hero { min-height: 640px; }
+    .su-hero { height: calc(100vh - var(--su-header, 0px) - var(--su-ticker-h) + 96px); height: calc(100svh - var(--su-header, 0px) - var(--su-ticker-h) + 96px); min-height: 736px; }
     .su-slide-inner { flex-direction: column; align-items: flex-start; gap: 18px; padding-bottom: 96px; }
     .su-slide::after { background: linear-gradient(to top, rgba(13,13,14,.96) 0%, rgba(13,13,14,.6) 45%, rgba(13,13,14,.1) 75%); }
     .su-home .su-slide-title { font-size: clamp(30px, 8.6vw, 40px); }
