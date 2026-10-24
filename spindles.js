@@ -5,8 +5,9 @@
   var BASE = document.currentScript && document.currentScript.src
     ? new URL('.', document.currentScript.src).href
     : 'https://jarrfran.github.io/spindles-united/';
-  var V = Math.floor(Date.now() / 12e4) + '-24'; // changes every 2 minutes, so edits show up fast
+  var V = Math.floor(Date.now() / 12e4) + '-25'; // changes every 2 minutes, so edits show up fast
   var uiScript=document.createElement('script');uiScript.src=BASE+'ui.js?v='+V;document.head.appendChild(uiScript);
+  var newsScript=document.createElement('script');newsScript.src=BASE+'news.js?v='+V;document.head.appendChild(newsScript);
   var IMG = 'https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/';
 
   var archiveReady, archiveBase;
@@ -142,7 +143,7 @@
             '<p class="su-slide-meta"><span class="su-tag">' + esc(cat) + '</span><time>' + fmtDate(p) + '</time></p>' +
             '<h2 class="su-slide-title"><a href="' + p.fullUrl + '">' + esc(shortTitle(p.fullUrl, p.title)) + '</a></h2>' +
             '<p class="su-slide-sub">' + esc(p.title) + '</p>' +
-            '<a class="su-btn su-btn-solid" href="' + p.fullUrl + '">Read the recap ' + ARROW + '</a>' +
+            '<div class="su-hero-actions"><a class="su-btn su-btn-solid" href="' + p.fullUrl + '">Read the recap ' + ARROW + '</a></div>' +
             '</div>' + mwHTML(slugDate(p.fullUrl)) + '</div></article>';
         }).join('');
         dotsBox.innerHTML = posts.map(function (p, i) {
@@ -309,8 +310,9 @@
       if(hero)getClubArchive().then(function(archive){
         function updateHero(){
           hero.querySelectorAll('.su-slide').forEach(function(slide){
-            var recap=slide.querySelector('.su-slide-copy > a.su-btn'),widget=slide.querySelector('.su-mw');
+            var recap=slide.querySelector('.su-slide-copy .su-btn:not(.su-hero-watch)'),widget=slide.querySelector('.su-mw');
             if(!recap)return;
+            if(!recap.parentElement.classList.contains('su-hero-actions')){var actions=document.createElement('div');actions.className='su-hero-actions';recap.before(actions);actions.appendChild(recap);}
             recap.classList.remove('su-btn-solid');recap.classList.add('su-btn-line');
             var dt=slugDate(recap.getAttribute('href')),match;
             Object.keys(archive.schedules).some(function(y){match=archive.schedules[y].matches.find(function(m){return m.date===dt;});return !!match;});
@@ -319,7 +321,7 @@
               var link=document.createElement('a');link.className=widget.className;link.href=match.scheduleUrl||'/schedule?season='+dt.slice(0,4)+'#match-'+match.id;link.innerHTML=widget.innerHTML;link.setAttribute('aria-label','View match details: '+match.home+' vs '+match.away);if(widget.hasAttribute('tabindex'))link.tabIndex=widget.tabIndex;widget.replaceWith(link);
             }
             if(match.video&&!slide.querySelector('.su-hero-watch')){
-              var watch=document.createElement('a');watch.className='su-btn su-btn-solid su-hero-watch';watch.href=match.video;watch.textContent='Watch';watch.target='_blank';watch.rel='noopener';if(slide.getAttribute('aria-hidden')==='true')watch.tabIndex=-1;recap.after(watch);
+              var watch=document.createElement('a');watch.className='su-btn su-btn-solid su-hero-watch';watch.href=match.video;watch.textContent='Watch the Stream';watch.target='_blank';watch.rel='noopener';if(slide.getAttribute('aria-hidden')==='true')watch.tabIndex=-1;recap.after(watch);
             }
           });
         }
@@ -396,6 +398,8 @@
     });return recordModule;
   };
   INIT.stats=function(el){window.SUGetRecordBook().then(function(api){api.stats(el);});};
+
+  INIT.seasons=function(el){var script=document.createElement('script');script.src=BASE+'seasons.js?v='+V;script.onload=function(){window.SUSeasons(el);};document.head.appendChild(script);};
 
   INIT.footer=function(el){var year=el.querySelector('.su-footer-year');if(year)year.textContent=new Date().getFullYear();};
 

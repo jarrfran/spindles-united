@@ -103,3 +103,12 @@ Use white and neutral grays for contrast surfaces, borders, muted text, score bo
 - v2: moved to GitHub Pages hosting (site.css + spindles.js + pages/home.html).
 - v1.1, home: club fonts (Alverata headings, Arboria body).
 - v1, home: refreshed homepage.
+
+## Inside Spindles, season hub, and recent news
+
+- `/inside-spindles`: replace the page content with `<div data-su="inside-spindles"></div>`.
+- `/seasons`: replace the page content with `<div data-su="seasons"></div>`.
+- Both use the existing global header loader and shared styles.
+- `seasons.js` reads the same live club archive as the schedule. Each year links to its filtered schedule, roster and record book, with direct links to closing matches.
+- `news.js` uses the unfiltered Squarespace `/news?format=json` feed for the schedule sidebar and the four-story footer row. `data/news.json` is the saved fallback.
+- The record-book header trophy photograph is from the club’s August 5, 2025 CDSL final gallery (`8-5-final-126.jpg`).
