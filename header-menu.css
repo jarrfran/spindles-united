@@ -1,0 +1,11 @@
+/* Optional Squarespace header injection; also loaded by the shared Spindles script. */
+@media(min-width:800px){
+ header .header-nav-item--folder{position:relative}
+ header .header-nav-folder-content{display:block!important;min-width:230px;padding:8px!important;margin-top:12px;border:1px solid #ffffff24;border-radius:16px;background:#202124!important;box-shadow:0 14px 40px #0005;text-align:left;opacity:0;visibility:hidden;transform:translateY(-7px);transform-origin:top;transition:opacity .18s,transform .24s cubic-bezier(.22,1,.36,1),visibility .18s;pointer-events:none;overflow:visible}
+ header .header-nav-folder-content:before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px}
+ header .header-nav-item--folder:hover .header-nav-folder-content,header .header-nav-item--folder:focus-within .header-nav-folder-content,header .header-nav-folder-content[aria-hidden="false"]{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+ header .header-nav-folder-item a{display:block!important;padding:11px 14px!important;border-radius:9px;color:#f1f2f4!important;font-family:arboria,sans-serif;font-size:14px;font-weight:600;line-height:1.4;white-space:nowrap;text-decoration:none!important;background:none!important}
+ header .header-nav-folder-item a:hover,header .header-nav-folder-item a:focus-visible{background:#ffffff12!important;color:#fff!important;outline:0;box-shadow:inset 3px 0 #d72b3c}
+}
+@media(max-width:799px){header .header-menu-nav-folder-content{background:#171719}header .header-menu-nav-folder-content .header-menu-nav-item a{font-family:arboria,sans-serif}}
+@media(prefers-reduced-motion:reduce){header .header-nav-folder-content{transition:none}}

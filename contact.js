@@ -44,6 +44,7 @@
       current.appendChild(film);stopFilm=startFilm(film,getHls);
       var s=next.closest('.page-section,section[data-section-id]');
       if(s&&!s.contains(el)){section=s;section.classList.add('su-contact-form-section');}
+      if(new URLSearchParams(location.search).get('reason')==='sponsor'){var choice=Array.from(current.querySelectorAll('input[type="radio"]')).find(function(input){return /sponsor/i.test((input.closest('label')?.textContent||'')+' '+input.value);});if(choice)choice.click();root.querySelector('[data-contact-reason="sponsor"]')?.classList.add('is-selected');}
     }
     root.addEventListener('click',function(e){
       var link=e.target.closest('[data-contact-reason]');if(!link||!current||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;

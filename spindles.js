@@ -5,9 +5,11 @@
   var BASE = document.currentScript && document.currentScript.src
     ? new URL('.', document.currentScript.src).href
     : 'https://jarrfran.github.io/spindles-united/';
-  var V = Math.floor(Date.now() / 12e4) + '-26'; // changes every 2 minutes, so edits show up fast
+  var V = Math.floor(Date.now() / 12e4) + '-27'; // changes every 2 minutes, so edits show up fast
   var uiScript=document.createElement('script');uiScript.src=BASE+'ui.js?v='+V;document.head.appendChild(uiScript);
   var newsScript=document.createElement('script');newsScript.src=BASE+'news.js?v='+V;document.head.appendChild(newsScript);
+  var navStyle=document.createElement('link');navStyle.rel='stylesheet';navStyle.id='su-navigation-style';navStyle.href=BASE+'header-menu.css?v='+V;if(!document.getElementById(navStyle.id))document.head.appendChild(navStyle);
+  var blogScript=document.createElement('script');blogScript.src=BASE+'blog.js?v='+V;document.head.appendChild(blogScript);
   var IMG = 'https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/';
 
   var archiveReady, archiveBase;
@@ -399,6 +401,9 @@
   };
   INIT.stats=function(el){window.SUGetRecordBook().then(function(api){api.stats(el);});};
 
+  INIT.about=function(){};
+  INIT.history=function(el){INIT.seasons(el);};
+  INIT.sponsors=function(){};
   INIT.seasons=function(el){var script=document.createElement('script');script.src=BASE+'seasons.js?v='+V;script.onload=function(){window.SUSeasons(el);};document.head.appendChild(script);};
 
   INIT.footer=function(el){var year=el.querySelector('.su-footer-year');if(year)year.textContent=new Date().getFullYear();};
@@ -410,18 +415,21 @@
     document.head.appendChild(script);
   };
 
+  window.SUGetClubPages=function(){return new Promise(function(resolve,reject){if(window.SUClubPages){resolve(window.SUClubPages);return;}var script=document.createElement('script');script.src=BASE+'club-pages.js?v='+V;script.onload=function(){resolve(window.SUClubPages);};script.onerror=reject;document.head.appendChild(script);});};
+
   /* ---------- Loader ---------- */
   function load(el) {
     var name = el.getAttribute('data-su');
     if (!name || el.getAttribute('data-su-loaded')) return;
     el.setAttribute('data-su-loaded', '1');
-    fetch(BASE + 'pages/' + name + '.html?v=' + V)
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    el.setAttribute('aria-busy','true');
+    var cacheKey='su-page-'+V+'-'+name,cached;try{cached=sessionStorage.getItem(cacheKey);}catch(e){}
+    (cached?Promise.resolve(cached):fetch(BASE + 'pages/' + name + '.html?v=' + V).then(function(r){if(!r.ok)throw new Error(r.status);return r.text();}).then(function(html){try{sessionStorage.setItem(cacheKey,html);}catch(e){}return html;}))
       .then(function (html) {
-        el.innerHTML = html;
+        el.innerHTML = html;el.removeAttribute('aria-busy');
         if (INIT[name]) { try { INIT[name](el); } catch (e) { console.warn('Spindles:', name, e); } }
       })
-      .catch(function (e) { console.warn('Spindles: could not load page "' + name + '"', e); });
+      .catch(function (e) { el.removeAttribute('aria-busy');console.warn('Spindles: could not load page "' + name + '"', e); });
   }
   function scan() {
     if(location.pathname.replace(/\/$/,'')==='/stats'&&!document.querySelector('[data-su="stats"]')){

@@ -112,3 +112,13 @@ Use white and neutral grays for contrast surfaces, borders, muted text, score bo
 - `seasons.js` reads the same live club archive as the schedule. Each year links to its filtered schedule, roster and record book, with direct links to closing matches.
 - `news.js` uses the unfiltered Squarespace `/news?format=json` feed for the schedule sidebar and the four-story footer row. `data/news.json` is the saved fallback.
 - The record-book header trophy photograph is from the club’s August 5, 2025 CDSL final gallery (`8-5-final-126.jpg`).
+
+## Public blog presentation and renamed pages (v27)
+
+`/about` and `/history` replace the former Inside Spindles and Seasons URLs. Their old div names remain supported; `about` and `history` are also accepted. The new sponsors block is `<div data-su="sponsors"></div>` at `/sponsors`.
+
+`blog.js` decorates the existing public Squarespace blog collection and native post content, leaving stored bodies and the editor intact. It skips Squarespace editing/iframe contexts and supports `?su-native=1` as a public fallback. Native sections are restored on load failure. Posts match fixtures by exact normalized **Recap URL**, so no date/title guessing inserts a card into an unrelated article. `SUClubPages.matchCard` is shared by schedule and article templates.
+
+`news.js` follows the paginated feed and uses `data/news-archive.json` as its saved fallback. Schedule sidebars use the latest six linked recaps from the selected fixture season. Other news placements remain unfiltered.
+
+About research: the club’s [2023 recap](https://www.spindlesunited.com/news/2023-a-year-to-remember), [2026 final recap](https://www.spindlesunited.com/news/8-9-2026-match), [original club story](https://www.spindlesunited.com/inside-spindles), [UPL About](https://www.uplny.com/about), and the [UPL launch announcement](https://www.linkedin.com/posts/jordan-prouty-669925254_upstatepremierleague-uplny-upstateny-activity-7432873290085588993-o3St). Ownership contacts and the 2023–2025 Tots dates were supplied by the club owner. Future plans are expressed as aims, not dated commitments.
