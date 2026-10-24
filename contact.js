@@ -12,7 +12,7 @@
       if(!native.dataset.suConfirmation){
         native.dataset.suConfirmation='true';
         native.setAttribute('role','status');native.setAttribute('aria-live','polite');native.setAttribute('tabindex','-1');
-        native.innerHTML='<div class="su-contact-confirmation"><span class="su-contact-confirmation-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p class="su-club-eyebrow">Thanks for Reaching Out</p><h2>Message received.</h2><p>Your message is with the club. We’ll get back to you using the email address you provided.</p><a class="su-club-btn su-recap-btn" href="/">Back to the Club</a></div>';
+        native.innerHTML='<div class="su-contact-confirmation"><span class="su-contact-confirmation-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p class="su-club-eyebrow">Thanks for Reaching Out</p><h2>Message received.</h2><p>Your message is with the club. We will get back to you using the email address you provided.</p><a class="su-club-btn su-recap-btn" href="/">Back to the Club</a></div>';
       }
       if(current.classList.contains('su-contact-sent'))return;
       current.classList.add('su-contact-sent');if(host)host.classList.add('su-contact-sent');if(section)section.classList.add('su-contact-sent');
