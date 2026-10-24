@@ -1738,7 +1738,7 @@
           "venueSource": "CDSL league venue in club archives",
           "stage": "MW4",
           "league": "CDSL",
-          "manOfMatch": "Ammar Singaporewala · Dan Crook · Cole Rust",
+          "manOfMatch": "Ammar Singaporewala \u00b7 Dan Crook \u00b7 Cole Rust",
           "forfeit": false,
           "opponentEvents": null,
           "eventCountNote": null,
@@ -3166,7 +3166,7 @@
           "venueSource": "CDSL league venue in club archives",
           "stage": "MW10",
           "league": "CDSL",
-          "manOfMatch": "Ryan Breen · Mason Kievit",
+          "manOfMatch": "Ryan Breen \u00b7 Mason Kievit",
           "forfeit": false,
           "opponentEvents": null,
           "eventCountNote": null,
@@ -3288,7 +3288,7 @@
           "awayScore": 0,
           "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
           "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/f548735a-90ba-4978-8149-d731ca8a81c4/Vassi.png",
-          "note": "Win by forfeit · not played",
+          "note": "Win by forfeit \u00b7 not played",
           "kickoff": "6:15pm",
           "homeAway": "Neutral",
           "id": "2025-07-08",
@@ -3439,7 +3439,7 @@
           "awayScore": 0,
           "homeCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png",
           "awayCrest": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/2169f49e-3ca5-46b9-9c8b-f7d0a4fbcf6c/ligon-logo.png",
-          "note": "Win by forfeit · not played",
+          "note": "Win by forfeit \u00b7 not played",
           "kickoff": "1pm",
           "homeAway": "Neutral",
           "id": "2025-07-20",
@@ -5301,6 +5301,15 @@
           "bio": "",
           "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/3c700152-95cf-43d8-8838-cd1dc799ceee/JoeSorel.jpg"
         }
+      ],
+      "coaches": [
+        {
+          "name": "Jordan Prouty",
+          "number": null,
+          "group": "Coaches",
+          "bio": "Head Coach",
+          "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/650aca70-fdba-4f0c-9d96-3b4167d66641/JordanProuty.jpg"
+        }
       ]
     },
     "2023": {
@@ -5492,7 +5501,7 @@
           "name": "Joshua Marer",
           "number": null,
           "group": "Goalkeepers",
-          "bio": "COHOES, NY | D’YOUVILLE UNIVERSITY",
+          "bio": "COHOES, NY | D\u2019YOUVILLE UNIVERSITY",
           "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/687533e0-3592-49b7-98a6-c42a711218b2/1.jpg"
         },
         {
@@ -5501,6 +5510,22 @@
           "group": "Goalkeepers",
           "bio": "SCHENECTADY, NY | FC DUTCHMEN",
           "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/d7205e1f-2425-45f9-a5a7-7a2772afbe51/12.jpg"
+        },
+        {
+          "name": "Jordan Prouty",
+          "number": null,
+          "group": "Goalkeepers",
+          "bio": "",
+          "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/650aca70-fdba-4f0c-9d96-3b4167d66641/JordanProuty.jpg"
+        }
+      ],
+      "coaches": [
+        {
+          "name": "Jordan Prouty",
+          "number": null,
+          "group": "Coaches",
+          "bio": "Head Coach",
+          "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/650aca70-fdba-4f0c-9d96-3b4167d66641/JordanProuty.jpg"
         }
       ]
     },
@@ -5707,21 +5732,23 @@
           "name": "Josh Marer",
           "number": null,
           "group": "Goalkeepers",
-          "bio": "COHOES, NY | D’YOUVILLE UNIVERSITY",
+          "bio": "COHOES, NY | D\u2019YOUVILLE UNIVERSITY",
           "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7bb5a587-7609-4446-8720-376586ef7e38/99.jpg"
-        },
+        }
+      ],
+      "coaches": [
         {
           "name": "Jordan Prouty",
           "number": null,
-          "group": "Staff",
-          "bio": "HEAD COACH",
+          "group": "Coaches",
+          "bio": "Head Coach",
           "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/45e24427-df37-431b-bf67-7450ff2e88f5/5-30-match-001_edited.jpg"
         },
         {
           "name": "Mark Cenicola",
           "number": null,
-          "group": "Staff",
-          "bio": "ASSISTANT COACH",
+          "group": "Coaches",
+          "bio": "Assistant Coach",
           "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/1d53d5f1-22f7-4e9e-9701-44bf74b2321e/5-30-match-002_edited.jpg"
         }
       ]
@@ -5926,17 +5953,26 @@
           "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/394d6a66-30d0-43d7-a1db-39441db879b2/99.jpg"
         },
         {
+          "name": "Andrew Michel",
+          "number": null,
+          "group": "Defenders",
+          "bio": "PUNTA GORDA, FL | PLATTSBURGH",
+          "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/fac8888f-8425-4428-9774-fdfbd53cc7ba/23.jpg"
+        }
+      ],
+      "coaches": [
+        {
           "name": "Jordan Prouty",
           "number": null,
-          "group": "Staff",
-          "bio": "HEAD COACH",
+          "group": "Coaches",
+          "bio": "Head Coach",
           "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/ac7b0f40-3aaa-48b2-83e8-1ddf4c43ce3e/4-27-headshots-01.jpg"
         },
         {
           "name": "Jad Essoulaimani",
           "number": null,
-          "group": "Staff",
-          "bio": "ASSISTANT COACH",
+          "group": "Coaches",
+          "bio": "Assistant Coach",
           "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8eca7185-27eb-45af-ae3b-0bbb4d4d0835/4-27-headshots-06.jpg"
         }
       ]
@@ -6133,11 +6169,34 @@
           "bio": "Arlington, VT | Russell Sage",
           "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/1a62d88c-0695-49ab-a498-cc20cd6f8991/7-17-2026-match-73.jpg"
         }
+      ],
+      "coaches": [
+        {
+          "name": "Jordan Prouty",
+          "number": null,
+          "group": "Coaches",
+          "bio": "Head Coach",
+          "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/650aca70-fdba-4f0c-9d96-3b4167d66641/JordanProuty.jpg"
+        },
+        {
+          "name": "Jad Essoulaimani",
+          "number": null,
+          "group": "Coaches",
+          "bio": "Assistant Coach",
+          "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8eca7185-27eb-45af-ae3b-0bbb4d4d0835/4-27-headshots-06.jpg"
+        },
+        {
+          "name": "Andrew Michel",
+          "number": null,
+          "group": "Coaches",
+          "bio": "Assistant Coach",
+          "photo": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/fac8888f-8425-4428-9774-fdfbd53cc7ba/23.jpg"
+        }
       ]
     }
   },
   "scheduleNotes": {
-    "archives": "Spindles goals, assists and disciplinary events follow the club archive. Opponent events are included where league reports are available; unrecorded minutes are shown as —."
+    "archives": "Spindles goals, assists and disciplinary events follow the club archive. Opponent events are included where league reports are available; unrecorded minutes are shown as \u2014."
   },
   "sheetSync": {
     "url": "https://docs.google.com/spreadsheets/d/1DAeHMhkPNmIEMFssGc29kkfBgPj4POKOChNVtUO-tJg/edit",
