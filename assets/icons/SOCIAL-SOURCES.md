@@ -1,0 +1,1 @@
+Social brand SVGs: Simple Icons, https://github.com/simple-icons/simple-icons (CC0-1.0). Original Facebook, YouTube and TikTok logo geometry; colours inherit the existing Spindles palette. Instagram retains the existing outline icon.
