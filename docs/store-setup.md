@@ -10,7 +10,7 @@ Create a regular Squarespace page at `/store`. In a full-width section with no e
 
 Keep the existing global Spindles loader and footer. `squarespace-store-div.html` contains the same block. Preview: `https://jarrfran.github.io/spindles-united/preview-store.html`.
 
-`/store` was installed and verified on October 26, 2026. The homepage promo and footer now link to `/store`, and shared `ui.js` routes the desktop/mobile Squarespace header Store links there in the same tab. In Squarespace settings, the stored header URL may still read the old domain; it can also be changed to `/store` for consistency. The Shopify storefront redirect remains pending Shopify admin access.
+`/store` was installed and verified on October 26, 2026. The homepage promo and footer now link to `/store`, and shared `ui.js` routes the desktop/mobile Squarespace header Store links there in the same tab. In Squarespace settings, the stored header URL may still read the old domain; it can also be changed to `/store` for consistency. The Shopify redirect was published on October 26, 2026 in `Spindles - Squarespace Storefront` (165684904175). The original Spotlight theme (137952264431) is preserved as a draft rollback: republish Spotlight to restore the old storefront.
 
 ## Commerce connection
 
@@ -25,6 +25,8 @@ Product links use `/store?product=HANDLE`; no separate Squarespace page is neede
 Do this **only after `/store` is installed and checkout is tested**. Keep `spindlesunited.store` connected to Shopify so its API, checkout and account URLs still work. Do not forward the entire domain at DNS/registrar level.
 
 `shopify/storefront-redirect.liquid` is an optional theme snippet to paste immediately after `<head>` in a duplicate of the Shopify theme, then preview before publishing. It redirects theme homepage, collection, product and search views to the new storefront, preserving product handles and search queries. Cart, checkout, policies, customer accounts, order pages, API endpoints and theme preview sessions are excluded. It is a browser redirect, not a server-side 301; the underlying Shopify storefront remains present. A stricter server redirect requires additional hosting/routing work.
+
+Preview redirect testing can be enabled explicitly with `su-shop-redirect-test=1` alongside `preview_theme_id=165684904175`. Normal preview sessions bypass the redirect; `su-shop-native=1` provides a troubleshooting bypass.
 
 Keep a backup of the Shopify theme before applying the snippet. Remove it to restore the existing storefront. No Shopify theme, domain, payment or plan changes are made by publishing the GitHub code alone.
 

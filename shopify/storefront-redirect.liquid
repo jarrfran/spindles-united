@@ -8,7 +8,8 @@
     <script>
       (function(){
         var query=new URLSearchParams(location.search);
-        if(query.has('preview_theme_id')||query.has('_fd')||query.has('su-shop-native'))return;
+        if(query.has('su-shop-native'))return;
+        if((query.has('preview_theme_id')||query.has('_fd'))&&query.get('su-shop-redirect-test')!=='1')return;
         var target=new URL('https://www.spindlesunited.com/store');
         if(query.get('q'))target.searchParams.set('q',query.get('q'));
         ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){if(query.get(k))target.searchParams.set(k,query.get(k));});
