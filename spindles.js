@@ -5,10 +5,11 @@
   var BASE = document.currentScript && document.currentScript.src
     ? new URL('.', document.currentScript.src).href
     : 'https://jarrfran.github.io/spindles-united/';
-  var V = Math.floor(Date.now() / 12e4) + '-35'; // changes every 2 minutes, so edits show up fast
+  var V = Math.floor(Date.now() / 12e4) + '-36'; // changes every 2 minutes, so edits show up fast
   var uiScript=document.createElement('script');uiScript.src=BASE+'ui.js?v='+V;document.head.appendChild(uiScript);
   var newsScript=document.createElement('script');newsScript.src=BASE+'news.js?v='+V;document.head.appendChild(newsScript);
   var navStyle=document.createElement('link');navStyle.rel='stylesheet';navStyle.id='su-navigation-style';navStyle.href=BASE+'header-menu.css?v='+V;if(!document.getElementById(navStyle.id))document.head.appendChild(navStyle);
+  var mentionsScript=document.createElement('script');mentionsScript.src=BASE+'player-mentions.js?v='+V;var mentionsReady=new Promise(function(resolve,reject){mentionsScript.onload=function(){resolve(window.SUPlayerMentions);};mentionsScript.onerror=reject;});window.SUGetPlayerMentions=function(){return mentionsReady;};document.head.appendChild(mentionsScript);
   var blogScript=document.createElement('script');blogScript.src=BASE+'blog.js?v='+V;document.head.appendChild(blogScript);
   var IMG = 'https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/';
 

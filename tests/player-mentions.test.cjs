@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),records=require('../record-book.js'),mentions=require('../player-mentions.js');
+const read=p=>JSON.parse(fs.readFileSync(require('node:path').join(__dirname,'..',p)));
+const data=records.build(read('data/club.json'),read('data/record-book.json'),read('data/player-media.json')),idx=mentions.index(data,records,2026);
+for(const [word,name]of [['Dan Crook','Dan Crook'],['Crook','Dan Crook'],['Jimmy Alexander','Jimmy Alexander'],['James Alexander','Jimmy Alexander'],['Zeidane Adeji','Zeidane Adjei']])assert.equal(idx.resolve(word,'','').name,name);
+assert.equal(idx.resolve('Whalen','',''),null);assert.equal(idx.resolve('Singaporewala','',''),null);
+assert.equal(idx.resolve('Whalen','Lewis Whalen crossed.','Dominic Whalen and Lewis Whalen played.').name,'Lewis Whalen');
+assert.equal(idx.resolve('Singaporewala','','Adam Singaporewala scored.').name,'Adam Singaporewala');
+assert.equal(idx.mentions('Crook Crooked Crook’s Dan Crook').length,3);
+assert.equal(idx.resolve('Palumbo','','').id,records.slug('Frankie Palumbo'));
+console.log('Player name and ambiguity checks passed.');

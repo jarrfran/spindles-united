@@ -11,7 +11,7 @@
   function date(s, long) { return new Date(s+'T12:00:00').toLocaleDateString('en-US',long?{weekday:'long',month:'long',day:'numeric',year:'numeric'}:{month:'short',day:'numeric'}); }
   function logo(src,name) {return src?'<img src="'+esc(src)+'?format=100w" alt="" width="32" height="32">':'<span class="su-team-placeholder" aria-hidden="true">'+esc(name.charAt(0))+'</span>';}
   function score(m) {return '<span class="su-club-score"><span>'+esc(m.homeScore==null?'–':m.homeScore)+'</span><i aria-hidden="true"></i><span>'+esc(m.awayScore==null?'–':m.awayScore)+'</span></span>';}
-  function teams(m) {return '<span class="su-club-match-teams"><span class="su-club-team su-club-team-home"><span>'+esc(m.home)+'</span>'+logo(m.homeCrest,m.home)+'</span>'+score(m)+'<span class="su-club-team">'+logo(m.awayCrest,m.away)+'<span>'+esc(m.away)+'</span></span></span>';}
+  function teams(m) {return '<span class="su-club-match-teams" data-winner="'+esc(m.winner||'')+'"><span class="su-club-team su-club-team-home"><span>'+esc(m.home)+'</span>'+logo(m.homeCrest,m.home)+'</span>'+score(m)+'<span class="su-club-team">'+logo(m.awayCrest,m.away)+'<span>'+esc(m.away)+'</span></span></span>';}
   function query(season,match) {return '?season='+season+(match?'&match='+encodeURIComponent(match):'');}
   function venueLink(name){
     if(!name||/not recorded|TBD/i.test(name))return esc(name||'Venue not recorded');
