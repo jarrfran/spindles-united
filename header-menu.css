@@ -14,3 +14,8 @@
 @media(max-width:799px){
  #header .header-menu,#header .header-menu-bg,#header .header-menu-nav,#header .header-menu-nav-folder,#header .header-menu-nav-folder-content,#header .header-menu-actions,#header .header-menu-cta{background-color:#111!important;background-image:none!important}
 }
+
+/* Lucide shopping-cart: desktop beside Store, mobile above Store. */
+#header .su-nav-cart,.header-menu .su-nav-cart{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;color:#fff!important;background:transparent;border:0;border-radius:12px;text-decoration:none;margin-right:14px;}
+.su-nav-cart svg{display:block;width:25px;height:25px}.su-nav-cart:hover{background:#ffffff12!important}.su-nav-cart:focus-visible{outline:2px solid #e33146;outline-offset:3px}
+.header-menu .su-nav-cart{display:flex;margin:14px auto 10px!important;align-self:center}
