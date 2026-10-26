@@ -205,13 +205,8 @@
     "reviewedOn": "2026-10-25",
     "source": "Club Instagram captions and award graphics reviewed in the user-authorized signed-in Chrome session.",
     "coverage": "Public club posts from October 2026 back through the 2023 postseason.",
-    "unconfirmed": [
-      {
-        "season": 2025,
-        "award": "Best Moment",
-        "sourceUrl": "https://www.instagram.com/spindlesunited/p/DP1zPrhDz1c/",
-        "reason": "Listed as a category; winner not verified. This may be a team moment rather than an individual award."
-      },
+    "excluded": "Icarus nominations are not wins. Individual season awards are separate from match-by-match Man of the Match records.",
+    "pendingAnnouncements": [
       {
         "season": 2026,
         "awards": [
@@ -221,9 +216,9 @@
           "Best Celebration"
         ],
         "sourceUrl": "https://www.instagram.com/spindlesunited/p/DcdzJW5sl5v/",
-        "reason": "Included on the overview graphic; no winner announcement verified as of review date."
+        "reason": "Club owner confirmed on 2026-10-25 that the remaining 2026 awards have not yet been announced.",
+        "status": "not-yet-announced"
       }
-    ],
-    "excluded": "Icarus nominations are not wins. Individual season awards are separate from match-by-match Man of the Match records."
+    ]
   }
 }

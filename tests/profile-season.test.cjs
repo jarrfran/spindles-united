@@ -8,5 +8,5 @@ assert(render().includes('aria-label="Squad number '+p.number+'"'));
 for(const [y,n] of Object.entries(p.numbers))assert(render(y).includes('aria-label="Squad number '+n+'"'));
 assert(!render().split('class="su-profile-photo">')[1].split('</div>')[0].includes('su-profile-number'));assert(render().includes('su-profile-title'));assert(render().includes('su-stat-yellow'));assert(render().includes('su-stat-red'));assert(render().includes('Individual Accolades'));
 data.accolades=[{player:p.name,season:p.years[0],award:'Test Verified Award',verified:true},{player:p.name,season:p.years[0],award:'Unverified Candidate',verified:false}];
-assert(render().includes('Test Verified Award'));assert(!render().includes('Unverified Candidate'));
+assert(render().indexOf('su-profile-secondary')<render().indexOf('Individual Accolades'));assert(render().includes('su-stat-value'));assert(render().includes('Test Verified Award'));assert(!render().includes('Unverified Candidate'));
 console.log('Career/latest number, season number changes, stat icons and verified accolades passed for '+p.name+'.');

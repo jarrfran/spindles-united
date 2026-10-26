@@ -36,8 +36,7 @@ Reviewed October 25, 2026 using the club’s signed-in Instagram archive. Winner
 
 ## Gaps and exclusions
 
-- 2025 Best Moment was announced as a category, but its winner was not verified. It may be a team award.
-- The 2026 overview lists Best Forward, Best Player, Best Goal, and Best Celebration; no winners were verified for these yet. Best Midfielder was separately announced, although absent from that overview.
+- The 2026 overview lists Best Forward, Best Player, Best Goal, and Best Celebration; the club owner confirmed these have not yet been announced (October 25, 2026). Best Midfielder was separately announced, although absent from that overview.
 - 2023 Icarus Manager, Community and Goal nominations and 2024 Icarus Community/Goal nominations are excluded from wins.
 - Match-by-match Man of the Match remains in its existing profile section.
 - No 2022 awards have been added; the review covered the requested 2023–2026 programme.
