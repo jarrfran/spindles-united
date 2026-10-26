@@ -1,11 +1,229 @@
 {
-  "entries": [],
-  "researchStatus": "Instagram archive requires login; no winners inferred from statistics.",
-  "fields": [
-    "season",
-    "player",
-    "award",
-    "sourceUrl",
-    "verified"
-  ]
+  "entries": [
+    {
+      "season": 2023,
+      "player": "Jad Essoulaimani",
+      "award": "Golden Boot",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/CwEOkQ5pfff/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "Joint winner with Zeidane Adjei; 3 goals each."
+    },
+    {
+      "season": 2023,
+      "player": "Zeidane Adjei",
+      "award": "Golden Boot",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/CwEOkQ5pfff/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "Joint winner with Jad Essoulaimani; 3 goals each."
+    },
+    {
+      "season": 2023,
+      "player": "Moulay Aladlouni",
+      "award": "Playmaker Award",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/CwGWA2SpKkM/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "Graphic identifies Moulay Ahmed Aladlouni; 3 assists."
+    },
+    {
+      "season": 2023,
+      "player": "Jad Essoulaimani",
+      "award": "Goal of the Season",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/reel/Czyw7UJrrW1/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "Free kick against Highlanders; public vote."
+    },
+    {
+      "season": 2024,
+      "player": "Zeidane Adjei",
+      "award": "Golden Boot",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/C-k0aR6pbXP/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "5 goals."
+    },
+    {
+      "season": 2024,
+      "player": "Ali Aladlouni",
+      "award": "Playmaker of the Year",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/C-TVo-7pJFe/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "3 assists."
+    },
+    {
+      "season": 2024,
+      "player": "Luke Geczy",
+      "award": "Goal of the Season",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/reel/DDh5Kr3pYiT/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "Grassroots Cup volley; public vote."
+    },
+    {
+      "season": 2025,
+      "player": "John Locicero",
+      "award": "Golden Boot",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/DQCa4Vrjcnj/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "11 goals: 8 league, 2 playoffs, 1 Grassroots Cup."
+    },
+    {
+      "season": 2025,
+      "player": "Ryan Breen",
+      "award": "Best Playmaker",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/DQUvFeXDxI3/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "4 assists; source graphic/caption uses Best Playermaker."
+    },
+    {
+      "season": 2025,
+      "player": "Dan Crook",
+      "award": "Best Defender",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/DRuhInyDeK5/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "Player voted."
+    },
+    {
+      "season": 2025,
+      "player": "John Locicero",
+      "award": "Best Forward",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/DSBEdz1kik6/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "Player voted."
+    },
+    {
+      "season": 2025,
+      "player": "Ian Maguire",
+      "award": "Community Spins",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/DSSoJpADfJ1/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "Joint recognition with Liam McDonald."
+    },
+    {
+      "season": 2025,
+      "player": "Liam McDonald",
+      "award": "Community Spins",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/DSSoJpADfJ1/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "Joint recognition with Ian Maguire."
+    },
+    {
+      "season": 2025,
+      "player": "Ammar Singaporewala",
+      "award": "Best Player",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/DTBBjxMFR4a/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "2025 graphic, announced January 2026; staff voted."
+    },
+    {
+      "season": 2025,
+      "player": "Marcos Lopez",
+      "award": "Best Goal",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/reel/DSnts6_DP3r/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "Long-range goal against Deathwish in MW10; public vote."
+    },
+    {
+      "season": 2026,
+      "player": "Anders Trestick",
+      "award": "Golden Boot",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/Dc4a3nfHxCu/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "7 goals."
+    },
+    {
+      "season": 2026,
+      "player": "Anders Trestick",
+      "award": "Best Playmaker",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/DdzhDpnFYPc/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "4 assists; title corroborated by reel/Dd18IVThEFd/."
+    },
+    {
+      "season": 2026,
+      "player": "Dan Crook",
+      "award": "Best Defender",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/DdaVaInjZkY/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "Player voted."
+    },
+    {
+      "season": 2026,
+      "player": "Marcos Lopez",
+      "award": "Best Midfielder",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/DeCNaoAlYbA/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "note": "Player voted."
+    },
+    {
+      "season": 2026,
+      "player": "Dan Crook",
+      "award": "UPL Cup Final MVP",
+      "sourceUrl": "https://www.instagram.com/spindlesunited/p/DdaVaInjZkY/",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "competition",
+      "note": "Explicitly confirmed in the Best Defender announcement."
+    }
+  ],
+  "research": {
+    "reviewedOn": "2026-10-25",
+    "source": "Club Instagram captions and award graphics reviewed in the user-authorized signed-in Chrome session.",
+    "coverage": "Public club posts from October 2026 back through the 2023 postseason.",
+    "unconfirmed": [
+      {
+        "season": 2025,
+        "award": "Best Moment",
+        "sourceUrl": "https://www.instagram.com/spindlesunited/p/DP1zPrhDz1c/",
+        "reason": "Listed as a category; winner not verified. This may be a team moment rather than an individual award."
+      },
+      {
+        "season": 2026,
+        "awards": [
+          "Best Forward",
+          "Best Player",
+          "Best Goal",
+          "Best Celebration"
+        ],
+        "sourceUrl": "https://www.instagram.com/spindlesunited/p/DcdzJW5sl5v/",
+        "reason": "Included on the overview graphic; no winner announcement verified as of review date."
+      }
+    ],
+    "excluded": "Icarus nominations are not wins. Individual season awards are separate from match-by-match Man of the Match records."
+  }
 }

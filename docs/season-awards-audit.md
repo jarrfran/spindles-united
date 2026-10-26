@@ -1,19 +1,47 @@
-# Season awards research — October 25, 2026
+# Verified Spindles individual awards
 
-The club's Instagram profile is public, but opening post details and viewing older posts prompted a login in the available browser. Search did not expose verifiable season-award posts. No winners or award years have been inferred from goal/assist totals, match awards, or club honours.
+Reviewed October 25, 2026 using the club’s signed-in Instagram archive. Winners are recorded only when an announcement or award graphic confirms them. The list contains 19 season-award recipient records and one competition award.
 
-Categories supplied by the club owner, awaiting confirmation of each year's exact award name and recipients:
+## 2023
 
-- Golden Boot
-- Best Playmaker / most assists
-- Best Player
-- Best Midfielder
-- Best Defender
-- Best Attacker
-- Community Spins
+- **Golden Boot — Jad Essoulaimani**. [Announcement](https://www.instagram.com/spindlesunited/p/CwEOkQ5pfff/). Joint winner with Zeidane Adjei; 3 goals each.
+- **Golden Boot — Zeidane Adjei**. [Announcement](https://www.instagram.com/spindlesunited/p/CwEOkQ5pfff/). Joint winner with Jad Essoulaimani; 3 goals each.
+- **Playmaker Award — Moulay Aladlouni**. [Announcement](https://www.instagram.com/spindlesunited/p/CwGWA2SpKkM/). Graphic identifies Moulay Ahmed Aladlouni; 3 assists.
+- **Goal of the Season — Jad Essoulaimani**. [Announcement](https://www.instagram.com/spindlesunited/reel/Czyw7UJrrW1/). Free kick against Highlanders; public vote.
 
-Years to audit: 2023, 2024, 2025, 2026. The 2022 award programme has not been confirmed.
+## 2024
 
-Verified entries belong in `data/accolades.json`: `season`, `player` (canonical profile name), `award`, `sourceUrl` (original announcement), and `verified: true`. Shared awards use one entry for each recipient. Only verified entries appear publicly; they are filtered by the selected profile season. This is separate from match-by-match Man of the Match records and team honours.
+- **Golden Boot — Zeidane Adjei**. [Announcement](https://www.instagram.com/spindlesunited/p/C-k0aR6pbXP/). 5 goals.
+- **Playmaker of the Year — Ali Aladlouni**. [Announcement](https://www.instagram.com/spindlesunited/p/C-TVo-7pJFe/). 3 assists.
+- **Goal of the Season — Luke Geczy**. [Announcement](https://www.instagram.com/spindlesunited/reel/DDh5Kr3pYiT/). Grassroots Cup volley; public vote.
 
-Icon source: https://github.com/lucide-icons/lucide — original SVG geometry, ISC licence in `assets/icons/LUCIDE-LICENSE.txt`.
+## 2025
+
+- **Golden Boot — John Locicero**. [Announcement](https://www.instagram.com/spindlesunited/p/DQCa4Vrjcnj/). 11 goals: 8 league, 2 playoffs, 1 Grassroots Cup.
+- **Best Playmaker — Ryan Breen**. [Announcement](https://www.instagram.com/spindlesunited/p/DQUvFeXDxI3/). 4 assists; source graphic/caption uses Best Playermaker.
+- **Best Defender — Dan Crook**. [Announcement](https://www.instagram.com/spindlesunited/p/DRuhInyDeK5/). Player voted.
+- **Best Forward — John Locicero**. [Announcement](https://www.instagram.com/spindlesunited/p/DSBEdz1kik6/). Player voted.
+- **Community Spins — Ian Maguire**. [Announcement](https://www.instagram.com/spindlesunited/p/DSSoJpADfJ1/). Joint recognition with Liam McDonald.
+- **Community Spins — Liam McDonald**. [Announcement](https://www.instagram.com/spindlesunited/p/DSSoJpADfJ1/). Joint recognition with Ian Maguire.
+- **Best Player — Ammar Singaporewala**. [Announcement](https://www.instagram.com/spindlesunited/p/DTBBjxMFR4a/). 2025 graphic, announced January 2026; staff voted.
+- **Best Goal — Marcos Lopez**. [Announcement](https://www.instagram.com/spindlesunited/reel/DSnts6_DP3r/). Long-range goal against Deathwish in MW10; public vote.
+
+## 2026
+
+- **Golden Boot — Anders Trestick**. [Announcement](https://www.instagram.com/spindlesunited/p/Dc4a3nfHxCu/). 7 goals.
+- **Best Playmaker — Anders Trestick**. [Announcement](https://www.instagram.com/spindlesunited/p/DdzhDpnFYPc/). 4 assists; title corroborated by reel/Dd18IVThEFd/.
+- **Best Defender — Dan Crook**. [Announcement](https://www.instagram.com/spindlesunited/p/DdaVaInjZkY/). Player voted.
+- **Best Midfielder — Marcos Lopez**. [Announcement](https://www.instagram.com/spindlesunited/p/DeCNaoAlYbA/). Player voted.
+- **UPL Cup Final MVP — Dan Crook**. [Announcement](https://www.instagram.com/spindlesunited/p/DdaVaInjZkY/). Explicitly confirmed in the Best Defender announcement.
+
+## Gaps and exclusions
+
+- 2025 Best Moment was announced as a category, but its winner was not verified. It may be a team award.
+- The 2026 overview lists Best Forward, Best Player, Best Goal, and Best Celebration; no winners were verified for these yet. Best Midfielder was separately announced, although absent from that overview.
+- 2023 Icarus Manager, Community and Goal nominations and 2024 Icarus Community/Goal nominations are excluded from wins.
+- Match-by-match Man of the Match remains in its existing profile section.
+- No 2022 awards have been added; the review covered the requested 2023–2026 programme.
+
+## Data maintenance
+
+Verified recipient records are stored in `data/accolades.json`. Shared awards have one record per recipient, with the same source URL. Awards follow the season on the graphic rather than the Instagram publication year. The 2025 Best Player announcement, for example, was posted January 2026.
