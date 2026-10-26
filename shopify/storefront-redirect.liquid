@@ -1,0 +1,20 @@
+{% comment %}
+  Install only after https://www.spindlesunited.com/store is live and tested.
+  Paste after <head> in a duplicate Shopify theme, preview, then publish.
+  Keep the Shopify domain attached; this does not affect API/checkout routes.
+{% endcomment %}
+{% unless request.design_mode %}
+  {% if request.page_type == 'index' or request.page_type == 'product' or request.page_type == 'collection' or request.page_type == 'list-collections' or request.page_type == 'search' %}
+    <script>
+      (function(){
+        var query=new URLSearchParams(location.search);
+        if(query.has('preview_theme_id')||query.has('_fd')||query.has('su-shop-native'))return;
+        var target=new URL('https://www.spindlesunited.com/store');
+        if(query.get('q'))target.searchParams.set('q',query.get('q'));
+        ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){if(query.get(k))target.searchParams.set(k,query.get(k));});
+        {% if request.page_type == 'product' %}target.searchParams.set('product',{{ product.handle | json }});{% endif %}
+        location.replace(target.href);
+      })();
+    </script>
+  {% endif %}
+{% endunless %}

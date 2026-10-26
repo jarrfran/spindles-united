@@ -122,3 +122,7 @@ Use white and neutral grays for contrast surfaces, borders, muted text, score bo
 `news.js` follows the paginated feed and uses `data/news-archive.json` as its saved fallback. Schedule sidebars use the latest six linked recaps from the selected fixture season. Other news placements remain unfiltered.
 
 About research: the club’s [2023 recap](https://www.spindlesunited.com/news/2023-a-year-to-remember), [2026 final recap](https://www.spindlesunited.com/news/8-9-2026-match), [original club story](https://www.spindlesunited.com/inside-spindles), [UPL About](https://www.uplny.com/about), and the [UPL launch announcement](https://www.linkedin.com/posts/jordan-prouty-669925254_upstatepremierleague-uplny-upstateny-activity-7432873290085588993-o3St). Ownership contacts and the 2023–2025 Tots dates were supplied by the club owner. Future plans are expressed as aims, not dated commitments.
+
+## Custom Shopify Storefront
+
+The store block is `<div data-su="store"></div>` at `/store`. See [store setup](docs/store-setup.md) for installation, live Shopify product/cart behavior and the optional old-storefront redirect. Preview with `preview-store.html`. The public tokenless Storefront API supplies all merchandise; no credentials are required or stored.
