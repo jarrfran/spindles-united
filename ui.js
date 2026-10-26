@@ -63,6 +63,7 @@ function enhance(select){
  select.addEventListener('change',sync);select.addEventListener('focus',function(){button.focus({preventScroll:true});});sync();if(document.activeElement===select)button.focus({preventScroll:true});
 }
 function dimTeams(){document.querySelectorAll('.su-club-match-teams,.su-result-teams,.su-mw-row,.su-mini-match').forEach(function(row){var teams=Array.from(row.querySelectorAll('.su-club-team,.su-rt,.su-mw-team,.su-mini-team')),score=row.querySelector('.su-club-score,.su-result-score,.su-mw-score,b'),v=score?Array.from(score.childNodes).map(function(n){return n.textContent.trim();}).filter(function(t){return /^\d+$/.test(t);}):[],winner=row.dataset.winner;if(!['home','away'].includes(winner)&&v?.length===2)winner=+v[0]>+v[1]?'home':+v[0]<+v[1]?'away':'';teams.forEach(function(t,i){t.classList.toggle('is-loser',!!winner&&winner!==(i===0?'home':'away'));});});}
-function scan(){dimTeams();document.querySelectorAll('.su-site select:not([data-su-select])').forEach(enhance);if(active&&!active.isConnected)close();}
+function storeNavigation(){document.querySelectorAll('header a,#header a,.header-menu a').forEach(function(a){try{var u=new URL(a.getAttribute('href'),location.href);if(['spindlesunited.store','www.spindlesunited.store'].includes(u.hostname)&&u.pathname==='/'){a.setAttribute('href','/store');a.removeAttribute('target');a.removeAttribute('rel');}}catch(e){}});}
+function scan(){storeNavigation();dimTeams();document.querySelectorAll('.su-site select:not([data-su-select])').forEach(enhance);if(active&&!active.isConnected)close();}
 new MutationObserver(scan).observe(document.documentElement,{childList:true,subtree:true});scan();
 })();

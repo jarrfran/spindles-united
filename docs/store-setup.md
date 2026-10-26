@@ -10,7 +10,7 @@ Create a regular Squarespace page at `/store`. In a full-width section with no e
 
 Keep the existing global Spindles loader and footer. `squarespace-store-div.html` contains the same block. Preview: `https://jarrfran.github.io/spindles-united/preview-store.html`.
 
-After installing and verifying `/store`, change the Squarespace header Store button to `/store` with “open in new tab” off. The homepage promo and footer store link can then be changed to `/store` too. Existing shop links are deliberately kept working until the destination is installed.
+`/store` was installed and verified on October 26, 2026. The homepage promo and footer now link to `/store`, and shared `ui.js` routes the desktop/mobile Squarespace header Store links there in the same tab. In Squarespace settings, the stored header URL may still read the old domain; it can also be changed to `/store` for consistency. The Shopify storefront redirect remains pending Shopify admin access.
 
 ## Commerce connection
 
