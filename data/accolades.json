@@ -23,7 +23,7 @@
     {
       "season": 2023,
       "player": "Moulay Aladlouni",
-      "award": "Playmaker Award",
+      "award": "Best Playmaker",
       "sourceUrl": "https://www.instagram.com/spindlesunited/p/CwGWA2SpKkM/",
       "verified": true,
       "verifiedOn": "2026-10-25",
@@ -69,6 +69,26 @@
       "verifiedOn": "2026-10-25",
       "kind": "season",
       "note": "Grassroots Cup volley; public vote."
+    },
+    {
+      "season": 2024,
+      "player": "Ian Maguire",
+      "award": "Best Defender",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "verificationSource": "Club owner confirmation",
+      "note": "Confirmed by Jarron Frangie on October 25, 2026."
+    },
+    {
+      "season": 2024,
+      "player": "Ryan Breen",
+      "award": "Best Forward",
+      "verified": true,
+      "verifiedOn": "2026-10-25",
+      "kind": "season",
+      "verificationSource": "Club owner confirmation",
+      "note": "Confirmed by Jarron Frangie on October 25, 2026."
     },
     {
       "season": 2025,

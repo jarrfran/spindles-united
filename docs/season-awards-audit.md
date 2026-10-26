@@ -6,7 +6,7 @@ Reviewed October 25, 2026 using the club’s signed-in Instagram archive. Winner
 
 - **Golden Boot — Jad Essoulaimani**. [Announcement](https://www.instagram.com/spindlesunited/p/CwEOkQ5pfff/). Joint winner with Zeidane Adjei; 3 goals each.
 - **Golden Boot — Zeidane Adjei**. [Announcement](https://www.instagram.com/spindlesunited/p/CwEOkQ5pfff/). Joint winner with Jad Essoulaimani; 3 goals each.
-- **Playmaker Award — Moulay Aladlouni**. [Announcement](https://www.instagram.com/spindlesunited/p/CwGWA2SpKkM/). Graphic identifies Moulay Ahmed Aladlouni; 3 assists.
+- **Best Playmaker — Moulay Aladlouni**. [Announcement](https://www.instagram.com/spindlesunited/p/CwGWA2SpKkM/). Graphic identifies Moulay Ahmed Aladlouni; 3 assists.
 - **Goal of the Season — Jad Essoulaimani**. [Announcement](https://www.instagram.com/spindlesunited/reel/Czyw7UJrrW1/). Free kick against Highlanders; public vote.
 
 ## 2024
@@ -14,6 +14,9 @@ Reviewed October 25, 2026 using the club’s signed-in Instagram archive. Winner
 - **Golden Boot — Zeidane Adjei**. [Announcement](https://www.instagram.com/spindlesunited/p/C-k0aR6pbXP/). 5 goals.
 - **Playmaker of the Year — Ali Aladlouni**. [Announcement](https://www.instagram.com/spindlesunited/p/C-TVo-7pJFe/). 3 assists.
 - **Goal of the Season — Luke Geczy**. [Announcement](https://www.instagram.com/spindlesunited/reel/DDh5Kr3pYiT/). Grassroots Cup volley; public vote.
+
+- **Best Defender — Ian Maguire**. Confirmed by club owner Jarron Frangie, October 25, 2026.
+- **Best Forward — Ryan Breen**. Confirmed by club owner Jarron Frangie, October 25, 2026.
 
 ## 2025
 
