@@ -1,6 +1,6 @@
 # Verified Spindles individual awards
 
-Reviewed October 25, 2026 using the club’s signed-in Instagram archive. Winners are recorded only when an announcement or award graphic confirms them. The list contains 19 season-award recipient records and one competition award.
+Reviewed October 25, 2026 using the club’s signed-in Instagram archive. Winners are recorded when an announcement, award graphic, or direct club-owner confirmation identifies them. The list contains 21 season-award recipient records and one competition award.
 
 ## 2023
 
