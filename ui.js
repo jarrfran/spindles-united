@@ -2,6 +2,8 @@
 (function(){
 'use strict';
 if(window.SUControls)return;window.SUControls=true;
+var eyebrowStyle=document.createElement('style');eyebrowStyle.id='su-eyebrow-typography';eyebrowStyle.textContent="/* Small headings use their authored title case, with ordinary word spacing. */\n.su-site .su-club-eyebrow,.su-site .su-kicker,.su-site .su-promo-kicker{ text-transform:none!important;letter-spacing:normal!important;word-spacing:normal!important; }\n.su-site .su-club-hero .su-club-eyebrow,.su-site .su-profile-hero .su-club-eyebrow,.su-site .su-match-center-hero .su-club-eyebrow,.su-site .su-store-hero .su-club-eyebrow{color:#fff!important;}";document.head.appendChild(eyebrowStyle);
+
 var reduce=window.matchMedia('(prefers-reduced-motion: reduce)'),motions=new WeakMap(),serial=0,active=null;
 var stopViewHold=null;
 window.SUKeepView=function(y){
