@@ -14,7 +14,12 @@ export const metadata = {
 };
 const footer = legacy.footer;
 export default function Layout({ children }) {
-  return <html lang="en"><head><link rel="stylesheet" href="/legacy/site.css" /></head><body>
+  return <html lang="en"><head>
+    <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
+    <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
+    <link rel="stylesheet" href="https://use.typekit.net/fpo1yqb.css" />
+    <link rel="stylesheet" href="/legacy/site.css" />
+  </head><body>
     <a className="standalone-skip" href="#main-content">Skip to content</a>
     <header id="header" className="standalone-header"><div className="header-inner">
       <a className="standalone-brand" href="/" aria-label="Spindles United FC home"><img src={localMediaUrl('https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png?format=100w')} alt="" /><span>Spindles<br /><small>United FC</small></span></a>

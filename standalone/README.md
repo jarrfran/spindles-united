@@ -78,7 +78,11 @@ node --test tests/*.test.cjs
 Typography uses exactly two brand families: **Alverata for large headings** and
 **Arboria for everything else**, including prose, navigation, controls, small
 headings, player names and statistics. `app/typography.css` defines these roles;
-fallback fonts apply only until the independent webfont source is configured.
+the root layout loads the user-supplied Adobe Fonts project at
+`https://use.typekit.net/fpo1yqb.css` using its original stylesheet embed. Both
+families provide regular/bold and italic styles; large headings use the included
+700 weight. The project also contains Alverata Informal/Irregular variants, but
+the site selects only Alverata and Arboria. Font binaries remain hosted by Adobe.
 
 `../content/news/*.json` is the editable article source. Each record retains the
 original title, URL, author, categories, publication instant and raw source body,
@@ -155,8 +159,7 @@ documentation for async route parameters and metadata.
 ## Remaining launch gates
 
 See `../migration/NEWS-MIGRATION.md` and `../MIGRATION-VERCEL.md`.
-The media baseline is independent of Squarespace. Club fonts still need an
-independent licensed font source or club-owned Adobe Fonts project. Contact forms
-still direct inquiries to the live site. Several exported legacy pages have no
+The media baseline and supplied Adobe Fonts integration are independent of
+Squarespace. Contact forms still direct inquiries to the live site. Several exported legacy pages have no
 standalone route yet.
 Do not cancel Squarespace hosting on the basis of this preview.

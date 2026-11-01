@@ -55,7 +55,8 @@ Status: preparation only. Do not change production DNS, Squarespace settings, or
   (one draft-only copy kept private), both background video streams, offline media
   restoration and same-origin delivery. See `migration/NEWS-MIGRATION.md` for
   checksums, scope, validation and the full-resolution-originals limitation.
-- Finish the route inventory, independently licensed fonts and visual parity.
+- Alverata and Arboria are connected through the user-supplied Adobe Fonts web
+  project (`fpo1yqb`). Finish the route inventory and visual parity review.
 - Confirm exact current navigation labels, active Squarespace form fields,
   newsletter provider and current email service, then implement/test replacements.
 - Create and validate a separate Vercel preview without production domains.

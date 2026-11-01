@@ -25,6 +25,7 @@ body .su-home .su-slide-title,
 body .su-home .su-promo-h,
 body .su-home .su-promo-title {
   font-family: var(--su-heading-font);
+  font-weight: 700;
 }
 
 body .standalone-brand,

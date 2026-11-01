@@ -82,9 +82,9 @@ linking to the current live contact page; it does not pretend to submit messages
 ## Remaining before cutover
 
 1. Media copying and verification are complete for the current inventory (see
-   below). Resolve independent licensing/hosting for Alverata and Arboria fonts;
-   the original live site receives Adobe Typekit scripts through Squarespace.
-   Audit any newly added content before cutover for additional media references.
+   below). Alverata and Arboria now load through the user-supplied Adobe Fonts
+   project, independently of Squarespace. Audit any newly added content before
+   cutover for additional media references, and finish visual parity review.
 2. Finish reviewing all 35 exported pages. `/inside-spindles`, older season/team
    routes, youth/community/event pages and privacy require content/route decisions.
    They are inventoried, not silently redirected to unrelated content. This preview
@@ -150,4 +150,16 @@ have not been tested.
   metadata/feeds, ten standalone tests, three importer tests and nine existing
   repository tests passed after the media changes.
 
-Font parity, remaining pages/forms and Vercel deployment remain launch gates.
+Visual parity, remaining pages/forms and Vercel deployment remain launch gates.
+
+## Adobe Fonts connected
+
+The user supplied `https://use.typekit.net/fpo1yqb.css`. The root layout includes
+that Adobe stylesheet directly. Its response contains Alverata and Arboria at
+400 and 700 in normal and italic styles. Large headings use Alverata 700; all
+other typography uses Arboria. The supplied project also defines optional
+Alverata Informal/Irregular variants, which this site does not select. The font
+files remain hosted by Adobe, and no Squarespace font script is required.
+The production build passed. Browser verification confirmed the Adobe stylesheet
+was present, font loading completed, Alverata 700 and Arboria 400/700 were ready,
+and the computed heading/body/navigation families matched their assigned roles.

@@ -17,9 +17,13 @@
   "fonts": {
     "families": ["alverata", "arboria"],
     "roles": {"largeHeadings": "Alverata", "bodyNavigationControlsAndOtherText": "Arboria"},
-    "liveProvider": "Adobe Typekit scripts inserted by Squarespace",
-    "evidence": "public homepage head inspected read-only; source retained locally in ignored migration/source/live-home.html",
-    "status": "needs independent licensed font assets or a club-owned Adobe Fonts project; standalone currently uses CSS fallback fonts"
+    "liveProvider": "Adobe Fonts",
+    "stylesheet": "https://use.typekit.net/fpo1yqb.css",
+    "source": "Web-project embed provided by the user",
+    "includedStyles": {"alverata": ["400 normal", "400 italic", "700 normal", "700 italic"], "arboria": ["400 normal", "400 italic", "700 normal", "700 italic"]},
+    "evidence": "Adobe stylesheet returned HTTP 200 and both requested font families/styles; audit copy retained locally in ignored migration/source/adobe-fpo1yqb.css",
+    "status": "connected directly through the supplied Adobe embed, independently of Squarespace; font binaries are not self-hosted",
+    "verification": "Production build passed; local browser reported fonts loaded and confirmed Alverata 700 plus Arboria 400/700 ready. Computed heading family is Alverata; body/navigation family is Arboria."
   },
   "otherProviders": [
     {"provider": "Google Sheets", "purpose": "published match and player data", "status": "retained existing integration and JSON fallbacks"},
@@ -30,6 +34,6 @@
   "remainingSquarespaceDependencies": [
     "Live contact page used by the temporary standalone contact notice",
     "Unimplemented form submission, newsletter and older-page migrations",
-    "Visual parity and independently licensed club fonts still require review"
+    "Visual parity still requires review"
   ]
 }
