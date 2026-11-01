@@ -34,7 +34,8 @@ Its body is retained in repository content but excluded from deployment data.
 - `inventory/pages.json`: all 35 exported pages and their preparation status.
 - `inventory/attachments.json`: original attachment IDs/URLs and HTTPS equivalents.
 - `inventory/media.json`: article image references and affected article paths;
-  download status is explicitly `not mirrored`.
+  401 URL references are copied publicly and one draft-only reference is backed
+  up privately. Original references are retained alongside local paths/checksums.
 - `inventory/live-news-metadata.json`: read-only audit of all 76 live article heads,
   including resolved URLs, original page titles, canonical and OG/Twitter values.
 - `inventory/report.json`: source SHA-256, counts, URL reconciliation and anomalies.
@@ -80,10 +81,10 @@ linking to the current live contact page; it does not pretend to submit messages
 
 ## Remaining before cutover
 
-1. Mirror and verify article, social, club and gallery assets away from Squarespace.
-   Attachment records are references, not binary backups. The 402 article URLs
-   include variants/aliases; social images add other CDN URL forms. Videos, crest,
-   sponsor art and fonts also require a complete dependency audit.
+1. Media copying and verification are complete for the current inventory (see
+   below). Resolve independent licensing/hosting for Alverata and Arboria fonts;
+   the original live site receives Adobe Typekit scripts through Squarespace.
+   Audit any newly added content before cutover for additional media references.
 2. Finish reviewing all 35 exported pages. `/inside-spindles`, older season/team
    routes, youth/community/event pages and privacy require content/route decisions.
    They are inventoried, not silently redirected to unrelated content. This preview
@@ -121,3 +122,32 @@ this work yet.
 
 All verification ran locally; Vercel deployment and production service delivery
 have not been tested.
+
+## Media implementation completed
+
+- Inventoried and verified 734 image URL assets across articles, current templates,
+  dynamic player/crest/season data and older exported pages. Of these, 733 are
+  public and one draft-only image stays in ignored private backup storage.
+- Copied both Squarespace-hosted background videos, retaining 360p and full-HD
+  options, audio and original standard HLS encryption. All 16 video dependency
+  files are local; no expiring signed URLs remain in the playlists.
+- Added a deterministic repository media bundle: 749 public files, 258,141,516
+  unpacked bytes, packaged into 41 archive parts totaling 252,823,001 bytes.
+  This baseline is restored offline during the build; no Squarespace request is
+  needed to build or serve these assets. New uploads can be added separately.
+- Only standalone generated output rewrites image/video URLs. Original article
+  bodies, source metadata and shared production templates/modules remain unchanged.
+- Downloaded image variants request `1500w`; the CDN retains native dimensions for
+  some images. These are web-serving copies, not a full-resolution originals claim.
+- Evidence: `inventory/asset-mirror.json`, `video-mirror.json`, `media-bundle.json`
+  and `external-dependencies.json`. All image rasters decoded successfully and all
+  media files passed SHA-256 checks. A clean-directory offline restoration passed.
+- All 749 local media URLs returned the expected byte lengths; video byte ranges
+  worked. Both local HLS streams exposed their AAC audio and H.264 video tracks
+  at 360p and 1080p, and a one-second 1080p video/audio sample decoded successfully
+  from each. Original video durations were approximately 58.79 and 34.10 seconds.
+- The final production build, all 76 original article URLs, draft exclusions,
+  metadata/feeds, ten standalone tests, three importer tests and nine existing
+  repository tests passed after the media changes.
+
+Font parity, remaining pages/forms and Vercel deployment remain launch gates.

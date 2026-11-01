@@ -11,7 +11,7 @@ from pathlib import Path
 import re
 from email.utils import parsedate_to_datetime
 from datetime import datetime, timezone
-from urllib.parse import urlsplit, urlunsplit
+from urllib.parse import urlsplit, urlunsplit, quote, unquote
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -210,6 +210,17 @@ def import_export(source):
                   'sourceBodySha256': p['source']['bodySha256'],
                   'timestampDeltaMilliseconds': p['source']['timestampDeltaMilliseconds']} for p in posts]
     out = ROOT / 'migration/inventory'
+    mirror_file = out / 'asset-mirror.json'
+    if mirror_file.exists():
+        mirror = {p['sourceUrl']: p for p in json.loads(mirror_file.read_text())['images']}
+        for url, entry in media.items():
+            parsed_url = urlsplit(url)
+            key = urlunsplit(('https', parsed_url.hostname, quote(unquote(parsed_url.path), safe='/+@-._~'), '', ''))
+            copied = mirror.get(key)
+            if copied and copied.get('status') == 'copied':
+                entry['downloadStatus'] = 'copied privately' if copied['draftOnly'] else 'copied'
+                entry['localUrl'] = None if copied['draftOnly'] else copied['localUrl']
+                entry['backupSha256'] = copied['sha256']
     write_json(out / 'news.json', inventory)
     write_json(out / 'pages.json', pages)
     write_json(out / 'media.json', list(media.values()))

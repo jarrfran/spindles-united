@@ -1,0 +1,34 @@
+{
+  "squarespaceImages": {
+    "status": "copied and rewritten in standalone output",
+    "inventoriedImages": 734,
+    "publicImages": 733,
+    "privateDraftImages": 1,
+    "requestedVariant": "1500w; provider may retain native dimensions",
+    "binaryIntegrity": "SHA-256 verified; raster decoding verified during download"
+  },
+  "squarespaceBackgroundVideos": {
+    "status": "copied; playlists rewritten to local dependencies",
+    "streams": 2,
+    "files": 16,
+    "renditions": "360p and original 1080p; original audio preserved",
+    "encryption": "original public AES-128 HLS delivery preserved; no transcoding or decryption"
+  },
+  "fonts": {
+    "families": ["alverata", "arboria"],
+    "liveProvider": "Adobe Typekit scripts inserted by Squarespace",
+    "evidence": "public homepage head inspected read-only; source retained locally in ignored migration/source/live-home.html",
+    "status": "needs independent licensed font assets or a club-owned Adobe Fonts project; standalone currently uses CSS fallback fonts"
+  },
+  "otherProviders": [
+    {"provider": "Google Sheets", "purpose": "published match and player data", "status": "retained existing integration and JSON fallbacks"},
+    {"provider": "Shopify", "purpose": "club merchandise and checkout", "status": "retained existing integration"},
+    {"provider": "YouTube and Vimeo", "purpose": "article and club video embeds", "status": "retained embeds; independent of Squarespace"},
+    {"provider": "jsDelivr", "purpose": "existing Hls.js player library", "status": "retained; independently hosted third-party library"}
+  ],
+  "remainingSquarespaceDependencies": [
+    "Live contact page used by the temporary standalone contact notice",
+    "Unimplemented form submission, newsletter and older-page migrations",
+    "Visual parity and independently licensed club fonts still require review"
+  ]
+}

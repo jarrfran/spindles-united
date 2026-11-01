@@ -15,8 +15,47 @@ pnpm dev
 ```
 
 `predev` and `prebuild` generate local assets from the existing repository templates
-and imported news. Run `pnpm prepare-assets` before running tests independently.
+and imported news, and restore the verified media bundle without network access.
+The restore uses the standard `tar` utility on macOS/Linux and checks archive paths
+and SHA-256 hashes. Run `pnpm prepare-assets` before running tests independently.
 Generated files, dependencies, local environment files and raw XML are ignored.
+
+## Media backup
+
+`../media/squarespace/` is the immutable migration baseline: 41 binary archive
+parts, with their checksums and file list in `migration/inventory/media-bundle.json`.
+The build restores 733 public image references and 16 HLS files under
+`public/media/squarespace/`. Those restored files are generated and ignored.
+One image used only by the unpublished draft stays in ignored local backup storage
+and is excluded from the archive and public site.
+
+Original content and production modules retain their source URLs. Only standalone
+build output rewrites them to same-origin media paths, including dynamic crest,
+player and season images, body images, galleries and social previews. Literal plus
+signs are encoded as `%2B` so the local server serves original filenames correctly.
+Both background videos retain their quality variants, audio and standard public
+HLS encryption; their playlists contain local paths, with no expiring CDN URLs.
+
+The image backup requests Squarespace's `1500w` web variant. Some PNGs retain their
+native dimensions despite that request. This is a verified web-media backup, not
+a claim that every original full-resolution upload has been exported.
+
+To refresh this migration baseline from its original sources, run from the root:
+
+```sh
+# Download requires Python with Pillow; the normal website build does not.
+python3 scripts/mirror-squarespace-assets.py --download
+python3 scripts/mirror-squarespace-video.py
+python3 scripts/package-media.py
+```
+
+Review manifests and bundle changes before committing. For future articles, add
+new files directly under a new `standalone/public/media/uploads/` directory and use
+their local URLs. Avoid repacking this baseline for routine article publication.
+
+With the built app running, `node scripts/check-media-http.mjs` checks every copied
+public media URL and byte-range video delivery. Media tests also verify all bytes,
+HLS dependency paths, draft exclusions and generated module mappings.
 
 ```sh
 pnpm prepare-assets
@@ -111,6 +150,8 @@ documentation for async route parameters and metadata.
 ## Remaining launch gates
 
 See `../migration/NEWS-MIGRATION.md` and `../MIGRATION-VERCEL.md`.
-Images still load from Squarespace CDNs. Contact forms still direct inquiries to
-the live site. Several exported legacy pages have no standalone route yet.
+The media baseline is independent of Squarespace. Club fonts still need an
+independent licensed font source or club-owned Adobe Fonts project. Contact forms
+still direct inquiries to the live site. Several exported legacy pages have no
+standalone route yet.
 Do not cancel Squarespace hosting on the basis of this preview.

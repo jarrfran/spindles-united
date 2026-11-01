@@ -1,6 +1,7 @@
 import Script from 'next/script';
 import legacy from '../generated/legacy.json';
 import { ORIGIN, indexable } from '../lib/content.mjs';
+import { localMediaUrl } from '../lib/media.mjs';
 import './standalone.css';
 
 export const metadata = {
@@ -15,7 +16,7 @@ export default function Layout({ children }) {
   return <html lang="en"><head><link rel="stylesheet" href="/legacy/site.css" /></head><body>
     <a className="standalone-skip" href="#main-content">Skip to content</a>
     <header id="header" className="standalone-header"><div className="header-inner">
-      <a className="standalone-brand" href="/" aria-label="Spindles United FC home"><img src="https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png?format=100w" alt="" /><span>Spindles<br /><small>United FC</small></span></a>
+      <a className="standalone-brand" href="/" aria-label="Spindles United FC home"><img src={localMediaUrl('https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/cbc79c09-185c-45df-b925-f429573953b9/Full-logo-new.png?format=100w')} alt="" /><span>Spindles<br /><small>United FC</small></span></a>
       <nav className="standalone-desktop" aria-label="Main navigation"><NavLinks /></nav>
       <details className="standalone-mobile"><summary>Menu</summary><nav aria-label="Mobile navigation"><NavLinks /></nav></details>
     </div></header>

@@ -23,5 +23,5 @@ export function articleSchema(p) {
     datePublished: p.publishedAt, author: { '@type': 'Person', name: p.author },
     publisher: { '@type': 'Organization', name: 'Spindles United FC' },
     mainEntityOfPage: p.canonical, url: p.canonical, description: p.description,
-    image: p.featuredImage ? [p.featuredImage] : [], articleSection: p.categories };
+    image: p.featuredImage ? [new URL(p.featuredImage, ORIGIN).href] : [], articleSection: p.categories };
 }

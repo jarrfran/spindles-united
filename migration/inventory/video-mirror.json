@@ -1,0 +1,125 @@
+{
+  "streams": [
+    "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/playlist.m3u8",
+    "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/playlist.m3u8"
+  ],
+  "assets": [
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/key/a338fb7c15721510780979d3a10ba176ff3627be1200d9ecc9d4610cb63f9d74",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/key/a338fb7c15721510780979d3a10ba176ff3627be1200d9ecc9d4610cb63f9d74",
+      "bytes": 16,
+      "sha256": "eea5909e370a9d60dbe4feed95cd0900225e97a4a995fa2249047df41b029e83",
+      "contentType": "application/octet-stream"
+    },
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/playlist.m3u8",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/playlist.m3u8",
+      "bytes": 792,
+      "sha256": "c5b954299890a7874322f56121b864155d1746dc39932f51540f2f20df03747e",
+      "contentType": "application/x-mpegurl"
+    },
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/segments/mpegts-aac-1-und",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/segments/mpegts-aac-1-und",
+      "bytes": 1047824,
+      "sha256": "843083e6db9cdac2cb52a3988f43e47f50cc5d537e10abdb46c20e7cd51516f7",
+      "contentType": "video/mp2t"
+    },
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/segments/mpegts-aac-1-und.m3u8",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/segments/mpegts-aac-1-und.m3u8",
+      "bytes": 2294,
+      "sha256": "711315ec3ec752b98d51bfbcee808da513aa0bef72d5ce71c0bd8734d3ef157f",
+      "contentType": "application/x-mpegurl"
+    },
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/segments/mpegts-h264-1440:1080",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/segments/mpegts-h264-1440:1080",
+      "bytes": 23212832,
+      "sha256": "3e58b5b736a858a52d31482a201e5392657698475506b9e88b4a8d4695052f1a",
+      "contentType": "video/mp2t"
+    },
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/segments/mpegts-h264-1440:1080.m3u8",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/segments/mpegts-h264-1440:1080.m3u8",
+      "bytes": 2369,
+      "sha256": "e0375638626c5c0251c36d4635bf854353396e68306cf2075639e4fd50d42d22",
+      "contentType": "application/x-mpegurl"
+    },
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/segments/mpegts-h264-480:360",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/segments/mpegts-h264-480:360",
+      "bytes": 11650864,
+      "sha256": "45d2e08e1ffe478fdae7f0e4b712455138f5b126043dbac9d97273d774b47495",
+      "contentType": "video/mp2t"
+    },
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/segments/mpegts-h264-480:360.m3u8",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/7f0692da-669c-43ed-a2ff-0b5804494f7d/segments/mpegts-h264-480:360.m3u8",
+      "bytes": 2342,
+      "sha256": "511156718cc958c2713a5390ab741a61e112c0b3c68e225c5ca635c357d53107",
+      "contentType": "application/x-mpegurl"
+    },
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/key/d50856ffd9becb84012aba4bf190b50eea0a56853fe70e03ded89a9c2ac98236",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/key/d50856ffd9becb84012aba4bf190b50eea0a56853fe70e03ded89a9c2ac98236",
+      "bytes": 16,
+      "sha256": "72898011b4042eaae48a87a4332adda4d2389eb65f95718445f9e8750ca102a9",
+      "contentType": "application/octet-stream"
+    },
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/playlist.m3u8",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/playlist.m3u8",
+      "bytes": 788,
+      "sha256": "ecb7a59a4317d74e8bf92e73407bdc73ce7fbff6b205236f843073e02eaf351a",
+      "contentType": "application/x-mpegurl"
+    },
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/segments/mpegts-aac-1-eng",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/segments/mpegts-aac-1-eng",
+      "bytes": 38816,
+      "sha256": "a1c6904a93f53df4001002866a636e02524791454178f042edfb06e5c8d1e9ab",
+      "contentType": "video/mp2t"
+    },
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/segments/mpegts-aac-1-eng.m3u8",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/segments/mpegts-aac-1-eng.m3u8",
+      "bytes": 1505,
+      "sha256": "1e57a2e3abae373c235f42cc82d944c331d2133c426e09171bca5d6343ab389a",
+      "contentType": "application/x-mpegurl"
+    },
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/segments/mpegts-h264-1920:1080",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/segments/mpegts-h264-1920:1080",
+      "bytes": 12233216,
+      "sha256": "0575d32dacb7ab99083c1c8269571bc6e1624a01510c334180e3fbdee8a9cf06",
+      "contentType": "video/mp2t"
+    },
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/segments/mpegts-h264-1920:1080.m3u8",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/segments/mpegts-h264-1920:1080.m3u8",
+      "bytes": 1564,
+      "sha256": "7a39b9ac3bfd86779f8de97343036bb982b05c12d6a57e04fa0acbc7ab915b71",
+      "contentType": "application/x-mpegurl"
+    },
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/segments/mpegts-h264-640:360",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/segments/mpegts-h264-640:360",
+      "bytes": 6195984,
+      "sha256": "0f00c3975a47627fcb71ad6efad5cf12a9860f8b0ca49a471a5539b0715b189e",
+      "contentType": "video/mp2t"
+    },
+    {
+      "sourceUrl": "https://video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/segments/mpegts-h264-640:360.m3u8",
+      "localUrl": "/media/squarespace/video.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/8be1e7ba-8df6-4aae-be3d-07f017cfdf37/segments/mpegts-h264-640:360.m3u8",
+      "bytes": 1550,
+      "sha256": "d7be5f144157288c8e662d8edbdb47c56c0638020452d2d5075cb6f36e3de811",
+      "contentType": "application/x-mpegurl"
+    }
+  ],
+  "summary": {
+    "streams": 2,
+    "files": 16,
+    "bytes": 54392772
+  }
+}

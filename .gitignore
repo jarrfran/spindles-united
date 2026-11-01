@@ -1,6 +1,8 @@
 node_modules/
 .next/
 standalone/public/legacy/
+standalone/public/media/
+media/squarespace/* *.part-*
 standalone/generated/
 standalone/.env*
 !standalone/.env.example

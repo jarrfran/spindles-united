@@ -51,7 +51,11 @@ Status: preparation only. Do not change production DNS, Squarespace settings, or
   Local build, content workflow and Vercel preparation: [standalone README](standalone/README.md).
 
 ## Next implementation tasks
-- Mirror image/media assets, finish the route inventory and verify visual parity.
+- Image/video copying is complete for the current inventory: 734 image assets
+  (one draft-only copy kept private), both background video streams, offline media
+  restoration and same-origin delivery. See `migration/NEWS-MIGRATION.md` for
+  checksums, scope, validation and the full-resolution-originals limitation.
+- Finish the route inventory, independently licensed fonts and visual parity.
 - Confirm exact current navigation labels, active Squarespace form fields,
   newsletter provider and current email service, then implement/test replacements.
 - Create and validate a separate Vercel preview without production domains.
