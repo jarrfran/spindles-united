@@ -1,0 +1,238 @@
+{
+  "routes": [
+    {
+      "path": "/2022-roster",
+      "type": "redirect",
+      "destination": "/roster?season=2022",
+      "statusCode": 308
+    },
+    {
+      "path": "/2022-schedule",
+      "type": "redirect",
+      "destination": "/schedule?season=2022",
+      "statusCode": 308
+    },
+    {
+      "path": "/2023-roster",
+      "type": "redirect",
+      "destination": "/roster?season=2023",
+      "statusCode": 308
+    },
+    {
+      "path": "/2023-schedule",
+      "type": "redirect",
+      "destination": "/schedule?season=2023",
+      "statusCode": 308
+    },
+    {
+      "path": "/2024-roster",
+      "type": "redirect",
+      "destination": "/roster?season=2024",
+      "statusCode": 308
+    },
+    {
+      "path": "/2024-schedule",
+      "type": "redirect",
+      "destination": "/schedule?season=2024",
+      "statusCode": 308
+    },
+    {
+      "path": "/2024-sponsors",
+      "type": "page",
+      "historical": true,
+      "status": "editorial archive prepared"
+    },
+    {
+      "path": "/2025-fall-showcase",
+      "type": "page",
+      "historical": true,
+      "status": "editorial archive prepared"
+    },
+    {
+      "path": "/2025-player-interest",
+      "type": "page",
+      "historical": true,
+      "status": "editorial archive prepared"
+    },
+    {
+      "path": "/2025-roster",
+      "type": "redirect",
+      "destination": "/roster?season=2025",
+      "statusCode": 308
+    },
+    {
+      "path": "/2025-schedule",
+      "type": "redirect",
+      "destination": "/schedule?season=2025",
+      "statusCode": 308
+    },
+    {
+      "path": "/2025-schedule-1",
+      "type": "redirect",
+      "destination": "/schedule?season=2025",
+      "statusCode": 308
+    },
+    {
+      "path": "/2025-sponsors",
+      "type": "page",
+      "historical": true,
+      "status": "editorial archive prepared"
+    },
+    {
+      "path": "/2025-winter-showcase",
+      "type": "page",
+      "historical": true,
+      "status": "editorial archive prepared"
+    },
+    {
+      "path": "/2026-player-interest",
+      "type": "redirect",
+      "destination": "/contact?reason=player",
+      "statusCode": 308
+    },
+    {
+      "path": "/2026-roster",
+      "type": "redirect",
+      "destination": "/roster?season=2026",
+      "statusCode": 308
+    },
+    {
+      "path": "/2026-schedule",
+      "type": "redirect",
+      "destination": "/schedule?season=2026",
+      "statusCode": 308
+    },
+    {
+      "path": "/2026-sponsors",
+      "type": "redirect",
+      "destination": "/sponsors",
+      "statusCode": 308
+    },
+    {
+      "path": "/about",
+      "type": "core",
+      "destination": "/about"
+    },
+    {
+      "path": "/coaches-corner",
+      "type": "page",
+      "historical": false,
+      "status": "editorial archive prepared"
+    },
+    {
+      "path": "/contact",
+      "type": "core",
+      "destination": "/contact"
+    },
+    {
+      "path": "/grassroots",
+      "type": "page",
+      "historical": true,
+      "status": "editorial archive prepared"
+    },
+    {
+      "path": "/history",
+      "type": "core",
+      "destination": "/history"
+    },
+    {
+      "path": "/home",
+      "type": "core",
+      "destination": "/"
+    },
+    {
+      "path": "/home-2",
+      "type": "redirect",
+      "destination": "/",
+      "statusCode": 308
+    },
+    {
+      "path": "/inside-spindles",
+      "type": "redirect",
+      "destination": "/about",
+      "statusCode": 308
+    },
+    {
+      "path": "/post/introducing-the-white-kit",
+      "type": "redirect",
+      "destination": "/news/the-white-kit-2024",
+      "statusCode": 308
+    },
+    {
+      "path": "/privacy",
+      "type": "redirect",
+      "destination": "/privacy-policy",
+      "statusCode": 308
+    },
+    {
+      "path": "/privacy-policy",
+      "type": "page",
+      "historical": false,
+      "status": "needs policy content review"
+    },
+    {
+      "path": "/roster",
+      "type": "core",
+      "destination": "/roster"
+    },
+    {
+      "path": "/schedule",
+      "type": "core",
+      "destination": "/schedule"
+    },
+    {
+      "path": "/seasons",
+      "type": "redirect",
+      "destination": "/history",
+      "statusCode": 308
+    },
+    {
+      "path": "/seasons-1",
+      "type": "redirect",
+      "destination": "/history",
+      "statusCode": 308
+    },
+    {
+      "path": "/soccertots",
+      "type": "page",
+      "historical": true,
+      "status": "editorial archive prepared"
+    },
+    {
+      "path": "/sponsors",
+      "type": "core",
+      "destination": "/sponsors"
+    },
+    {
+      "path": "/stats",
+      "type": "core",
+      "destination": "/stats"
+    },
+    {
+      "path": "/store",
+      "type": "core",
+      "destination": "/store"
+    },
+    {
+      "path": "/volunteer",
+      "type": "page",
+      "historical": false,
+      "status": "editorial archive prepared"
+    },
+    {
+      "path": "/winter-tryout-sign-up",
+      "type": "redirect",
+      "destination": "/contact?reason=player",
+      "statusCode": 308
+    }
+  ],
+  "summary": {
+    "exportedPages": 35,
+    "editorialPages": 10,
+    "separateNativeFormsMigrated": 0,
+    "contactPage": "/contact",
+    "emptySourcePages": [
+      "/privacy-policy"
+    ]
+  }
+}

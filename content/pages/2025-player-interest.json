@@ -1,0 +1,26 @@
+{
+  "path": "/2025-player-interest",
+  "title": "2025 Player Interest",
+  "canonical": "https://www.spindlesunited.com/2025-player-interest",
+  "description": "Join the Club 2025 Player Interest Form Interested in joining Spindles? Fill out the form below and look out for future showcase events! Why join Spindles? We are not your…",
+  "bodyHtml": "<figure><img src=\"https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/4ed053fa-059b-4417-8be4-19b55cb46fbf/5-30-match-140.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\"></figure><div class=\"sqs-html-content\"><h2 style=\"white-space:pre-wrap\">Join the Club</h2></div><div class=\"sqs-html-content\"><h2 style=\"white-space:pre-wrap\">2025 Player Interest Form</h2><p style=\"white-space:pre-wrap\">Interested in joining Spindles? Fill out the form below and look out for future showcase events!</p></div><figure><img src=\"https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/2bd6b90a-e80c-407c-9caf-5aaac1eea275/6-15-grassroots-498.jpg?format=original\" alt=\"A group of soccer players in white uniforms walking onto the field, led by a young boy in a red jersey holding hands with one of the players, on a sunny day.\" loading=\"lazy\" decoding=\"async\"></figure><div class=\"sqs-html-content\"><h3 style=\"white-space:pre-wrap\">Why join Spindles?</h3></div><div class=\"sqs-html-content\"><p style=\"white-space:pre-wrap\">We are not your normal Sunday League Team.</p><p style=\"white-space:pre-wrap\">Spindles is bridging the gap between competive football and playing for a purpose in the <strong>Capital Region.</strong></p><p style=\"white-space:pre-wrap\">We are more than a football club, and we <span><em>expect more</em></span> than just on-field product.</p><p style=\"white-space:pre-wrap\">If you want to be apart of something bigger than yourself, Spindles United is the place to be.</p></div><div class=\"sqs-html-content\"><h2 style=\"white-space:pre-wrap\">What we offer.</h2></div><figure><img src=\"https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/d62aacf0-bcfe-410e-a493-19988c953c73/4-23+Training-05.jpg?format=original\" alt=\"Young soccer players on a field, gathered near the goal, preparing for practice or game, with some holding soccer balls and sports gear nearby.\" loading=\"lazy\" decoding=\"async\"></figure>",
+  "media": [
+    {
+      "url": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/4ed053fa-059b-4417-8be4-19b55cb46fbf/5-30-match-140.jpg",
+      "alt": ""
+    },
+    {
+      "url": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/2bd6b90a-e80c-407c-9caf-5aaac1eea275/6-15-grassroots-498.jpg?format=original",
+      "alt": "A group of soccer players in white uniforms walking onto the field, led by a young boy in a red jersey holding hands with one of the players, on a sunny day."
+    },
+    {
+      "url": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/d62aacf0-bcfe-410e-a493-19988c953c73/4-23+Training-05.jpg?format=original",
+      "alt": "Young soccer players on a field, gathered near the goal, preparing for practice or game, with some holding soccer balls and sports gear nearby."
+    }
+  ],
+  "embeds": [],
+  "historical": true,
+  "contactReason": "player",
+  "emptySource": false,
+  "sourceBodySha256": "8c17c936a032e6f970cfb9f4894134da050fe98d80c52b4e60dca1323333eda4"
+}

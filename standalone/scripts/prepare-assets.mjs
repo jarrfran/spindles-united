@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { feedItem } from '../lib/feed.mjs';
 import { rewriteMedia } from '../lib/media.mjs';
+import { rewriteEditorialLinks } from '../lib/links.mjs';
 import { restoreMedia } from './restore-media.mjs';
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const target = path.join(root, 'standalone/public/legacy');
@@ -45,15 +46,19 @@ await writeFile(loader, source);
 // Keep original shared assets untouched; only this build's generated feed changes.
 const newsDir = path.join(root, 'content/news');
 const posts = await Promise.all((await readdir(newsDir)).filter(f => f.endsWith('.json')).map(async f => JSON.parse(await readFile(path.join(newsDir, f), 'utf8'))));
-const published = posts.filter(p => p.status === 'publish').sort((a, b) => b.publishOn - a.publishOn).map(rewriteMedia);
+const published = posts.filter(p => p.status === 'publish').sort((a, b) => b.publishOn - a.publishOn)
+  .map(p => rewriteMedia({ ...p, bodyHtml: rewriteEditorialLinks(p.bodyHtml) }));
 await writeFile(path.join(target, 'data/news-archive.json'), JSON.stringify(published.map(feedItem)));
 const generated = path.join(root, 'standalone/generated');
 await mkdir(generated, { recursive: true });
 // Drafts and original source bodies never enter the deployment bundle.
 await writeFile(path.join(generated, 'posts.json'), JSON.stringify(published.map(({ source, ...p }) => ({ ...p, source: { savedFeed: { id: source.savedFeed?.id } } }))));
+const pageDir = path.join(root, 'content/pages');
+const editorialPages = await Promise.all((await readdir(pageDir)).filter(f => f.endsWith('.json')).map(async f => JSON.parse(await readFile(path.join(pageDir, f), 'utf8'))));
+await writeFile(path.join(generated, 'pages.json'), JSON.stringify(rewriteMedia(editorialPages)));
 await writeFile(path.join(generated, 'legacy.json'), JSON.stringify(rewriteMedia({
   footer: await readFile(path.join(root, 'pages/footer.html'), 'utf8'),
   club: JSON.parse(await readFile(path.join(root, 'data/club.json'), 'utf8')),
-  pages: Object.fromEntries(await Promise.all(['home', 'about', 'history', 'schedule', 'roster', 'stats', 'sponsors', 'store'].map(async page => [page, await readFile(path.join(root, 'pages', page + '.html'), 'utf8')]))),
+  pages: Object.fromEntries(await Promise.all(['home', 'about', 'history', 'schedule', 'roster', 'stats', 'sponsors', 'store', 'contact'].map(async page => [page, await readFile(path.join(root, 'pages', page + '.html'), 'utf8')]))),
 })));
 console.log('Prepared local legacy assets and news fallback; no live files changed.');

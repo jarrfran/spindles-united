@@ -13,7 +13,7 @@
     "status": "publish",
     "publishedRaw": "Thu, 22 May 2025 18:31:37 +0000",
     "bodySha256": "338f3c920d7cd115f2b2f135188648a34ebace36bd4d1ab37f024b213c3e7745",
-    "standaloneStatus": "preview notice; form backend pending"
+    "standaloneStatus": "unified contact form prepared; delivery setup pending"
   },
   {
     "path": "/inside-spindles",
@@ -21,7 +21,7 @@
     "status": "publish",
     "publishedRaw": "Tue, 12 May 2026 00:40:52 +0000",
     "bodySha256": "77fdc6fedbbae89dd0b9382dab59073410534eaf62b79a1272f39c3823bc7e57",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /about"
   },
   {
     "path": "/home-2",
@@ -29,7 +29,7 @@
     "status": "publish",
     "publishedRaw": "Sat, 24 Oct 2026 00:03:35 +0000",
     "bodySha256": "d0b1bf03cf1f7d3bf6ae1364efac4649474b12adea284aa19e93bdf2a86f6526",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /"
   },
   {
     "path": "/2024-schedule",
@@ -37,7 +37,7 @@
     "status": "publish",
     "publishedRaw": "Wed, 06 Aug 2025 15:32:55 +0000",
     "bodySha256": "16e05208881e21f055cb8d1df9339c05b27a22a39455442243cb46132ebcbefb",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /schedule?season=2024"
   },
   {
     "path": "/2024-roster",
@@ -45,7 +45,7 @@
     "status": "publish",
     "publishedRaw": "Fri, 25 Apr 2025 23:55:37 +0000",
     "bodySha256": "fb52eb73c3f4e887ca4b5e2a9e5a708d2eb3753955e914d542be8a1eb3ed80c8",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /roster?season=2024"
   },
   {
     "path": "/2024-sponsors",
@@ -53,7 +53,7 @@
     "status": "publish",
     "publishedRaw": "Sun, 13 Apr 2025 16:02:29 +0000",
     "bodySha256": "3c2286130de1258a3de18d9bdd84f83be65a5ba8d02798a6cfd0862a75766cf6",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "editorial archive prepared"
   },
   {
     "path": "/2025-player-interest",
@@ -61,7 +61,7 @@
     "status": "publish",
     "publishedRaw": "Fri, 06 Dec 2024 19:30:35 +0000",
     "bodySha256": "8c17c936a032e6f970cfb9f4894134da050fe98d80c52b4e60dca1323333eda4",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "editorial archive prepared"
   },
   {
     "path": "/2025-sponsors",
@@ -69,7 +69,7 @@
     "status": "publish",
     "publishedRaw": "Mon, 02 Mar 2026 22:16:47 +0000",
     "bodySha256": "f411557abdd81ba4c6899f767ca5a2030f40fc37981f98b50f855de9f86cb4e5",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "editorial archive prepared"
   },
   {
     "path": "/2025-winter-showcase",
@@ -77,7 +77,7 @@
     "status": "publish",
     "publishedRaw": "Thu, 23 Jan 2025 00:51:08 +0000",
     "bodySha256": "c59dd9ced68836b39db003ed7d6d38afa5e4bceaebc48ac72aa64108779fa27a",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "editorial archive prepared"
   },
   {
     "path": "/2023-roster",
@@ -85,7 +85,7 @@
     "status": "publish",
     "publishedRaw": "Mon, 06 Jan 2025 01:12:35 +0000",
     "bodySha256": "7d42a5927630a39bbf4e1c92e200989cb42b1e475ca810da77fb0afa1aee8203",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /roster?season=2023"
   },
   {
     "path": "/seasons-1",
@@ -93,7 +93,7 @@
     "status": "publish",
     "publishedRaw": "Sat, 24 Oct 2026 17:02:28 +0000",
     "bodySha256": "947fd21ba8298782e2abf23682abdf7b16d25416789a6556043365e72f49c2d3",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /history"
   },
   {
     "path": "/2022-roster",
@@ -101,7 +101,7 @@
     "status": "publish",
     "publishedRaw": "Mon, 06 Jan 2025 17:03:41 +0000",
     "bodySha256": "0b3e4f3692fcb4f70865664609990f3736ba866bcb39ae3b1c6077f7c5c58b55",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /roster?season=2022"
   },
   {
     "path": "/2023-schedule",
@@ -109,7 +109,7 @@
     "status": "publish",
     "publishedRaw": "Wed, 06 Aug 2025 15:34:00 +0000",
     "bodySha256": "917e796de6e558a3b26310238637bd07178055e28ebb55fe7ff4ec9ce3c121c2",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /schedule?season=2023"
   },
   {
     "path": "/2022-schedule",
@@ -117,7 +117,7 @@
     "status": "publish",
     "publishedRaw": "Wed, 06 Aug 2025 15:45:47 +0000",
     "bodySha256": "2e9481215cc01a90a50e4c85034cba7f5d13ab3fb29f70952c36d2073be37867",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /schedule?season=2022"
   },
   {
     "path": "/privacy-policy",
@@ -125,7 +125,7 @@
     "status": "publish",
     "publishedRaw": "Fri, 07 Feb 2025 02:08:19 +0000",
     "bodySha256": "1e4c60017d94242a3fb5365157e9080a7735927bd04236a45df510afa9cc6064",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "needs policy content review"
   },
   {
     "path": "/soccertots",
@@ -133,7 +133,7 @@
     "status": "publish",
     "publishedRaw": "Tue, 13 May 2025 05:35:04 +0000",
     "bodySha256": "406ba86f56f4e6393fca70f7d78eca56e159f729982ffc98478405a113d438e1",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "editorial archive prepared"
   },
   {
     "path": "/2025-schedule",
@@ -141,7 +141,7 @@
     "status": "publish",
     "publishedRaw": "Thu, 23 Apr 2026 02:55:22 +0000",
     "bodySha256": "7c09315bc5a93cc063670e974df4d51c2c703ee158cfc64c3d6866adfbfd6290",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /schedule?season=2025"
   },
   {
     "path": "/2025-roster",
@@ -149,7 +149,7 @@
     "status": "publish",
     "publishedRaw": "Thu, 23 Apr 2026 02:58:33 +0000",
     "bodySha256": "d05d324169ab8055c166defb9fec900f003d444e952b45c1195fb9c783e7120a",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /roster?season=2025"
   },
   {
     "path": "/grassroots",
@@ -157,7 +157,7 @@
     "status": "publish",
     "publishedRaw": "Sun, 20 Jul 2025 17:25:09 +0000",
     "bodySha256": "4e93d14b6326ee4d721991cc90b62c179b269e5a9d548b21337712e8a072c41e",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "editorial archive prepared"
   },
   {
     "path": "/2025-fall-showcase",
@@ -165,7 +165,7 @@
     "status": "publish",
     "publishedRaw": "Wed, 22 Oct 2025 21:35:58 +0000",
     "bodySha256": "bbb181f9838f31b7123116f1fefefd1fb035bf7bd23a4bf95831a4c235a58b14",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "editorial archive prepared"
   },
   {
     "path": "/2025-schedule-1",
@@ -173,7 +173,7 @@
     "status": "publish",
     "publishedRaw": "Wed, 10 Dec 2025 00:19:01 +0000",
     "bodySha256": "d6ac2bc4c77f95d9fa22f8a953cc615e5b12cac61c6aad292b5dace29469de09",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /schedule?season=2025"
   },
   {
     "path": "/2026-sponsors",
@@ -181,7 +181,7 @@
     "status": "publish",
     "publishedRaw": "Sat, 24 Oct 2026 18:00:44 +0000",
     "bodySha256": "e304da9911763e799c3cb489d7c8054d6f9c1aad87812ceb672e5be401b327c4",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /sponsors"
   },
   {
     "path": "/2026-player-interest",
@@ -189,7 +189,7 @@
     "status": "publish",
     "publishedRaw": "Wed, 11 Mar 2026 03:26:09 +0000",
     "bodySha256": "3a381c5206de9a2897c4a20075a09eefc45becf759a74c89d0614b3cfcd0efca",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /contact?reason=player"
   },
   {
     "path": "/2026-schedule",
@@ -197,7 +197,7 @@
     "status": "publish",
     "publishedRaw": "Sat, 24 Oct 2026 00:06:11 +0000",
     "bodySha256": "84893673904af2716f62d395b2cc5c353d92ec26cd0c2b9b406f07a7afdaeb91",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /schedule?season=2026"
   },
   {
     "path": "/volunteer",
@@ -205,7 +205,7 @@
     "status": "publish",
     "publishedRaw": "Tue, 12 May 2026 00:49:35 +0000",
     "bodySha256": "cee0256584a7966c492e0f32064f96d62e86070c5593ad7da21ed1afb77dc98f",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "editorial archive prepared"
   },
   {
     "path": "/coaches-corner",
@@ -213,7 +213,7 @@
     "status": "publish",
     "publishedRaw": "Tue, 16 Jun 2026 18:35:45 +0000",
     "bodySha256": "ea3aa49c9a4a16adf13823f4265a7beff0a8f09b1cd94d1aa950faa9e9a328e4",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "editorial archive prepared"
   },
   {
     "path": "/2026-roster",
@@ -221,7 +221,7 @@
     "status": "publish",
     "publishedRaw": "Sat, 24 Oct 2026 00:09:18 +0000",
     "bodySha256": "bf108b03a02b0933215daa802ef37b3a8f159eb01f8f0130636180b197a880f9",
-    "standaloneStatus": "pending route/content review"
+    "standaloneStatus": "308 redirect to /roster?season=2026"
   },
   {
     "path": "/stats",

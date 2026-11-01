@@ -1,0 +1,18 @@
+{
+  "path": "/coaches-corner",
+  "title": "Coaches Corner",
+  "canonical": "https://www.spindlesunited.com/coaches-corner",
+  "description": "Coaches Corner",
+  "bodyHtml": "<figure><img src=\"https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/b7d31fb9-7b14-4d86-9a1a-147bc5e9894e/10-19-macncheese-13.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\"></figure>",
+  "media": [
+    {
+      "url": "https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/b7d31fb9-7b14-4d86-9a1a-147bc5e9894e/10-19-macncheese-13.jpg",
+      "alt": ""
+    }
+  ],
+  "embeds": [],
+  "historical": false,
+  "contactReason": "other",
+  "emptySource": false,
+  "sourceBodySha256": "ea3aa49c9a4a16adf13823f4265a7beff0a8f09b1cd94d1aa950faa9e9a328e4"
+}

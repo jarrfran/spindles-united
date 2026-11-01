@@ -121,6 +121,8 @@ def import_export(source):
     attachments = {value(i, 'wp:post_id'): {'id': value(i, 'wp:post_id'), 'title': value(i, 'title'),
                    'originalUrl': value(i, 'wp:attachment_url'), 'url': https(value(i, 'wp:attachment_url'))}
                    for i in items if value(i, 'wp:post_type') == 'attachment'}
+    routes_file = ROOT / 'migration/inventory/page-routes.json'
+    page_routes = {r['path']: r for r in json.loads(routes_file.read_text())['routes']} if routes_file.exists() else {}
     posts, pages, media, paths = [], [], {}, set()
     for item in items:
         kind = value(item, 'wp:post_type')
@@ -133,11 +135,14 @@ def import_export(source):
         body = value(item, 'content:encoded')
         if kind == 'page':
             core_pages = {'/home', '/about', '/history', '/schedule', '/roster', '/stats', '/sponsors', '/store'}
+            route = page_routes.get(path, {})
+            preparation = ('unified contact form prepared; delivery setup pending' if path == '/contact'
+                           else '308 redirect to ' + route['destination'] if route.get('type') == 'redirect'
+                           else route.get('status', 'existing repository template wrapped; parity review pending' if path in core_pages
+                                          else 'pending route/content review'))
             pages.append({'path': path, 'title': value(item, 'title'), 'status': value(item, 'wp:status'),
                           'publishedRaw': value(item, 'pubDate'), 'bodySha256': hashlib.sha256(body.encode()).hexdigest(),
-                          'standaloneStatus': ('existing repository template wrapped; parity review pending' if path in core_pages
-                                               else 'preview notice; form backend pending' if path == '/contact'
-                                               else 'pending route/content review')})
+                          'standaloneStatus': preparation})
             continue
         slug = value(item, 'wp:post_name')
         if path != '/news/' + slug or not re.fullmatch(r'[a-zA-Z0-9_-]+', slug):

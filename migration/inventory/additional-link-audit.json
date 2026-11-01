@@ -1,0 +1,30 @@
+[
+  {
+    "path": "/news/pc3n4jmv694libqfin9s5hpm3ceb3m",
+    "status": 404
+  },
+  {
+    "path": "/news/rwn84f84qncv1noq7xxch3cvpcv7zr",
+    "status": 404
+  },
+  {
+    "path": "/s/fall-showcase-waiver-2025.pdf",
+    "status": 200,
+    "resolvedUrl": "https://static1.squarespace.com/static/6702f19a9e93b178e9d17b01/t/68f94275cf452d4fd95fab22/1761165941972/fall-showcase-waiver-2025.pdf",
+    "type": "application/pdf",
+    "sha256": "780f3a8d4a3f5cf11a316b323b7c351d2bd3402467e63b2854c8f0fc845990cb",
+    "bytes": 113083
+  },
+  {
+    "path": "/grassroots-cup-2024",
+    "status": 404
+  },
+  {
+    "path": "/post/introducing-the-white-kit",
+    "status": 404
+  },
+  {
+    "path": "/winter-tryout-sign-up",
+    "status": 404
+  }
+]

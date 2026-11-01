@@ -64,12 +64,13 @@ pnpm build
 pnpm start
 # In another terminal, from standalone/:
 node scripts/check-http.mjs
+node scripts/check-pages-http.mjs
 ```
 
 From the repository root, importer checks use:
 
 ```sh
-python3 -m unittest discover -s tests -p 'test_squarespace_import.py'
+python3 -m unittest discover -s tests -p 'test_squarespace*.py'
 node --test tests/*.test.cjs
 ```
 
@@ -106,6 +107,7 @@ Place the original XML in ignored `../migration/source/` and run from the root:
 
 ```sh
 python3 scripts/import-squarespace.py migration/source/Squarespace-Wordpress-Export-11-01-2026.xml
+python3 scripts/import-squarespace-pages.py migration/source/Squarespace-Wordpress-Export-11-01-2026.xml
 ```
 
 The import reads the checked-in saved feed for timestamp precision/featured images
@@ -160,6 +162,31 @@ documentation for async route parameters and metadata.
 
 See `../migration/NEWS-MIGRATION.md` and `../MIGRATION-VERCEL.md`.
 The media baseline and supplied Adobe Fonts integration are independent of
-Squarespace. Contact forms still direct inquiries to the live site. Several exported legacy pages have no
-standalone route yet.
+Squarespace. All exported page paths have a route decision. The single contact
+form is prepared but delivery stays disabled until Formspree is connected and
+inbox/reply testing passes; see `../migration/CONTACT-SETUP.md`. Privacy content,
+visual parity and preview deployment still need review.
 Do not cancel Squarespace hosting on the basis of this preview.
+
+## Editorial pages and contact
+
+`../content/pages/*.json` preserves safe editorial content and source checksums.
+Historical event pages are visibly archived and have no native forms. The route
+inventory drives explicit permanent redirects; season-specific paths retain the
+season in the destination query. Blank source privacy content stays noindex and
+outside the sitemap until the club supplies an actual policy.
+
+The only form is `/contact`. All inquiry types share it. Formspree receives the
+native form POST and handles its CAPTCHA, provider errors and confirmation;
+there is no locally simulated success state. Browser validation checks required
+name/email/message and, with JavaScript, at least one inquiry reason. Optional
+player details remain available. The hidden `_gotcha` field uses Formspree’s
+honeypot convention. Server spam filtering and allowed domains are provider
+settings that must be reviewed before enabling. Provider-side field validation
+is also a launch review item; browser validation alone is not a security control.
+
+Set `CONTACT_FORM_ID` and `CONTACT_FORM_ENABLED=true` only for a configured form,
+then rebuild. No email API key is needed. Verify the target inbox in Formspree;
+it is not controlled by browser-submitted data. Jordan has not been configured.
+The form does not enroll subscribers. Setup and acceptance checks are documented
+in `../migration/CONTACT-SETUP.md`.

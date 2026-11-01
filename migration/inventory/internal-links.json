@@ -1,0 +1,24 @@
+{
+  "scope": "Generated published article bodies, editorial pages, current core templates and footer; offline route resolution, not a full browser crawl",
+  "distinctInternalPaths": 49,
+  "unresolved": [
+    {
+      "path": "/grassroots-cup-2024",
+      "sources": [
+        "/news/ix79i20swgdecyyhb19i6poaqsbo3w"
+      ]
+    },
+    {
+      "path": "/news/pc3n4jmv694libqfin9s5hpm3ceb3m",
+      "sources": [
+        "/2025-sponsors"
+      ]
+    },
+    {
+      "path": "/news/rwn84f84qncv1noq7xxch3cvpcv7zr",
+      "sources": [
+        "/2025-sponsors"
+      ]
+    }
+  ]
+}

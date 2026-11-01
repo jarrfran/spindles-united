@@ -1,0 +1,95 @@
+{
+  "source": "Read-only public Squarespace form configuration captured November 1, 2026",
+  "scope": "Only the contact-page form is being migrated. Old separate forms are excluded.",
+  "primaryRecipient": "jarron@spindlesunited.com",
+  "optionalRecipientPendingConfirmation": "jordan@spindlesunited.com",
+  "contact": [
+    {
+      "name": "Spindles Contact Form",
+      "fields": [
+        {
+          "type": "name",
+          "title": "Name",
+          "description": "",
+          "required": true,
+          "name": true
+        },
+        {
+          "type": "email",
+          "title": "Email",
+          "description": "",
+          "placeholder": "",
+          "required": true,
+          "email": true
+        },
+        {
+          "required": false,
+          "description": "",
+          "phone": true,
+          "type": "phone",
+          "title": "Phone"
+        },
+        {
+          "required": true,
+          "description": "",
+          "type": "checkbox",
+          "options": [
+            "Interested in Joining as a Player",
+            "I am Looking to Sponsor",
+            "I Want to Volunteer",
+            "Other"
+          ],
+          "title": "Reason for Contact"
+        },
+        {
+          "type": "textarea",
+          "title": "Message",
+          "description": "",
+          "placeholder": "",
+          "required": true
+        },
+        {
+          "required": false,
+          "description": "Any player interested in joining the Spins must fill out the fields below.",
+          "type": "section",
+          "title": "FOR INTERESTED PLAYERS"
+        },
+        {
+          "required": false,
+          "description": "",
+          "type": "text",
+          "placeholder": "",
+          "title": "Player Position(s)"
+        },
+        {
+          "required": false,
+          "description": "The UPL requires players to be 18+ at the start of the season.",
+          "type": "text",
+          "placeholder": "",
+          "title": "Age"
+        },
+        {
+          "required": false,
+          "description": "College, high school, amateur, semi-pro, etc.",
+          "type": "text",
+          "placeholder": "",
+          "title": "Current Club(s)"
+        },
+        {
+          "required": false,
+          "description": "Spindles is based in Cohoes/Waterford, NY",
+          "type": "text",
+          "placeholder": "",
+          "title": "City of Residence during Summer"
+        },
+        {
+          "required": false,
+          "description": "",
+          "type": "textarea",
+          "placeholder": "",
+          "title": "Why do you want to join Spindles?"
+        }
+      ]
+    }
+  ]
+}

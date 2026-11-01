@@ -76,8 +76,9 @@ unsafe URL protocols. Raw source HTML remains available for comparison.
 preview noindex controls, responsive navigation and reused club page templates.
 Every published news URL has its original path; no news redirects are needed.
 Core pages are wrapped using existing templates, with existing Google Sheet data
-integrations and saved fallbacks. Contact is an explicit temporary preview notice
-linking to the current live contact page; it does not pretend to submit messages.
+integrations and saved fallbacks. Contact now has one standalone form for every inquiry. It preserves the contact
+page’s name, email, phone, multiple reasons, message and optional player details.
+Delivery stays disabled until the provider is configured and tested.
 
 ## Remaining before cutover
 
@@ -85,15 +86,19 @@ linking to the current live contact page; it does not pretend to submit messages
    below). Alverata and Arboria now load through the user-supplied Adobe Fonts
    project, independently of Squarespace. Audit any newly added content before
    cutover for additional media references, and finish visual parity review.
-2. Finish reviewing all 35 exported pages. `/inside-spindles`, older season/team
-   routes, youth/community/event pages and privacy require content/route decisions.
-   They are inventoried, not silently redirected to unrelated content. This preview
-   will return 404 for unimplemented routes, including some links inside articles.
+2. All 35 exported page routes are implemented or explicitly redirected (see
+   `inventory/page-routes.json`). Review the ten editorial pages visually. The
+   privacy page contains no policy text in the source and needs owner-supplied
+   content before launch. Three historical links already return 404 on the
+   live site; see `inventory/additional-link-audit.json` for review.
 3. Match the current header/navigation, fonts, article match widgets, player links,
    standings/recent-results sidebars and all desktop/mobile interactions. The new
    header is a functional starting point; visual parity is not signed off.
-4. Replace and test contact, sponsor, recruitment and newsletter submissions with
-   verified recipients/provider configuration. No subscriber data is imported yet.
+4. Connect and test the single contact form, delivered to
+   `jarron@spindlesunited.com`, with replies addressed to the sender. Jordan is
+   optional and has not been added. Separate sponsor/player/volunteer forms and
+   newsletter subscriptions are excluded by the owner’s instruction. See
+   `CONTACT-SETUP.md` for provider configuration and delivery acceptance checks.
 5. Create a separate Vercel preview project and verify its deployment, assets,
    performance, accessibility, query links, store checkout and data refresh/fallback.
 6. Obtain explicit cutover approval before main merge, production domains, indexing,
@@ -150,7 +155,7 @@ have not been tested.
   metadata/feeds, ten standalone tests, three importer tests and nine existing
   repository tests passed after the media changes.
 
-Visual parity, remaining pages/forms and Vercel deployment remain launch gates.
+Visual parity, privacy content, contact delivery and Vercel deployment remain launch gates.
 
 ## Adobe Fonts connected
 
@@ -163,3 +168,35 @@ files remain hosted by Adobe, and no Squarespace font script is required.
 The production build passed. Browser verification confirmed the Adobe stylesheet
 was present, font loading completed, Alverata 700 and Arboria 400/700 were ready,
 and the computed heading/body/navigation families matched their assigned roles.
+
+## Page routes and single contact form prepared
+
+- All 35 exported page URLs are accounted for: nine core routes, ten editorial
+  pages and sixteen redirects. Four additional aliases make 39 tested routes.
+- Old schedules/rosters redirect to the corresponding season query. Club/history
+  aliases resolve to their equivalent core pages. `/2026-player-interest` leads
+  to `/contact?reason=player`; `/2026-sponsors` leads to the current sponsors page.
+- Earlier sponsor, showcase, youth and community pages retain their original
+  URLs and exported editorial content. Historical pages display an archive notice.
+  Native forms, exported scripts and payment forms are omitted. Original source
+  body checksums and partner links remain available for comparison.
+- The historical waiver PDF is copied at its original `/s/` path and checksum
+  verified. Two opaque article links on the old sponsors page and a missing 2024 event
+  landing page return 404 on the live source. These are recorded in the internal
+  link audit; no replacement landing-page content is invented. The old white-kit
+  post path redirects to the matching imported story, and a former winter signup
+  path leads to the unified contact form. One malformed Bear Digital link is
+  corrected only in generated output.
+- `/privacy-policy` has no exported policy text. It currently shows a privacy
+  contact, remains noindex and is omitted from the sitemap. This is a launch gate.
+- Only `/contact` contains a form. Reason shortcuts preselect player, sponsor or
+  volunteer without creating separate forms. The exported mailing-list option
+  is deliberately excluded; no newsletter subscription is submitted.
+- Formspree native POST delivery is prepared behind explicit configuration.
+  No delivery account was created, no inquiry was sent, and end-to-end inbox/reply
+  testing remains pending. The disabled preview offers a direct email fallback.
+- Production build, thirteen standalone tests, six Python importer tests and nine
+  existing repository tests passed. Local HTTP checks passed for all 39 page
+  routes and the existing 76 article URLs, metadata, feeds and draft exclusions.
+  Browser QA confirmed one form, correct query/card selections, disabled delivery,
+  brand font roles and no horizontal overflow at 319px or 1280px width.

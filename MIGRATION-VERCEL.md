@@ -17,8 +17,8 @@ Status: preparation only. Do not change production DNS, Squarespace settings, or
 2. Add a Next.js App Router application in an isolated directory or migration branch; initially wrap/reuse existing HTML/CSS/JS as needed to maintain parity, then refactor into reusable components.
 3. Implement shared header/nav/footer, accessible responsive menu, and retain red/neutral branding.
 4. Recreate news listing and /news/[slug] pages with article frontmatter (title, date, author, categories, description, hero, OG image, canonical), sitemap.xml, robots.txt, RSS if appropriate, and 301 redirects only where unavoidable.
-5. Build native contact, sponsor and player-interest forms using server-side validation, anti-spam and transactional email provider. Confirm recipient, provider and verified domain before enabling. Do not expose API keys.
-6. Identify newsletter provider and migrate subscriptions only with consent and compliant export.
+5. Migrate only the unified contact-page form. Prepare Formspree delivery to jarron@spindlesunited.com with sender Reply-To, spam protection and provider validation review. Enable only after inbox/reply testing. Jordan remains optional.
+6. Exclude old separate sponsor/player/volunteer forms and newsletter subscription flows, following the owner’s consolidation instruction.
 7. Test match schedules, stats, roster profiles, deep links, Google Sheets refresh/fallback, and all image dependencies.
 8. Deploy to a Vercel preview domain, run functional/visual/SEO checks, then obtain approval before domain DNS cutover.
 9. Keep domain registration with Squarespace. Confirm email DNS (MX, SPF, DKIM, DMARC) is preserved. Cancel Squarespace website hosting only after successful cutover and content backups.
@@ -56,8 +56,11 @@ Status: preparation only. Do not change production DNS, Squarespace settings, or
   restoration and same-origin delivery. See `migration/NEWS-MIGRATION.md` for
   checksums, scope, validation and the full-resolution-originals limitation.
 - Alverata and Arboria are connected through the user-supplied Adobe Fonts web
-  project (`fpo1yqb`). Finish the route inventory and visual parity review.
-- Confirm exact current navigation labels, active Squarespace form fields,
-  newsletter provider and current email service, then implement/test replacements.
+  project (`fpo1yqb`). All 35 exported page routes are prepared; finish visual parity review.
+- Connect the prepared unified contact form to Formspree and verify inbox delivery
+  and direct email replies. Only jarron@spindlesunited.com is the confirmed recipient;
+  Jordan remains optional. See `migration/CONTACT-SETUP.md`.
+- Supply/review privacy content (the original page is blank), and review three
+  already-broken historical links recorded in the additional-link audit.
 - Create and validate a separate Vercel preview without production domains.
 - Complete the release gate above before any live cutover.
