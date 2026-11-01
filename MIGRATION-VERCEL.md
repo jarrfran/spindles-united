@@ -35,7 +35,24 @@ Status: preparation only. Do not change production DNS, Squarespace settings, or
 - Hosting plan: verify Vercel plan eligibility; Hobby is not for commercial use.
 - Domain and email renewal remain separate costs.
 
+## November 1 implementation update
+
+- Imported the supplied WXR XML: 76 published articles, one unpublished draft,
+  35 pages and 76 attachment records. All published news URLs match the existing
+  saved feed; all 76 live article heads were audited read-only for SEO metadata.
+- Added `content/news/` with raw source backups, sanitized HTML, original URLs,
+  publication timestamps, author/category data, image references and SEO/social
+  metadata. The raw XML stays in ignored local storage.
+- Added `standalone/`, a separate Next.js application with server-rendered news,
+  categories, local JSON/RSS feeds, sitemap, responsive navigation, preview noindex
+  controls and wrappers for existing page templates. Shared production files are
+  unchanged. Automatic Vercel deployments are disabled; no preview is deployed.
+- Detailed findings and remaining launch gates: [news migration](migration/NEWS-MIGRATION.md).
+  Local build, content workflow and Vercel preparation: [standalone README](standalone/README.md).
+
 ## Next implementation tasks
-- Collect Squarespace XML export / articles and image assets.
-- Confirm exact current navigation labels, active Squarespace form fields, newsletter provider and current email service.
-- Build standalone app and preview deployment without touching live site.
+- Mirror image/media assets, finish the route inventory and verify visual parity.
+- Confirm exact current navigation labels, active Squarespace form fields,
+  newsletter provider and current email service, then implement/test replacements.
+- Create and validate a separate Vercel preview without production domains.
+- Complete the release gate above before any live cutover.

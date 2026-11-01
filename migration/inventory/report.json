@@ -1,0 +1,35 @@
+{
+  "sourceFile": "Squarespace-Wordpress-Export-11-01-2026.xml",
+  "sourceSha256": "9429a69b297c68abae82a9ac30b4dee89d1f2db5ddee2d3939b236972b51476d",
+  "totalItems": 188,
+  "publishedArticles": 76,
+  "draftArticles": 1,
+  "pages": 35,
+  "attachments": 76,
+  "uniqueArticleMediaUrls": 402,
+  "categories": {
+    "Match Recaps": 50,
+    "News": 4,
+    "Stories": 27
+  },
+  "publishedYears": {
+    "2022": 3,
+    "2023": 19,
+    "2024": 22,
+    "2025": 18,
+    "2026": 14
+  },
+  "missingFromSavedFeed": [],
+  "savedFeedNotInPublishedExport": [],
+  "dateDifferencesOverOneSecond": [],
+  "missingFeaturedImages": [],
+  "emptyBodies": [],
+  "unsupportedEmbeds": [],
+  "exportedExcerpts": 1,
+  "liveAuditedArticles": 76,
+  "liveSeoDescriptions": 1,
+  "liveSocialDescriptions": 76,
+  "canonicalDiscrepancies": [],
+  "modifiedDatesExported": false,
+  "launchReady": false
+}
