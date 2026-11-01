@@ -75,6 +75,11 @@ node --test tests/*.test.cjs
 
 ## Content and editing
 
+Typography uses exactly two brand families: **Alverata for large headings** and
+**Arboria for everything else**, including prose, navigation, controls, small
+headings, player names and statistics. `app/typography.css` defines these roles;
+fallback fonts apply only until the independent webfont source is configured.
+
 `../content/news/*.json` is the editable article source. Each record retains the
 original title, URL, author, categories, publication instant and raw source body,
 plus sanitized editorial HTML and captured SEO/social metadata. Preserve `path`,

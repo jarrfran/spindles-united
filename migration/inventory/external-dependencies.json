@@ -16,6 +16,7 @@
   },
   "fonts": {
     "families": ["alverata", "arboria"],
+    "roles": {"largeHeadings": "Alverata", "bodyNavigationControlsAndOtherText": "Arboria"},
     "liveProvider": "Adobe Typekit scripts inserted by Squarespace",
     "evidence": "public homepage head inspected read-only; source retained locally in ignored migration/source/live-home.html",
     "status": "needs independent licensed font assets or a club-owned Adobe Fonts project; standalone currently uses CSS fallback fonts"

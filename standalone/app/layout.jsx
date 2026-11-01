@@ -3,6 +3,7 @@ import legacy from '../generated/legacy.json';
 import { ORIGIN, indexable } from '../lib/content.mjs';
 import { localMediaUrl } from '../lib/media.mjs';
 import './standalone.css';
+import './typography.css';
 
 export const metadata = {
   metadataBase: new URL(ORIGIN),

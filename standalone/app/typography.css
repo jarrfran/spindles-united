@@ -1,0 +1,35 @@
+/* Club typography: Alverata for large headings; Arboria for everything else. */
+:root {
+  --su-heading-font: "alverata", "Alverata", Georgia, serif;
+  --su-text-font: "arboria", "Arboria", Arial, sans-serif;
+}
+
+body {
+  font-family: var(--su-text-font);
+}
+
+/* Legacy templates also used their display token for scores, names and numbers.
+   Keep those in Arboria and assign Alverata explicitly to the large headings. */
+body .su-site,
+body .su-home {
+  --su-body: var(--su-text-font);
+  --su-display: var(--su-text-font);
+}
+
+body .su-site h1,
+body .su-site h2,
+body .standalone-notice h1,
+body .su-home .su-h2,
+body .su-home .su-h3,
+body .su-home .su-slide-title,
+body .su-home .su-promo-h,
+body .su-home .su-promo-title {
+  font-family: var(--su-heading-font);
+}
+
+body .standalone-brand,
+body .su-site .su-article-widget h2,
+body .su-site .su-article-sidebar .su-news-heading h2,
+body .su-site .su-profile-title .su-profile-number {
+  font-family: var(--su-text-font);
+}
