@@ -14,13 +14,6 @@ html body .product-gallery-carousel-control svg{width:22px!important;height:22px
 html body .product-gallery-prev{left:12px!important;right:auto!important}
 html body .product-gallery-next{right:12px!important;left:auto!important}
 #header .header-actions-action--cart{display:none!important}
-#header .header-display-desktop .header-nav{flex:1 1 auto!important;width:auto!important;margin-left:24px!important;margin-right:18px!important}
-#header .header-display-desktop .header-nav-list{justify-content:flex-end;gap:clamp(12px,1.5vw,25px)}
-#header .header-display-desktop .header-nav-item{margin:0!important}
-#header .header-display-desktop .header-actions{flex:0 0 auto!important;width:auto!important;gap:8px!important}
-#header .su-nav-cart{margin:0 4px 0 0!important}
-.header-menu .su-nav-cart{margin:8px 0 12px auto!important;align-self:flex-end!important;width:48px!important;height:48px!important}
-.header-menu .su-nav-cart svg{width:30px!important;height:30px!important}
 /* Full cart and the native add confirmation share typography and controls. */
 html body#cart{background:#f2f3f5}
 html body#cart #sqs-cart-container{max-width:1100px;min-height:0!important;margin:36px auto!important;border:1px solid #e2e4e8;border-radius:22px!important;padding:clamp(20px,4vw,48px)!important;font-family:arboria,Arial,sans-serif!important}
@@ -79,3 +72,20 @@ html body #sqs-cart-container .cart-summary{float:none!important}
 html body #sqs-cart-container .cart-checkout-button{display:block!important;width:100%!important;box-sizing:border-box!important;text-align:center}
 html body #sqs-cart-container .cart-checkout-button::after{display:none!important}
 @media(max-width:480px){html body #sqs-cart-container .cart-row{grid-template-columns:64px minmax(0,1fr) auto!important;gap:12px!important}html body #sqs-cart-container .cart-row-img-wrapper{width:64px!important;height:88px!important}}
+/* One cart entry point, below the main navigation. */
+html body #header .su-nav-cart,html body .header-menu .su-nav-cart,html body .su-store-bar,html body .su-native-product-bar{display:none!important}
+html body .su-commerce-bar{background:#111;color:#fff;border-top:1px solid #ffffff18;font:600 14px/1.4 arboria,Arial,sans-serif;position:relative;z-index:10;width:100%;box-sizing:border-box}
+html body .su-commerce-bar[hidden]{display:none!important}
+html body .su-commerce-bar-inner{width:92%;max-width:1240px;min-height:64px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+html body .su-commerce-bar a{display:inline-flex;align-items:center;gap:8px;color:#fff!important;text-decoration:none!important;font:inherit;letter-spacing:normal;text-transform:none}
+html body .su-commerce-bar svg{display:block;width:23px;height:23px;flex:none}
+html body .su-commerce-cart{padding:9px 12px!important;border:1px solid #ffffff35;border-radius:13px;background:#ffffff0b}
+html body .su-commerce-count{display:grid;place-items:center;min-width:22px;height:22px;padding:0 4px;box-sizing:border-box;background:#bd1325;color:#fff;border-radius:7px;font:700 12px/1 arboria,Arial,sans-serif}
+html body .su-commerce-count[hidden]{display:none!important}
+html.su-cart-embedded .su-commerce-bar{display:none!important}
+/* Native add confirmation is immediately handed to our full native-cart drawer. */
+html body.su-commerce-ready #commerce-mini-cart-container{visibility:hidden!important;pointer-events:none!important}
+html body #sqs-cart-container .cart-row-qty button{display:flex!important;align-items:center!important;justify-content:center!important;flex:0 0 36px!important;line-height:1!important;position:static!important;transform:none!important}
+html body #sqs-cart-container .cart-row-qty button>span{display:flex!important;align-items:center!important;justify-content:center!important;width:22px!important;height:22px!important;margin:0!important;padding:0!important;position:static!important;transform:none!important}
+html body #sqs-cart-container .cart-row-qty button svg{display:block!important;width:20px!important;height:20px!important;position:static!important;transform:none!important;margin:0!important}
+.su-cart-loading{font:500 15px/1.5 arboria,Arial,sans-serif;color:#727780;padding:24px;text-align:center}
