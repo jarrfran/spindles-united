@@ -13,7 +13,7 @@
   var menu=document.querySelector('.header-burger-btn.burger--active');if(menu)menu.click();
   drawer=document.createElement('dialog');drawer.className='su-native-cart-drawer';drawer.setAttribute('aria-label','Shopping cart');
   var top=document.createElement('div');top.className='su-cart-drawer-top';top.innerHTML='<span>Wear the Colors</span><button type="button" aria-label="Close shopping cart">'+svg('m6 6 12 12M18 6 6 18')+'</button>';
-  var frame=document.createElement('iframe');frame.title='Your shopping cart';frame.src='/cart?suCart=1';
+  var frame=document.createElement('iframe');frame.title='Your shopping cart';frame.src='/cart?suCart=1';frame.style.visibility='hidden';frame.addEventListener('load',function(){frame.style.visibility='visible';});
   drawer.append(top,frame);document.body.append(drawer);
   function close(){drawer.close();}
   top.querySelector('button').addEventListener('click',close);
@@ -27,7 +27,8 @@
   if(embedded)document.querySelectorAll('#sqs-cart-container a').forEach(function(a){if(a.target!=='_top')a.target='_top';});
  }
  document.addEventListener('click',function(e){
-  if(embedded||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button>0)return;
+  if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button>0)return;
+  if(embedded){var cartLink=e.target.closest('#sqs-cart-container a');if(cartLink){var destination=new URL(cartLink.href,location.href);if(destination.origin===location.origin){e.preventDefault();e.stopImmediatePropagation();window.top.location.href=destination.href;}}return;}
   var a=e.target.closest('a'),view=e.target.closest('.commerce-mini-cart-view-cart-button');
   if(view){e.preventDefault();e.stopImmediatePropagation();var close=document.querySelector('.commerce-mini-cart-close-button');if(close)close.click();openCart();return;}
   if(!a)return;var url;try{url=new URL(a.href,location.href);}catch(_){return;}
