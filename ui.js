@@ -69,7 +69,39 @@ function enhance(select){
 }
 function dimTeams(){document.querySelectorAll('.su-club-match-teams,.su-result-teams,.su-mw-row,.su-mini-match').forEach(function(row){var teams=Array.from(row.querySelectorAll('.su-club-team,.su-rt,.su-mw-team,.su-mini-team')),score=row.querySelector('.su-club-score,.su-result-score,.su-mw-score,b'),v=score?Array.from(score.childNodes).map(function(n){return n.textContent.trim();}).filter(function(t){return /^\d+$/.test(t);}):[],winner=row.dataset.winner;if(!['home','away'].includes(winner)&&v?.length===2)winner=+v[0]>+v[1]?'home':+v[0]<+v[1]?'away':'';teams.forEach(function(t,i){t.classList.toggle('is-loser',!!winner&&winner!==(i===0?'home':'away'));});});}
 function storeNavigation(){document.querySelectorAll('header a,#header a,.header-menu a').forEach(function(a){try{var u=new URL(a.getAttribute('href'),location.href);if(['spindlesunited.store','www.spindlesunited.store'].includes(u.hostname)&&u.pathname==='/'){a.setAttribute('href','/store');a.removeAttribute('target');a.removeAttribute('rel');}}catch(e){}});}
-function scan(){storeNavigation();dimTeams();document.querySelectorAll('.su-site select:not([data-su-select])').forEach(enhance);if(active&&!active.isConnected)close();}
+
+/* Reserve the overlay navigation's real height consistently across browsers.
+   Override the section's automatic offset; do not add a second offset. */
+var headerOffsetStyle=document.createElement('style');
+headerOffsetStyle.textContent='#page .page-section.su-measured-header-offset{padding-top:var(--su-measured-header-height,0px)!important;}';
+document.head.appendChild(headerOffsetStyle);
+var measuredHeader=null,headerResize=null;
+function measureHeader(){
+ var header=document.querySelector('#header');
+ if(!header)return;
+ if(header!==measuredHeader){
+  if(headerResize)headerResize.disconnect();
+  measuredHeader=header;
+  if(window.ResizeObserver){headerResize=new ResizeObserver(measureHeader);headerResize.observe(header);}
+ }
+ var position=getComputedStyle(header).position;
+ var height=(position==='absolute'||position==='fixed')?header.getBoundingClientRect().height:0;
+ var value=Math.max(0,height)+'px';
+ if(document.documentElement.style.getPropertyValue('--su-measured-header-height')!==value)
+  document.documentElement.style.setProperty('--su-measured-header-height',value);
+}
+function normalizeHeroOffset(){
+ var section=document.querySelector('#page .page-section');
+ if(section&&section.querySelector('.su-club-hero,.su-profile-hero')){
+  if(!section.classList.contains('su-measured-header-offset'))section.classList.add('su-measured-header-offset');
+  measureHeader();
+ }
+}
+window.addEventListener('resize',measureHeader,{passive:true});
+window.addEventListener('load',measureHeader,{once:true});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measureHeader);
+
+function scan(){normalizeHeroOffset();storeNavigation();dimTeams();document.querySelectorAll('.su-site select:not([data-su-select])').forEach(enhance);if(active&&!active.isConnected)close();}
 new MutationObserver(scan).observe(document.documentElement,{childList:true,subtree:true});scan();
 })();
 
