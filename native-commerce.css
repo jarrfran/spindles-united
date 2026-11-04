@@ -93,3 +93,5 @@ html body .su-commerce-bar{position:absolute;left:0;top:var(--header-height,70px
 html body .su-commerce-offset{margin-top:65px!important}
 html body #sqs-cart-container .cart-row-qty>div,html body #sqs-cart-container .cart-row-qty>div>div{width:112px!important;min-width:112px!important;max-width:none!important;box-sizing:border-box!important;padding:0!important}
 html body #sqs-cart-container .cart-row-remove>span,html body #sqs-cart-container .cart-row-remove svg{display:block!important;width:20px!important;height:20px!important;margin:0!important;padding:0!important;position:static!important;transform:none!important}
+html body #sqs-cart-container .cart-row-qty>div>div{display:grid!important;grid-template-columns:36px 36px 36px!important;gap:0!important;justify-content:center!important}
+html body #sqs-cart-container .cart-row-qty input{flex:0 0 36px!important;max-width:36px!important;box-sizing:border-box!important}
