@@ -24,12 +24,15 @@
   }
   if(!bar)return;
   bar.hidden=!(isStore||count>0);
+  var show=!bar.hidden;if(main&&main.classList.contains('su-commerce-offset')!==show)main.classList.toggle('su-commerce-offset',show);
+  var header=document.querySelector('#header');if(header)bar.style.top=header.getBoundingClientRect().height+'px';
   var badge=bar.querySelector('.su-commerce-count'),link=bar.querySelector('.su-commerce-cart');
   if(badge.textContent!==String(count))badge.textContent=String(count);
   badge.hidden=count===0;
   var label='Open cart, '+count+' '+(count===1?'item':'items');if(link.getAttribute('aria-label')!==label)link.setAttribute('aria-label',label);
  }
  window.addEventListener('message',function(e){if(e.origin===location.origin&&drawer&&e.source===drawer.querySelector('iframe').contentWindow&&e.data&&e.data.type==='su-native-cart-count')updateCount(e.data.count);});
+ window.addEventListener('resize',updateBar);
  window.addEventListener('storage',function(e){if(e.key==='su-native-cart-count')updateCount(e.newValue);});
  function openCart(){
   if(embedded)return;

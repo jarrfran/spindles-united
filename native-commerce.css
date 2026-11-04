@@ -89,3 +89,5 @@ html body #sqs-cart-container .cart-row-qty button{display:flex!important;align-
 html body #sqs-cart-container .cart-row-qty button>span{display:flex!important;align-items:center!important;justify-content:center!important;width:22px!important;height:22px!important;margin:0!important;padding:0!important;position:static!important;transform:none!important}
 html body #sqs-cart-container .cart-row-qty button svg{display:block!important;width:20px!important;height:20px!important;position:static!important;transform:none!important;margin:0!important}
 .su-cart-loading{font:500 15px/1.5 arboria,Arial,sans-serif;color:#727780;padding:24px;text-align:center}
+html body .su-commerce-bar{position:absolute;left:0;top:var(--header-height,70px)}
+html body .su-commerce-offset{margin-top:65px!important}
