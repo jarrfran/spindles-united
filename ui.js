@@ -89,16 +89,23 @@ function measureHeader(){
  var value=Math.max(0,height)+'px';
  if(document.documentElement.style.getPropertyValue('--su-measured-header-height')!==value)
   document.documentElement.style.setProperty('--su-measured-header-height',value);
+ // The homepage hero also uses the header height when sizing its first screen.
+ document.querySelectorAll('.su-home').forEach(function(home){
+  var fullHeight=Math.max(0,header.getBoundingClientRect().height)+'px';
+  if(home.style.getPropertyValue('--su-header')!==fullHeight)home.style.setProperty('--su-header',fullHeight);
+ });
 }
 function normalizeHeroOffset(){
  var section=document.querySelector('#page .page-section');
- if(section&&section.querySelector('.su-club-hero,.su-profile-hero')){
+ if(section&&section.querySelector('[data-su="home"],.su-home,.su-club-hero,.su-profile-hero')){
   if(!section.classList.contains('su-measured-header-offset'))section.classList.add('su-measured-header-offset');
   measureHeader();
  }
 }
 window.addEventListener('resize',measureHeader,{passive:true});
-window.addEventListener('load',measureHeader,{once:true});
+window.addEventListener('load',normalizeHeroOffset,{once:true});
+window.addEventListener('pageshow',normalizeHeroOffset);
+document.addEventListener('mercury:load',normalizeHeroOffset);
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measureHeader);
 
 function scan(){normalizeHeroOffset();storeNavigation();dimTeams();document.querySelectorAll('.su-site select:not([data-su-select])').forEach(enhance);if(active&&!active.isConnected)close();}
