@@ -97,7 +97,7 @@ function measureHeader(){
 }
 function normalizeHeroOffset(){
  var section=document.querySelector('#page .page-section');
- if(section&&section.querySelector('[data-su="home"],.su-home,.su-club-hero,.su-profile-hero')){
+ if(section&&section.querySelector('[data-su="home"],[data-su="join"],.su-home,.su-club-hero,.su-profile-hero')){
   if(!section.classList.contains('su-measured-header-offset'))section.classList.add('su-measured-header-offset');
   measureHeader();
  }

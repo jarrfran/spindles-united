@@ -409,6 +409,7 @@
     api.onerror=function(){el.innerHTML='<p>The store could not connect. Please refresh.</p>';};document.head.appendChild(api);
   };
 
+  INIT.join=function(el){if(window.SUJoin){window.SUJoin(el);return;}var script=document.createElement('script');script.src=BASE+'join.js?v='+V;script.onload=function(){if(window.SUJoin)window.SUJoin(el);};document.head.appendChild(script);};
   INIT.about=function(){};
   INIT.history=function(el){INIT.seasons(el);};
   INIT.sponsors=function(){};
