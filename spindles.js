@@ -11,6 +11,14 @@
   var navStyle=document.createElement('link');navStyle.rel='stylesheet';navStyle.id='su-navigation-style';navStyle.href=BASE+'header-menu.css?v='+V;if(!document.getElementById(navStyle.id))document.head.appendChild(navStyle);
   var mentionsScript=document.createElement('script');mentionsScript.src=BASE+'player-mentions.js?v='+V;var mentionsReady=new Promise(function(resolve,reject){mentionsScript.onload=function(){resolve(window.SUPlayerMentions);};mentionsScript.onerror=reject;});window.SUGetPlayerMentions=function(){return mentionsReady;};document.head.appendChild(mentionsScript);
   var blogScript=document.createElement('script');blogScript.src=BASE+'blog.js?v='+V;document.head.appendChild(blogScript);
+  // Glass layer (World Cup Widgets look). Preview with ?glass=1, turn off with ?glass=0.
+  (function(){try{var q=location.search.match(/[?&]glass=(0|1)/);if(q)sessionStorage.setItem('su-glass',q[1]);var on=sessionStorage.getItem('su-glass')==='1';}catch(e){var on=/[?&]glass=1/.test(location.search);}
+    if(!on||document.getElementById('su-glass-style'))return;
+    document.documentElement.classList.add('su-glass');
+    var l=document.createElement('link');l.rel='stylesheet';l.id='su-glass-style';l.href=BASE+'glass.css?v='+V;document.head.appendChild(l);
+    function defs(){if(document.getElementById('su-glass-defs'))return;var d=document.createElement('div');d.id='su-glass-defs';d.setAttribute('aria-hidden','true');d.style.cssText='position:absolute;width:0;height:0;overflow:hidden';d.innerHTML='<svg width="0" height="0" focusable="false"><defs><linearGradient id="su-glass-ink" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6b76"/><stop offset=".55" stop-color="#e2303d"/><stop offset="1" stop-color="#9e1220"/></linearGradient></defs></svg>';document.body.appendChild(d);}
+    if(document.body)defs();else document.addEventListener('DOMContentLoaded',defs);
+  })();
   var IMG = 'https://images.squarespace-cdn.com/content/v1/6702f19a9e93b178e9d17b01/';
 
   var archiveReady, archiveBase;
