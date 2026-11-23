@@ -11,8 +11,8 @@
   var navStyle=document.createElement('link');navStyle.rel='stylesheet';navStyle.id='su-navigation-style';navStyle.href=BASE+'header-menu.css?v='+V;if(!document.getElementById(navStyle.id))document.head.appendChild(navStyle);
   var mentionsScript=document.createElement('script');mentionsScript.src=BASE+'player-mentions.js?v='+V;var mentionsReady=new Promise(function(resolve,reject){mentionsScript.onload=function(){resolve(window.SUPlayerMentions);};mentionsScript.onerror=reject;});window.SUGetPlayerMentions=function(){return mentionsReady;};document.head.appendChild(mentionsScript);
   var blogScript=document.createElement('script');blogScript.src=BASE+'blog.js?v='+V;document.head.appendChild(blogScript);
-  // Glass layer (World Cup Widgets look). Preview with ?glass=1, turn off with ?glass=0.
-  (function(){try{var q=location.search.match(/[?&]glass=(0|1)/);if(q)sessionStorage.setItem('su-glass',q[1]);var on=sessionStorage.getItem('su-glass')==='1';}catch(e){var on=/[?&]glass=1/.test(location.search);}
+  // Glass layer (World Cup Widgets look). On for everyone; ?glass=0 turns it off for that tab, ?glass=1 back on.
+  (function(){try{var q=location.search.match(/[?&]glass=(0|1)/);if(q)sessionStorage.setItem('su-glass',q[1]);var on=sessionStorage.getItem('su-glass')!=='0';}catch(e){var on=!/[?&]glass=0/.test(location.search);}
     if(!on||document.getElementById('su-glass-style'))return;
     document.documentElement.classList.add('su-glass');
     var l=document.createElement('link');l.rel='stylesheet';l.id='su-glass-style';l.href=BASE+'glass.css?v='+V;document.head.appendChild(l);
