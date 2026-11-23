@@ -1,141 +1,123 @@
 /* Spindles glass layer — based on the World Cup Widgets pack.
-   Glare stroke = a 1px border painted with a corner-bright gradient (border-box layer),
-   glass = layered translucent gradients, fog = soft radial colour blooms.
-   Shapes, radii and layout come from site.css; this file only changes surfaces.
-   Active when <html> has the class su-glass (spindles.js adds it). */
+   Two tools:
+   1. Glare ring: a 1px corner-bright gradient edge drawn by ::before over the element,
+      so the element keeps its own colours (scores, W-D-L, photos, dark widgets).
+      Each context sets --ring: light, dark, red or photo.
+   2. Glass surfaces: only cards, fog panels and red buttons get a new fill.
+   Shapes, radii and layout come from site.css. Active when <html> has su-glass. */
 
 html.su-glass{
-  --g-stroke-light:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.55) 18%,rgba(24,26,32,.10) 42%,rgba(24,26,32,.07) 58%,rgba(255,255,255,.5) 82%,#fff 100%);
-  --g-stroke-dark:linear-gradient(135deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.12) 22%,rgba(255,255,255,.03) 50%,rgba(255,255,255,.10) 78%,rgba(255,255,255,.42) 100%);
-  --g-stroke-red:linear-gradient(135deg,#ffc2c7 0%,rgba(255,170,178,.5) 25%,rgba(150,10,25,.35) 55%,rgba(255,150,160,.45) 80%,#ffd0d4 100%);
-  --g-card:radial-gradient(130% 90% at 0% 0%,#fff 0%,rgba(255,255,255,0) 55%),linear-gradient(160deg,#fdfdfd 0%,#f3f4f6 100%);
-  --g-fog:radial-gradient(80% 120% at 100% 0%,rgba(237,35,49,.075) 0%,rgba(237,35,49,0) 62%),radial-gradient(120% 90% at 0% 0%,rgba(255,255,255,.95) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#f4f4f6 0%,#e8e9ec 100%);
-  --g-dark:radial-gradient(120% 100% at 0% 0%,rgba(255,255,255,.14) 0%,rgba(255,255,255,0) 55%),linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.04));
-  --g-red:radial-gradient(70% 140% at 12% -10%,rgba(255,150,158,.95) 0%,rgba(255,150,158,0) 55%),radial-gradient(60% 120% at 92% 120%,rgba(255,96,108,.9) 0%,rgba(255,96,108,0) 60%),radial-gradient(45% 90% at 78% 10%,rgba(255,215,219,.45) 0%,rgba(255,215,219,0) 70%),linear-gradient(180deg,#e2303d 0%,#b8131f 100%);
-  --g-shadow-light:inset 0 1px 0 rgba(255,255,255,.9),0 1px 2px rgba(17,18,20,.05),0 10px 26px -14px rgba(17,18,20,.22);
-  --g-shadow-dark:inset 0 1px 0 rgba(255,255,255,.14),0 14px 34px -18px rgba(0,0,0,.6);
-  --g-shadow-red:inset 0 0 8px rgba(255,150,158,.75),inset 0 0 1px rgba(255,255,255,.6),0 10px 22px -10px rgba(190,32,57,.6);
+  --r-light:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.6) 16%,rgba(30,32,38,.13) 40%,rgba(30,32,38,.09) 62%,rgba(255,255,255,.55) 86%,#fff 100%);
+  --r-dark:linear-gradient(135deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.14) 20%,rgba(255,255,255,.05) 50%,rgba(255,255,255,.12) 80%,rgba(255,255,255,.4) 100%);
+  --r-photo:linear-gradient(135deg,rgba(255,255,255,.75) 0%,rgba(255,255,255,.18) 22%,rgba(255,255,255,.04) 50%,rgba(255,255,255,.14) 78%,rgba(255,255,255,.55) 100%);
+  --r-red:linear-gradient(135deg,#ff9aa4 0%,rgba(255,110,122,.55) 22%,rgba(190,32,57,.25) 50%,rgba(255,110,122,.45) 78%,#ff8a95 100%);
+  --r-btn:linear-gradient(180deg,rgba(255,205,210,.95) 0%,rgba(255,150,160,.35) 45%,rgba(255,150,160,.25) 60%,rgba(255,180,188,.6) 100%);
+  --g-card:radial-gradient(120% 90% at 0% 0%,#fff 0%,rgba(255,255,255,0) 60%),linear-gradient(165deg,#fff 0%,#f6f7f8 100%);
+  --g-fog:radial-gradient(80% 120% at 100% 0%,rgba(237,35,49,.035) 0%,rgba(237,35,49,0) 60%),radial-gradient(110% 90% at 0% 0%,rgba(255,255,255,.7) 0%,rgba(255,255,255,0) 55%),linear-gradient(170deg,#f1f1f3 0%,#eaebee 100%);
+  --g-btn:linear-gradient(180deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,.06) 48%,rgba(255,255,255,0) 52%),linear-gradient(180deg,#e2313e 0%,#b91623 100%);
 }
+
+/* ---------- The glare ring ---------- */
+html.su-glass :is(
+  .su-home .su-card,.su-ncard,.su-fixture,.su-roster-card,.su-sponsor-card,.su-contact-direct,.su-contact-reason,
+  .su-record-section,.su-record-leader,.su-record-tabs button,.su-about-intro,.su-partner,.su-sponsor-intro,.su-season-jumps a,
+  .su-timeline-card,.su-timeline-goal,.su-site .su-select-trigger,.su-select-menu,.su-join-rhythm span,
+  .su-club-season-facts>div,.su-match-events:not(.su-timeline),.su-record-metrics,.su-record-leaders,.su-record-callout,.su-about-upl,
+  .su-sponsor-opportunity,.su-article-widget,.su-join-page .su-join-steps li,.su-join-page .su-join-faqs details,
+  .su-home .su-mw,.su-home .su-tk-item,.su-stat,.su-hero-btn,.su-rail-btn,.su-site .su-recap-btn,.su-match-sections a,.su-home .su-result-go,
+  .su-xcard,.su-promo,.su-player,.su-video,.su-story-image,.su-season-image,.su-match-gallery a,.su-record-avatar,.su-profile-photo,.su-join-page .su-join-photo,
+  .su-site .su-club-btn:not(.su-recap-btn),.su-footer .su-btn,.su-home .su-btn-solid,#header .header-actions-action--cta a,.header-menu-cta a,
+  .su-stat-icon,.su-accolade-icon,.su-footer-social a,.su-join-page .su-join-dark .su-join-values li
+)::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;
+  background:var(--ring,var(--r-light));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+}
+html.su-glass :is(
+  .su-home .su-card,.su-ncard,.su-roster-card,.su-sponsor-card,.su-contact-direct,.su-contact-reason,.su-record-section,
+  .su-record-leader,.su-record-tabs button,.su-about-intro,.su-partner,.su-sponsor-intro,.su-season-jumps a,.su-timeline-card,.su-timeline-goal,
+  .su-site .su-select-trigger,.su-join-rhythm span,.su-club-season-facts>div,.su-match-events:not(.su-timeline),.su-record-metrics,.su-record-leaders,
+  .su-record-callout,.su-about-upl,.su-sponsor-opportunity,.su-article-widget,.su-home .su-mw,.su-home .su-tk-item,.su-hero-btn,.su-rail-btn,
+  .su-site .su-recap-btn,.su-match-sections a,.su-home .su-result-go,.su-xcard,.su-story-image,.su-match-gallery a,.su-record-avatar,
+  .su-site .su-club-btn,.su-footer .su-btn,.su-home .su-btn-solid,#header .header-actions-action--cta a,.header-menu-cta a,.su-stat-icon,.su-accolade-icon,
+  .su-footer-social a,.su-join-page .su-join-dark .su-join-values li
+){position:relative}
+
+/* Which ring goes where */
+html.su-glass :is(.su-home .su-mw,.su-home .su-tk-item,.su-stat,.su-hero-btn,.su-club-hero .su-recap-btn,.su-season-picker .su-select-trigger,.su-footer-social a,.su-profile-photo,.su-join-page .su-join-dark .su-join-values li,.su-home .su-players .su-rail-btn,.su-home .su-btn-line){--ring:var(--r-dark)}
+html.su-glass :is(.su-xcard,.su-promo,.su-story-image,.su-season-image,.su-match-gallery a,.su-record-avatar,.su-join-page .su-join-photo){--ring:var(--r-photo)}
+html.su-glass :is(.su-player,.su-video,.su-profile-number){--ring:var(--r-red)}
+html.su-glass :is(.su-site .su-club-btn:not(.su-recap-btn),.su-footer .su-btn,.su-home .su-btn-solid,#header .header-actions-action--cta a,.header-menu-cta a){--ring:var(--r-btn)}
+
+/* The ring replaces the old 1px borders */
+html.su-glass :is(
+  .su-home .su-card,.su-ncard,.su-roster-card,.su-sponsor-card,.su-footer .su-sponsor-card,.su-contact-direct,.su-contact-reason,.su-record-section,
+  .su-record-leader,.su-record-tabs button:not([aria-pressed=true]),.su-about-intro,.su-partner,.su-sponsor-intro,.su-season-jumps a,.su-timeline-card,
+  .su-select-menu,.su-site .su-select-trigger:not(.su-season-picker *),.su-home .su-mw,.su-home .su-tk-item,.su-hero-btn,.su-site .su-recap-btn,.su-match-sections a,
+  .su-home .su-result-go,.su-xcard,.su-join-page .su-join-steps li,.su-join-page .su-join-faqs details,.su-join-rhythm span
+){border-color:transparent!important}
 
 /* ---------- Light glass cards (white surfaces) ---------- */
 html.su-glass :is(
-  .su-home .su-card,.su-ncard,.su-home .su-ncard,.su-fixture,.su-match-dropdown,.su-match-dropdown>.su-fixture,
-  .su-roster-card,.su-sponsor-card,.su-footer .su-sponsor-card,.su-contact-direct,.su-contact-reason,
-  .su-record-section,.su-record-leader,.su-record-tabs button:not([aria-pressed=true]),.su-about-intro,.su-partner,.su-sponsor-intro,
-  .su-season-jumps a,.su-timeline-card,.su-timeline-goal,.su-timeline.su-match-events,.su-select-menu,
-  .su-site .su-select-trigger,.sqs-block.su-contact-native,.su-contact-with-film>.sqs-block-content,
-  .su-join-rhythm span
+  .su-home .su-card,.su-ncard,.su-roster-card,.su-sponsor-card,.su-footer .su-sponsor-card,.su-contact-direct,.su-contact-reason,.su-record-section,
+  .su-record-leader,.su-about-intro,.su-partner,.su-sponsor-intro,.su-season-jumps a,.su-timeline-card,.su-join-rhythm span,
+  .su-record-tabs button:not([aria-pressed=true]),.su-site .su-recap-btn:not(.su-club-hero *),.su-match-sections a,.su-home .su-result-go
 ){
-  border:1px solid transparent!important;
-  background:var(--g-card) padding-box,var(--g-stroke-light) border-box!important;
-  box-shadow:var(--g-shadow-light);
+  background:var(--g-card)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 1px 2px rgba(17,18,20,.04),0 10px 24px -16px rgba(17,18,20,.2);
 }
+html.su-glass .su-select-menu{background:linear-gradient(165deg,#fff,#f7f8f9)!important}
 
-/* ---------- Fog panels (grey surfaces) ---------- */
+/* ---------- Fog panels (grey surfaces), toned down for reading ---------- */
 html.su-glass :is(
-  .su-club-season-facts>div,.su-match-events,.su-record-metrics,.su-record-leaders,.su-record-callout,
-  .su-about-crest,.su-about-upl,.su-sponsor-opportunity,.su-article-widget,
-  .su-timeline-score,.su-record-section>summary>span,.su-mini-result b,
-  .su-join-page .su-join-steps li,.su-join-page .su-join-faqs details
+  .su-club-season-facts>div,.su-match-events:not(.su-timeline),.su-record-metrics,.su-record-leaders,.su-record-callout,.su-about-upl,
+  .su-sponsor-opportunity,.su-article-widget,.su-join-page .su-join-steps li,.su-join-page .su-join-faqs details
 ){
-  border:1px solid transparent!important;
-  background:var(--g-fog) padding-box,var(--g-stroke-light) border-box!important;
-  box-shadow:var(--g-shadow-light);
-}
-html.su-glass .su-record-tabs button[aria-pressed=true]{border:1px solid transparent!important;background:radial-gradient(120% 120% at 15% 0%,rgba(255,255,255,.18),rgba(255,255,255,0) 55%) padding-box,linear-gradient(160deg,#2a2a2d,#151517) padding-box,var(--g-stroke-dark) border-box!important;box-shadow:var(--g-shadow-dark)}
-html.su-glass .su-record-metrics>div{background:none!important;box-shadow:none!important}
-html.su-glass .su-profile-secondary .su-record-metrics{background:none!important;border-color:transparent!important;box-shadow:none}
-
-/* Scores, result pills and small chips: glossy light gradient */
-html.su-glass :is(.su-club-score,.su-home .su-result-score,.su-home .su-tk-score,.su-home .su-mw-score,.su-site .su-res,.su-home .su-pos,.su-event-minute){
-  border:1px solid transparent!important;
-  background:radial-gradient(120% 120% at 20% 0%,#fff 0%,rgba(255,255,255,0) 60%) padding-box,linear-gradient(180deg,#f6f6f7,#e2e3e6) padding-box,var(--g-stroke-light) border-box!important;
-  box-shadow:inset 0 1px 0 #fff,0 4px 10px -6px rgba(17,18,20,.3);
+  background:var(--g-fog)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 8px 20px -16px rgba(17,18,20,.18);
 }
 
-/* ---------- Dark glass (on dark bands, heroes, film) ---------- */
-html.su-glass :is(
-  .su-home .su-tk-item,.su-mw,.su-hero-btn,.su-profile-photo,.su-profile-honours span,.su-contact-film-toggle,
-  .su-home .su-btn-line,.su-join-page .su-club-hero .su-recap-btn,.su-club-hero .su-recap-btn,
-  .su-join-page .su-join-dark .su-join-values li
-){
-  border:1px solid transparent!important;
-  background:var(--g-dark) padding-box,var(--g-stroke-dark) border-box!important;
-  box-shadow:var(--g-shadow-dark);
-  -webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);
-}
-html.su-glass .su-join-page .su-join-dark .su-join-values li{border-radius:var(--su-radius);padding:22px 22px 24px}
-html.su-glass .su-mw{background:radial-gradient(120% 100% at 0% 0%,rgba(255,255,255,.12),rgba(255,255,255,0) 55%) padding-box,linear-gradient(160deg,rgba(24,24,26,.82),rgba(14,14,15,.72)) padding-box,var(--g-stroke-dark) border-box!important}
-html.su-glass :is(.su-home .su-tk-item,.su-mw,.su-hero-btn,.su-club-hero .su-recap-btn,.su-contact-film-toggle):hover{background:radial-gradient(120% 100% at 0% 0%,rgba(255,255,255,.22),rgba(255,255,255,0) 60%) padding-box,linear-gradient(160deg,rgba(255,255,255,.16),rgba(255,255,255,.06)) padding-box,var(--g-stroke-dark) border-box!important}
+/* Dark widgets keep their colours; just a soft top sheen */
+html.su-glass :is(.su-home .su-mw,.su-home .su-tk-item,.su-stat,.su-hero-btn){box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 14px 30px -18px rgba(0,0,0,.6)}
+html.su-glass .su-club-hero .su-recap-btn{box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+html.su-glass .su-join-page .su-join-dark .su-join-values li{border-top:0;border-radius:var(--su-radius);padding:22px 22px 24px;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.025));box-shadow:inset 0 2px 0 #ed2331}
 
-/* ---------- Red buttons: layered radial gradient + inner glow ---------- */
+/* ---------- Red buttons: clean, even gloss ---------- */
 html.su-glass :is(
   .su-site .su-club-btn:not(.su-recap-btn),.su-footer .su-btn,.su-home .su-btn-solid,
   body:has(.su-home) .sqs-button-element--primary,body:has(.su-home) .newsletter-form-button,
   .su-contact-native :is(button[type="submit"],input[type="submit"],.form-submit-button),
   #header .header-actions-action--cta a,.header-menu-cta a
 ){
-  border:1px solid transparent!important;
-  background:var(--g-red) padding-box,var(--g-stroke-red) border-box!important;
-  box-shadow:var(--g-shadow-red)!important;
-  text-shadow:0 1px 1px rgba(110,8,18,.35);
+  background:var(--g-btn)!important;border-color:transparent!important;
+  box-shadow:inset 0 0 6px rgba(255,160,168,.45),0 8px 18px -10px rgba(190,32,57,.55)!important;
 }
 html.su-glass :is(.su-site .su-club-btn:not(.su-recap-btn),.su-footer .su-btn,.su-home .su-btn-solid,.su-contact-native :is(button[type="submit"],input[type="submit"],.form-submit-button)):hover{
-  background:radial-gradient(70% 140% at 12% -10%,rgba(255,175,182,1) 0%,rgba(255,175,182,0) 58%) padding-box,var(--g-red) padding-box,var(--g-stroke-red) border-box!important;
-  box-shadow:inset 0 0 10px rgba(255,170,178,.9),inset 0 0 1px rgba(255,255,255,.7),0 12px 26px -10px rgba(190,32,57,.7)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.08) 48%,rgba(255,255,255,0) 52%),linear-gradient(180deg,#e83b48 0%,#c21a27 100%)!important;
+  box-shadow:inset 0 0 8px rgba(255,170,178,.6),0 10px 22px -10px rgba(190,32,57,.65)!important;
 }
 
-/* Secondary buttons on light backgrounds: clear glass */
-html.su-glass :is(.su-site .su-recap-btn,.su-match-sections a,.su-rail-btn,.su-home .su-result-go,.su-contact-native .su-contact-confirmation a){
-  border:1px solid transparent!important;
-  background:var(--g-card) padding-box,var(--g-stroke-light) border-box!important;
-  box-shadow:var(--g-shadow-light);
-}
-
-/* ---------- Inset photos (not full width): glare stroke over the image ---------- */
-html.su-glass :is(
-  .su-join-page .su-join-photo,.su-story-image,.su-season-image,.su-video,.su-match-gallery a,
-  .su-record-avatar,.su-player,.su-ncard-image,.su-roster-photo,.su-about-photo
-){
-  border:1px solid transparent!important;
-  background:linear-gradient(#19191b,#19191b) padding-box,var(--g-stroke-light) border-box!important;
-  box-shadow:0 18px 40px -22px rgba(17,18,20,.55);
-  isolation:isolate;
-}
-html.su-glass .su-join-page .su-join-photo:after,html.su-glass .su-story-image:after{
+/* ---------- Inset photos: soft diagonal glare over the image ---------- */
+html.su-glass :is(.su-join-page .su-join-photo,.su-story-image)::after{
   content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;z-index:2;
-  background:linear-gradient(125deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 28%),linear-gradient(305deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,0) 22%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35);
+  background:linear-gradient(125deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 26%),linear-gradient(305deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,0) 20%);
 }
-html.su-glass .su-story-image{position:relative}
+html.su-glass :is(.su-xcard,.su-promo,.su-player,.su-video,.su-join-page .su-join-photo){box-shadow:0 18px 40px -22px rgba(17,18,20,.55)}
+html.su-glass .su-xcard,html.su-glass .su-story-image{overflow:hidden}
 
-/* ---------- Icons: gradient glass tiles + gradient glyphs ---------- */
-html.su-glass :is(.su-stat-icon,.su-accolade-icon,.su-disclosure-icon,.su-about-crest){
-  border:1px solid transparent!important;
-  background:radial-gradient(120% 120% at 20% 0%,#fff 0%,rgba(255,255,255,0) 58%) padding-box,radial-gradient(90% 90% at 100% 100%,rgba(237,35,49,.14),rgba(237,35,49,0) 70%) padding-box,linear-gradient(160deg,#f7f7f8,#e6e7ea) padding-box,var(--g-stroke-light) border-box!important;
+/* ---------- Icons: glass tiles + gradient glyphs ---------- */
+html.su-glass :is(.su-stat-icon,.su-accolade-icon){
+  background:radial-gradient(120% 120% at 20% 0%,#fff 0%,rgba(255,255,255,0) 58%),radial-gradient(90% 90% at 100% 100%,rgba(237,35,49,.12),rgba(237,35,49,0) 70%),linear-gradient(160deg,#f7f7f8,#e6e7ea)!important;
   box-shadow:inset 0 1px 0 #fff,0 4px 10px -6px rgba(17,18,20,.3);
 }
 html.su-glass :is(.su-stat-icon,.su-accolade-icon,.su-action-icon,.su-join-faqs summary,.su-footer-social a) svg :is(path,circle,rect,polygon,line,polyline,ellipse):not([fill="none"]){fill:url(#su-glass-ink)}
 html.su-glass :is(.su-stat-icon,.su-accolade-icon,.su-action-icon,.su-join-faqs summary,.su-footer-social a) svg :is(path,circle,rect,polygon,line,polyline,ellipse)[stroke]:not([stroke="none"]){stroke:url(#su-glass-ink)}
 html.su-glass .su-footer-social a{
-  border:1px solid transparent!important;
-  background:radial-gradient(120% 120% at 20% 0%,rgba(255,255,255,.16),rgba(255,255,255,0) 58%) padding-box,radial-gradient(90% 90% at 100% 100%,rgba(237,35,49,.28),rgba(237,35,49,0) 70%) padding-box,linear-gradient(160deg,#202022,#141415) padding-box,var(--g-stroke-dark) border-box!important;
-  box-shadow:var(--g-shadow-dark);
+  border-color:transparent!important;
+  background:radial-gradient(120% 120% at 20% 0%,rgba(255,255,255,.14),rgba(255,255,255,0) 58%),radial-gradient(90% 90% at 100% 100%,rgba(237,35,49,.22),rgba(237,35,49,0) 70%),linear-gradient(160deg,#202022,#141415)!important;
 }
-/* Numbered step badges and dots: glossy red */
-html.su-glass :is(.su-join-page .su-join-steps small:before,.su-dot-fill,.su-dot-mark,.su-tk-dot){
-  background:var(--g-red)!important;
-  box-shadow:inset 0 0 5px rgba(255,170,178,.9),inset 0 0 1px #fff,0 3px 8px -3px rgba(190,32,57,.6);
+html.su-glass :is(.su-join-page .su-join-steps small:before,.su-dot-fill){
+  background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0) 50%),linear-gradient(180deg,#e2313e,#b91623)!important;
+  box-shadow:inset 0 0 4px rgba(255,170,178,.6),0 3px 8px -3px rgba(190,32,57,.55);
 }
-html.su-glass .su-profile-number{
-  background:var(--g-red)!important;box-shadow:var(--g-shadow-red);
-}
-
-/* ---------- Form fields: frosted light glass ---------- */
-html.su-glass :is(.su-site select,.su-site input,.su-contact-native :is(input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="submit"]),textarea,select)){
-  border:1px solid transparent!important;
-  background:linear-gradient(180deg,#fff,#f6f6f8) padding-box,var(--g-stroke-light) border-box!important;
-  box-shadow:inset 0 1px 2px rgba(17,18,20,.06),0 1px 0 #fff;
-}
-
-@media(prefers-reduced-transparency:reduce){html.su-glass *{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
