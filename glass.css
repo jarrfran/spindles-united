@@ -21,7 +21,7 @@ html.su-glass{
 html.su-glass :is(
   .su-home .su-card,.su-ncard,.su-home .su-ncard,.su-fixture,.su-match-dropdown,.su-match-dropdown>.su-fixture,
   .su-roster-card,.su-sponsor-card,.su-footer .su-sponsor-card,.su-contact-direct,.su-contact-reason,
-  .su-record-section,.su-record-leader,.su-record-tabs button,.su-about-intro,.su-partner,.su-sponsor-intro,
+  .su-record-section,.su-record-leader,.su-record-tabs button:not([aria-pressed=true]),.su-about-intro,.su-partner,.su-sponsor-intro,
   .su-season-jumps a,.su-timeline-card,.su-timeline-goal,.su-timeline.su-match-events,.su-select-menu,
   .su-site .su-select-trigger,.sqs-block.su-contact-native,.su-contact-with-film>.sqs-block-content,
   .su-join-rhythm span
@@ -34,7 +34,7 @@ html.su-glass :is(
 /* ---------- Fog panels (grey surfaces) ---------- */
 html.su-glass :is(
   .su-club-season-facts>div,.su-match-events,.su-record-metrics,.su-record-leaders,.su-record-callout,
-  .su-record-metrics>div,.su-about-crest,.su-about-upl,.su-sponsor-opportunity,.su-article-widget,
+  .su-about-crest,.su-about-upl,.su-sponsor-opportunity,.su-article-widget,
   .su-timeline-score,.su-record-section>summary>span,.su-mini-result b,
   .su-join-page .su-join-steps li,.su-join-page .su-join-faqs details
 ){
@@ -42,6 +42,8 @@ html.su-glass :is(
   background:var(--g-fog) padding-box,var(--g-stroke-light) border-box!important;
   box-shadow:var(--g-shadow-light);
 }
+html.su-glass .su-record-tabs button[aria-pressed=true]{border:1px solid transparent!important;background:radial-gradient(120% 120% at 15% 0%,rgba(255,255,255,.18),rgba(255,255,255,0) 55%) padding-box,linear-gradient(160deg,#2a2a2d,#151517) padding-box,var(--g-stroke-dark) border-box!important;box-shadow:var(--g-shadow-dark)}
+html.su-glass .su-record-metrics>div{background:none!important;box-shadow:none!important}
 html.su-glass .su-profile-secondary .su-record-metrics{background:none!important;border-color:transparent!important;box-shadow:none}
 
 /* Scores, result pills and small chips: glossy light gradient */
