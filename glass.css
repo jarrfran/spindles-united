@@ -13,7 +13,7 @@ html.su-glass{
   --r-red:linear-gradient(135deg,#ff9aa4 0%,rgba(255,110,122,.55) 22%,rgba(190,32,57,.25) 50%,rgba(255,110,122,.45) 78%,#ff8a95 100%);
   --r-btn:linear-gradient(180deg,rgba(255,205,210,.95) 0%,rgba(255,150,160,.35) 45%,rgba(255,150,160,.25) 60%,rgba(255,180,188,.6) 100%);
   --g-card:radial-gradient(120% 90% at 0% 0%,#fff 0%,rgba(255,255,255,0) 60%),linear-gradient(165deg,#fff 0%,#f6f7f8 100%);
-  --g-fog:radial-gradient(80% 120% at 100% 0%,rgba(237,35,49,.035) 0%,rgba(237,35,49,0) 60%),radial-gradient(110% 90% at 0% 0%,rgba(255,255,255,.7) 0%,rgba(255,255,255,0) 55%),linear-gradient(170deg,#f1f1f3 0%,#eaebee 100%);
+  --g-fog:radial-gradient(90% 130% at 100% 0%,rgba(237,35,49,.06) 0%,rgba(237,35,49,0) 60%),radial-gradient(120% 100% at 0% 0%,rgba(255,255,255,.85) 0%,rgba(255,255,255,0) 55%),radial-gradient(110% 120% at 40% 125%,rgba(190,196,208,.3) 0%,rgba(190,196,208,0) 60%),linear-gradient(170deg,rgba(247,247,249,.74) 0%,rgba(233,234,238,.8) 100%);
   --g-btn:linear-gradient(180deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,.06) 48%,rgba(255,255,255,0) 52%),linear-gradient(180deg,#e2313e 0%,#b91623 100%);
 }
 
@@ -41,7 +41,7 @@ html.su-glass :is(
   .su-record-callout,.su-about-upl,.su-sponsor-opportunity,.su-article-widget,.su-home .su-mw,.su-home .su-tk-item,.su-hero-btn,.su-rail-btn,
   .su-site .su-recap-btn,.su-match-sections a,.su-home .su-result-go,.su-xcard,.su-story-image,.su-match-gallery a,.su-record-avatar,
   .su-site .su-club-btn,.su-footer .su-btn,.su-home .su-btn-solid,#header .header-actions-action--cta a,.header-menu-cta a,.su-stat-icon,.su-accolade-icon,
-  .su-footer-social a,.su-join-page .su-join-dark .su-join-values li
+  .su-footer-social a,.su-join-page .su-join-dark .su-join-values li,.su-join-page .su-join-steps li,.su-join-page .su-join-faqs details
 ){position:relative}
 
 /* Which ring goes where */
@@ -60,7 +60,7 @@ html.su-glass :is(
 
 /* ---------- Light glass cards (white surfaces) ---------- */
 html.su-glass :is(
-  .su-home .su-card,.su-ncard,.su-roster-card,.su-sponsor-card,.su-footer .su-sponsor-card,.su-contact-direct,.su-contact-reason,.su-record-section,
+  .su-ncard,.su-roster-card,.su-sponsor-card,.su-footer .su-sponsor-card,.su-contact-direct,.su-contact-reason,.su-record-section,
   .su-record-leader,.su-about-intro,.su-partner,.su-sponsor-intro,.su-season-jumps a,.su-timeline-card,.su-join-rhythm span,
   .su-record-tabs button:not([aria-pressed=true]),.su-site .su-recap-btn:not(.su-club-hero *),.su-match-sections a,.su-home .su-result-go
 ){
@@ -71,11 +71,12 @@ html.su-glass .su-select-menu{background:linear-gradient(165deg,#fff,#f7f8f9)!im
 
 /* ---------- Fog panels (grey surfaces), toned down for reading ---------- */
 html.su-glass :is(
-  .su-club-season-facts>div,.su-match-events:not(.su-timeline),.su-record-metrics,.su-record-leaders,.su-record-callout,.su-about-upl,
+  .su-home .su-card,.su-club-season-facts>div,.su-match-events:not(.su-timeline),.su-record-metrics,.su-record-leaders,.su-record-callout,.su-about-upl,
   .su-sponsor-opportunity,.su-article-widget,.su-join-page .su-join-steps li,.su-join-page .su-join-faqs details
 ){
   background:var(--g-fog)!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 8px 20px -16px rgba(17,18,20,.18);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 10px 24px -16px rgba(17,18,20,.2);
 }
 
 /* Dark widgets keep their colours; just a soft top sheen */
